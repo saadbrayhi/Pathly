@@ -1,4 +1,16 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pathly frontend
+
+Pathly is a responsive education-guidance frontend built with Next.js, React,
+TypeScript, and Tailwind CSS.
+
+It includes scholarship, study-abroad, and student-visa discovery pages; a
+personalized path questionnaire and roadmap; an AI Guide interface; resources;
+and a Pathly Plus service-request flow.
+
+## Replacing temporary images
+
+Temporary website images live in `public/images/`. See
+`public/images/README.md` for the exact component and replacement guidance.
 
 ## Getting Started
 

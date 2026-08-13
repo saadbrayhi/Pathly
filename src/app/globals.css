@@ -1,26 +1,25 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: #0a1833;
+  --color-blue-50: #eef6ff;
+  --color-blue-100: #d9ebff;
+  --color-blue-500: #2675ee;
+  --color-blue-600: #1463dc;
+  --color-blue-700: #0c4eb8;
+  --color-blue-900: #09265a;
+  --shadow-soft: 0 20px 50px rgba(15, 66, 140, .10);
+  --shadow-card: 0 8px 30px rgba(24, 66, 122, .08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{color:#0a1833;background:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-feature-settings:"ss01"} button,input,select,textarea{font:inherit}
+::selection{background:#d9ebff;color:#09265a}
+@layer components{
+ .shell{@apply mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10;}
+ .eyebrow{@apply text-xs font-bold uppercase tracking-[.22em] text-blue-600;}
+ .display{@apply text-4xl font-semibold leading-[1.08] tracking-[-.04em] text-ink sm:text-5xl lg:text-6xl;}
+ .glass{@apply border border-white/70 bg-white/80 shadow-soft backdrop-blur-xl;}
+ .field{@apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100;}
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+.map-grid{background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent)}
+.orb{animation:float 7s ease-in-out infinite}@keyframes float{50%{transform:translateY(-12px)}}
