@@ -1,6 +1,17 @@
-export default function home() {
+import Hero from "./components/home/Hero";
+import GlobalSearch from "./components/home/GlobalSearch";
+import StartSection from "./components/home/StartSection";
+import PopDestination from "./components/home/PopDestination";
+import FeaturedScholarships from "./components/home/FeaturedScolarship";
+
+export default function Home() {
   return (
-    div className='flex flex-col items-center justify-center min-h-screen py-2 '
-    
-  )
+    <>
+      <Hero />
+      <GlobalSearch />
+      <StartSection />
+      <PopDestination />
+      <FeaturedScholarships />
+    </>
+  );
 }
