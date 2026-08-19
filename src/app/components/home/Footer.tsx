@@ -2,15 +2,15 @@ import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 
 const exploreLinks = [
-  { label: "Study Path Finder", href: "/study-path" },
-  { label: "Countries", href: "/study-abroad" },
-  { label: "Scholarships", href: "/scholarships" },
+  { label: "Study Path Finder", href: "/find-my-path" },
+  { label: "Countries", href: "/study-aboard" },
+  { label: "Scholarships", href: "/scholarship" },
 ];
 
 const prepareLinks = [
   { label: "Admissions", href: "/study-abroad/france" },
   { label: "Documents", href: "/documents" },
-  { label: "Student Visa", href: "/visa" },
+  { label: "Student Visa", href: "/student-visa" },
 ];
 
 const helpLinks = [

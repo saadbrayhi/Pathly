@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/shared/Navbar";
+import Footer from "./components/home/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Pathly | Study Abroad Navigator",
-  description: "Find your study path, scholarships, documents, and visa guidance.",
+  description:
+    "Find your study path, scholarships, documents, and visa guidance.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -27,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
