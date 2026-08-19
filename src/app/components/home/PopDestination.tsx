@@ -1,79 +1,8 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import DestinationCard from "./DestinationCard";
+import { destinations } from "@/constent/constant";
 
-const destinations = [
-  {
-    name: "France",
-    flag: "🇫🇷",
-    image: "/images/home/destinations/france.jpg",
-    languages: ["French", "English"],
-    levels: ["Bachelor", "Master", "PhD"],
-    href: "/study-abroad/france",
-    scholarships: true,
-    visaRequired: true,
-  },
-  {
-    name: "Germany",
-    flag: "🇩🇪",
-    image: "/images/home/destinations/germany.jpg",
-    languages: ["German", "English"],
-    levels: ["Bachelor", "Master", "PhD"],
-    href: "/study-abroad/germany",
-    scholarships: true,
-    visaRequired: true,
-  },
-  {
-    name: "Italy",
-    flag: "🇮🇹",
-    image: "/images/home/destinations/italy.jpg",
-    languages: ["Italian", "English"],
-    levels: ["Bachelor", "Master", "PhD"],
-    href: "/study-abroad/italy",
-    scholarships: true,
-    visaRequired: true,
-  },
-  {
-    name: "Canada",
-    flag: "🇨🇦",
-    image: "/images/home/destinations/canada.jpg",
-    languages: ["English", "French"],
-    levels: ["Bachelor", "Master", "PhD"],
-    href: "/study-abroad/canada",
-    scholarships: true,
-    visaRequired: true,
-  },
-  {
-    name: "Turkey",
-    flag: "🇹🇷",
-    image: "/images/home/destinations/turkey.jpg",
-    languages: ["Turkish", "English"],
-    levels: ["Bachelor", "Master", "PhD"],
-    href: "/study-abroad/turkey",
-    scholarships: true,
-    visaRequired: true,
-  },
-  {
-    name: "Netherlands",
-    flag: "🇳🇱",
-    image: "/images/home/destinations/netherlands.jpg",
-    languages: ["Dutch", "English"],
-    levels: ["Bachelor", "Master", "PhD"],
-    href: "/study-abroad/netherlands",
-    scholarships: true,
-    visaRequired: true,
-  },
-  {
-    name: "Spain",
-    flag: "🇪🇸",
-    image: "/images/home/destinations/spain.jpg",
-    languages: ["Spanish", "English"],
-    levels: ["Bachelor", "Master", "PhD"],
-    href: "/study-abroad/spain",
-    scholarships: true,
-    visaRequired: true,
-  },
-];
 
 export default function PopDestination() {
   return (
@@ -90,7 +19,7 @@ export default function PopDestination() {
               Compare admission, costs, scholarships, and visa requirements.
             </p>
           </div>
-
+          
           <Link
             href="/study-abroad"
             className="hidden items-center gap-1 rounded text-sm font-semibold text-[#3157d5] transition hover:text-[#2647b8] md:flex"

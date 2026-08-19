@@ -4,12 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "Study Abroad", href: "/study-abroad" },
-  { label: "Scholarships", href: "/scholarships" },
+  { label: "Study Abroad", href: "/study-aboard" },
+  { label: "Scholarships", href: "/scholarship" },
   { label: "Documents", href: "/documents" },
   { label: "Student Visa", href: "/student-visa" },
   { label: "AI Navigator", href: "/ai-navigator" },
   { label: "Personal Support", href: "/personal-support" },
+   { label: "find-my-path", href: "/find-my-path" },
+
 ];
 
 export default function Navbar() {
