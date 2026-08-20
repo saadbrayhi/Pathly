@@ -3,11 +3,47 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #3157d5;
+  --primary-dark: #2647b8;
+  --heading: #0f172a;
+  --accent: #0f9f8f;
+  --soft-blue: #eaf0ff;
+  --soft-blue-border: #c2d3ff;
+  --soft-mint: #e7f8f4;
+  --warm-surface: #fafaf7;
+  --success: #16803a;
+  --soft-success: #f0fdf4;
+  --warning: #b76800;
+  --soft-warning: #fff5df;
+  --warning-border: #f0d070;
+  --search-surface: #f7f7f4;
+  --official: #5de8d8;
+  --hero-start: #e8eef7;
+  --hero-middle: #eef3f8;
+  --hero-end: #e3ebf6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-heading: var(--heading);
+  --color-accent: var(--accent);
+  --color-soft-blue: var(--soft-blue);
+  --color-soft-blue-border: var(--soft-blue-border);
+  --color-soft-mint: var(--soft-mint);
+  --color-warm-surface: var(--warm-surface);
+  --color-success: var(--success);
+  --color-soft-success: var(--soft-success);
+  --color-warning: var(--warning);
+  --color-soft-warning: var(--soft-warning);
+  --color-warning-border: var(--warning-border);
+  --color-search-surface: var(--search-surface);
+  --color-official: var(--official);
+  --color-hero-start: var(--hero-start);
+  --color-hero-middle: var(--hero-middle);
+  --color-hero-end: var(--hero-end);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,4 +59,117 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  /* Layout */
+  .page-container {
+    @apply mx-auto w-full max-w-300 px-6;
+  }
+
+  .section-spacing {
+    @apply py-20;
+  }
+
+  .section-header {
+    @apply mb-8 flex items-end justify-between;
+  }
+
+  .section-heading {
+    @apply mb-1 text-3xl font-bold text-heading;
+  }
+
+  .section-heading-sm {
+    @apply text-2xl font-bold text-heading;
+  }
+
+  .section-description {
+    @apply text-slate-500;
+  }
+
+  .view-all-link {
+    @apply hidden items-center gap-1 rounded text-sm font-semibold text-primary transition-colors hover:text-primary-dark md:flex;
+  }
+
+
+  .hero-gradient {
+    @apply bg-linear-to-br from-hero-start via-hero-middle to-hero-end;
+  }
+
+  .search-field {
+    @apply flex flex-1 items-center gap-3 rounded-lg bg-search-surface px-4 py-3;
+  }
+
+  .deadline-warning-badge {
+    @apply rounded-full border border-warning-border bg-soft-warning px-3 py-1.5 text-xs font-medium text-warning;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply border border-slate-200 bg-white text-slate-700 hover:bg-slate-50;
+  }
+
+  /* Card surfaces */
+  .card-surface {
+    @apply rounded-2xl border border-slate-200 bg-white;
+  }
+
+  .card-interactive {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-md;
+  }
+
+  /* Small reusable UI */
+  .eyebrow-badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-soft-blue-border bg-soft-blue px-3 py-1.5 text-xs font-semibold text-primary;
+  }
+
+  .neutral-badge {
+    @apply rounded-full border border-slate-200 bg-slate-100 px-2 py-0.5 text-xs text-slate-500;
+  }
+
+  .success-badge {
+    @apply rounded-full bg-soft-mint px-2 py-0.5 text-xs font-medium text-accent;
+  }
+
+  /* Navigation/footer */
+  .nav-brand {
+    @apply font-bold text-slate-900 transition-colors duration-200 hover:text-primary;
+  }
+
+  .nav-language {
+    @apply px-3 py-2 text-slate-700 transition-colors duration-200 hover:bg-slate-50 hover:text-primary;
+  }
+
+  .footer-heading {
+    @apply mb-4 text-xs font-semibold uppercase tracking-widest text-slate-400;
+  }
+
+  .footer-link {
+    @apply text-sm text-slate-400 transition-colors hover:text-white;
+  }
+
+  .footer-meta-link {
+    @apply text-xs text-slate-500 transition-colors hover:text-slate-300;
+  }
+
+  /* Placeholder route pages */
+  .placeholder-page {
+    @apply flex flex-col items-center justify-center gap-4 py-20;
+  }
+
+  .placeholder-title {
+    @apply text-3xl font-bold text-heading;
+  }
+
+  .placeholder-copy {
+    @apply max-w-2xl text-center text-lg text-slate-600;
+  }
 }

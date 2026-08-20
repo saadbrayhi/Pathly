@@ -22,13 +22,13 @@ const helpLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-[#0f172a] text-slate-300">
-      <div className="mx-auto max-w-300 px-6 py-16">
+    <footer className="mt-auto bg-heading text-slate-300">
+      <div className="page-container py-16">
         <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="mb-4 flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#3157d5]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
                 <span className="font-bold text-white">P</span>
               </div>
 
@@ -44,7 +44,7 @@ export default function Footer() {
             <div className="flex items-start gap-2 rounded-xl border border-slate-700/60 bg-slate-800/60 p-3">
               <ShieldCheck
                 size={16}
-                className="mt-0.5 shrink-0 text-[#0f9f8f]"
+                className="mt-0.5 shrink-0 text-accent"
               />
 
               <p className="text-xs leading-relaxed text-slate-400">
@@ -56,7 +56,7 @@ export default function Footer() {
 
           {/* Explore */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <h3 className="footer-heading">
               Explore
             </h3>
 
@@ -65,7 +65,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-400 transition-colors hover:text-white"
+                    className="footer-link"
                   >
                     {link.label}
                   </Link>
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Prepare */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <h3 className="footer-heading">
               Prepare
             </h3>
 
@@ -85,7 +85,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-400 transition-colors hover:text-white"
+                    className="footer-link"
                   >
                     {link.label}
                   </Link>
@@ -96,7 +96,7 @@ export default function Footer() {
 
           {/* Help */}
           <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-400">
+            <h3 className="footer-heading">
               Help
             </h3>
 
@@ -105,7 +105,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-slate-400 transition-colors hover:text-white"
+                    className="footer-link"
                   >
                     {link.label}
                   </Link>
@@ -124,14 +124,14 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <Link
               href="/privacy"
-              className="text-xs text-slate-500 transition-colors hover:text-slate-300"
+              className="footer-meta-link"
             >
               Privacy
             </Link>
 
             <Link
               href="/terms"
-              className="text-xs text-slate-500 transition-colors hover:text-slate-300"
+              className="footer-meta-link"
             >
               Terms
             </Link>

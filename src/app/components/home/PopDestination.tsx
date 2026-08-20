@@ -6,23 +6,23 @@ import { destinations } from "@/constant/constant";
 
 export default function PopDestination() {
   return (
-    <section className="bg-[#fafaf7] py-20">
-      <div className="mx-auto max-w-300 px-6">
+    <section className="section-spacing bg-warm-surface">
+      <div className="page-container">
         {/* HEADER */}
-        <div className="mb-8 flex items-end justify-between">
+        <div className="section-header">
           <div>
-            <h2 className="mb-1 text-3xl font-bold text-[#0f172a]">
+            <h2 className="section-heading">
               Popular destinations
             </h2>
 
-            <p className="text-slate-500">
+            <p className="section-description">
               Compare admission, costs, scholarships, and visa requirements.
             </p>
           </div>
           
           <Link
             href="/study-abroad"
-            className="hidden items-center gap-1 rounded text-sm font-semibold text-[#3157d5] transition hover:text-[#2647b8] md:flex"
+            className="view-all-link"
           >
             View all
             <ChevronRight size={16} />

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
+import Button from "../shared/Button";
 
 export default function GlobalSearch() {
   const [query, setQuery] = useState("");
@@ -15,9 +16,9 @@ export default function GlobalSearch() {
   }
 
   return (
-    <div className="relative z-10 mx-auto -mt-8 w-full max-w-[1200px] px-6">
-      <div className="flex w-full items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
-        <div className="flex flex-1 items-center gap-3 rounded-lg bg-[#f7f7f4] px-4 py-3">
+    <div className="page-container relative z-10 -mt-8">
+      <div className="card-surface flex w-full items-center gap-3 rounded-xl p-3 shadow-sm">
+        <div className="search-field">
           <Search
             size={18}
             strokeWidth={1.8}
@@ -38,13 +39,13 @@ export default function GlobalSearch() {
           />
         </div>
 
-        <button
+        <Button
           type="button"
           onClick={handleSearch}
-          className="shrink-0 rounded-lg bg-[#3157d5] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#2647b8]"
+          className="shrink-0 rounded-lg px-7 py-3 text-sm"
         >
           Search
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -4,15 +4,15 @@ import {quickCategories} from "@/constant/constant";
 
 export default function StartSection() {
   return (
-    <section className="border-b border-slate-100 bg-white py-20">
-      <div className="mx-auto max-w-300 px-6">
+    <section className="section-spacing border-b border-slate-100 bg-white">
+      <div className="page-container">
         {/* Heading */}
         <div className="mb-10 text-center">
-          <h2 className="mb-2 text-2xl font-bold text-[#0f172a]">
+          <h2 className="mb-2 section-heading-sm">
             Where do you want to start?
           </h2>
 
-          <p className="text-base text-slate-500">
+          <p className="section-description text-base">
             Every part of the study-abroad journey, organized in one place.
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function StartSection() {
               <Link
                 key={cat.href}
                 href={cat.href}
-                className="group flex flex-col items-center rounded-2xl border border-slate-200 bg-white p-4 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#c2d3ff] hover:shadow-md"
+                className="card-surface card-interactive group flex flex-col items-center p-4 text-center hover:border-soft-blue-border"
               >
                 {/* Icon */}
                 <div
@@ -36,7 +36,7 @@ export default function StartSection() {
                 </div>
 
                 {/* Title */}
-                <div className="mb-1 text-sm font-semibold leading-tight text-[#0f172a]">
+                <div className="mb-1 text-sm font-semibold leading-tight text-heading">
                   {cat.label}
                 </div>
 
@@ -47,7 +47,7 @@ export default function StartSection() {
 
                 {/* AI badge */}
                 {cat.badge && (
-                  <span className="mt-2 rounded-full border border-slate-200 bg-slate-100 px-2 py-0.5 text-xs text-slate-500">
+                  <span className="neutral-badge mt-2">
                     {cat.badge}
                   </span>
                 )}

@@ -26,7 +26,7 @@ export default function DestinationCard({
   return (
     <Link
       href={href}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(49,87,213,0.11)]"
+      className="card-surface group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(49,87,213,0.11)]"
     >
       {/* IMAGE */}
       <div className="relative h-36 overflow-hidden bg-slate-200">
@@ -83,13 +83,13 @@ export default function DestinationCard({
         {/* TAGS */}
         <div className="mt-auto flex flex-wrap items-center gap-1.5 border-t border-slate-100 pt-3">
           {scholarships && (
-            <span className="rounded-full bg-[#e7f8f4] px-2 py-0.5 text-xs font-medium text-[#0f9f8f]">
+            <span className="success-badge">
               Scholarships
             </span>
           )}
 
           {visaRequired && (
-            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-500">
+            <span className="neutral-badge border-0">
               Visa req.
             </span>
           )}

@@ -9,14 +9,14 @@ const trustPoints = [
 
 export default function TrustSection() {
   return (
-    <section className="bg-[#e7f8f4] py-16">
-      <div className="mx-auto max-w-[1200px] px-6">
+    <section className="bg-soft-mint py-16">
+      <div className="page-container">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-[#0f9f8f]/20 bg-[#0f9f8f]/10">
-            <ShieldCheck size={24} className="text-[#0f9f8f]" />
+          <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-accent/20 bg-accent/10">
+            <ShieldCheck size={24} className="text-accent" />
           </div>
 
-          <h2 className="mb-3 text-2xl font-bold text-[#0f172a]">
+          <h2 className="mb-3 section-heading-sm">
             Important decisions deserve reliable sources.
           </h2>
 
@@ -30,7 +30,7 @@ export default function TrustSection() {
             {trustPoints.map((point) => (
               <div
                 key={point}
-                className="flex items-center gap-1.5 rounded-full border border-[#0f9f8f]/20 bg-white/70 px-3 py-1.5 text-sm text-[#0f9f8f]"
+                className="flex items-center gap-1.5 rounded-full border border-accent/20 bg-white/70 px-3 py-1.5 text-sm text-accent"
               >
                 <CheckCircle2 size={13} />
                 {point}

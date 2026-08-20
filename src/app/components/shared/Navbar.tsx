@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Button from "./Button";
 
 const navLinks = [
   { label: "Study Abroad", href: "/study-abroad" },
@@ -22,19 +23,19 @@ export default function Navbar() {
         {/* LOGO */}
         <Link
           href="/"
-          className="font-bold text-slate-900 transition-colors duration-200 hover:text-[#3157d5]"
+          className="nav-brand"
         >
           Pathly
         </Link>
 
         {/* NAV LINKS */}
         <div className="flex items-center gap-6 text-sm">
-          <Link
+          <Button
             href="/find-my-path"
-            className="rounded-lg bg-[#3157d5] px-4 py-2 font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#2647b8] hover:shadow-md"
+            className="rounded-lg px-4 py-2 text-sm font-medium"
           >
             Find My Path
-          </Link>
+          </Button>
 
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -45,15 +46,15 @@ export default function Navbar() {
                 href={link.href}
                 className={`group relative flex h-16 items-center font-medium transition-colors duration-200 ${
                   isActive
-                    ? "text-[#3157d5]"
-                    : "text-slate-700 hover:text-[#3157d5]"
+                    ? "text-primary"
+                    : "text-slate-700 hover:text-primary"
                 }`}
               >
                 {link.label}
 
                 {/* UNDERLINE */}
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-[#3157d5] transition-all duration-300 ease-out ${
+                  className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ease-out ${
                     isActive
                       ? "w-full"
                       : "w-0 group-hover:w-full"
@@ -66,15 +67,15 @@ export default function Navbar() {
 
         {/* LANGUAGE */}
         <div className="flex overflow-hidden rounded-lg border border-slate-200 text-sm">
-          <button className="bg-[#3157d5] px-3 py-2 text-white">
+          <button className="bg-primary px-3 py-2 text-white">
             EN
           </button>
 
-          <button className="px-3 py-2 text-slate-700 transition-colors duration-200 hover:bg-slate-50 hover:text-[#3157d5]">
+          <button className="nav-language">
             AR
           </button>
 
-          <button className="px-3 py-2 text-slate-700 transition-colors duration-200 hover:bg-slate-50 hover:text-[#3157d5]">
+          <button className="nav-language">
             FR
           </button>
         </div>

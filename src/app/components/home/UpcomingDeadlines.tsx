@@ -1,26 +1,27 @@
 import { deadlines, type DeadlineGroup } from "../../data/deadlines";
+import Card from "../shared/Card";
 
 const dotColor: Record<DeadlineGroup, string> = {
-  upcoming: "bg-[#3157d5]",
+  upcoming: "bg-primary",
   later: "bg-slate-300",
-  verify: "bg-[#b76800]",
+  verify: "bg-warning",
 };
 
 export default function UpcomingDeadlines() {
   return (
-    <section className="bg-[#fafaf7] py-16">
-      <div className="mx-auto max-w-[1200px] px-6">
+    <section className="bg-warm-surface py-16">
+      <div className="page-container">
         <div className="mb-6 flex items-end justify-between gap-4">
-          <h2 className="text-2xl font-bold text-[#0f172a]">
+          <h2 className="section-heading-sm">
             Upcoming deadlines
           </h2>
 
-          <span className="rounded-full border border-[#f0d070] bg-[#fff5df] px-3 py-1.5 text-xs font-medium text-[#b76800]">
+          <span className="deadline-warning-badge">
             Demo — always verify official dates
           </span>
         </div>
 
-        <div className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-white">
+        <Card className="divide-y divide-slate-100">
           {deadlines.map((deadline) => (
             <div
               key={deadline.label}
@@ -45,7 +46,7 @@ export default function UpcomingDeadlines() {
               </span>
             </div>
           ))}
-        </div>
+        </Card>
       </div>
     </section>
   );

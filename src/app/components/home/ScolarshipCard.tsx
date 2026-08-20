@@ -71,7 +71,7 @@ export default function ScholarshipCard({
             {deadline}
           </div>
 
-          <div className="flex items-center gap-1 text-xs font-medium text-[#5de8d8]">
+          <div className="flex items-center gap-1 text-xs font-medium text-official">
             <ShieldCheck size={11} />
             Official source
           </div>

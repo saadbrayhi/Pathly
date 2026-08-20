@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Button from "../shared/Button";
 
 const steps = [
   {
@@ -29,14 +29,14 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-white py-20">
-      <div className="mx-auto max-w-[1200px] px-6">
+    <section className="section-spacing bg-white">
+      <div className="page-container">
         <div className="mb-12 text-center">
-          <h2 className="mb-2 text-3xl font-bold text-[#0f172a]">
+          <h2 className="mb-2 section-heading">
             How Pathly works
           </h2>
 
-          <p className="mx-auto max-w-md text-slate-500">
+          <p className="section-description mx-auto max-w-md">
             Four clear steps from your current situation to a verified
             study-abroad plan.
           </p>
@@ -56,13 +56,13 @@ export default function HowItWorks() {
               )}
 
               <div className="relative z-10">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#c2d3ff] bg-[#eaf0ff]">
-                  <span className="text-lg font-bold text-[#3157d5]">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-soft-blue-border bg-soft-blue">
+                  <span className="text-lg font-bold text-primary">
                     {step.number}
                   </span>
                 </div>
 
-                <h3 className="mb-2 font-bold text-[#0f172a]">{step.title}</h3>
+                <h3 className="mb-2 font-bold text-heading">{step.title}</h3>
 
                 <p className="text-sm leading-relaxed text-slate-500">
                   {step.description}
@@ -73,13 +73,10 @@ export default function HowItWorks() {
         </div>
 
         <div className="mt-10 text-center">
-          <Link
-            href="/study-path"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#3157d5] px-7 py-3.5 font-semibold text-white shadow-sm transition hover:bg-[#2748b8]"
-          >
+          <Button href="/study-path" className="gap-2 px-7 py-3.5 shadow-sm">
             Start Your Study Path
             <span aria-hidden="true">→</span>
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

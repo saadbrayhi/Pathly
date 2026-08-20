@@ -18,14 +18,11 @@ export default function Button({
   onClick,
   className = "",
 }: ButtonProps) {
-  const baseStyles =
-    "inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-all duration-200";
+  const baseStyles = "btn";
 
   const variants = {
-    primary:
-      "bg-[#3157d5] text-white hover:bg-[#2647b8] hover:-translate-y-0.5 hover:shadow-md",
-    secondary:
-      "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
+    primary: "btn-primary",
+    secondary: "btn-secondary",
   };
 
   const styles = `${baseStyles} ${variants[variant]} ${className}`;

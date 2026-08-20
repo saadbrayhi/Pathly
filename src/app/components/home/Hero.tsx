@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import Button from "../shared/Button";
+import Card from "../shared/Card";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
@@ -26,28 +27,28 @@ export default function Hero() {
       cx: 95,
       cy: 205,
       label: "Admission",
-      color: "#3157d5",
+      color: "var(--primary)",
       delay: 0.15,
     },
     {
       cx: 140,
       cy: 155,
       label: "Documents",
-      color: "#3157d5",
+      color: "var(--primary)",
       delay: 0.3,
     },
     {
       cx: 185,
       cy: 110,
       label: "Scholarship",
-      color: "#0f9f8f",
+      color: "var(--accent)",
       delay: 0.5,
     },
     {
       cx: 230,
       cy: 70,
       label: "Visa",
-      color: "#0f9f8f",
+      color: "var(--accent)",
       delay: 0.7,
     },
   ];
@@ -81,19 +82,19 @@ export default function Hero() {
   ];
 
   return (
-    <section className="bg-linear-to-br from-[#e8eef7] via-[#eef3f8] to-[#e3ebf6]">
-      <div className="mx-auto min-h-170 max-w-300 px-6 pt-16 pb-32">
+    <section className="hero-gradient">
+      <div className="page-container min-h-170 pt-16 pb-32">
         <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#c2d3ff] bg-[#eaf0ff] px-3 py-1.5 text-xs font-semibold text-[#3157d5]">
-              <span className="text-[#3157d5]">◉</span>
+            <div className="eyebrow-badge mb-6">
+              <span className="text-primary">◉</span>
               Your study-abroad journey, made clear
             </div>
 
-            <h1 className="mb-5 text-4xl font-bold leading-[1.12] text-[#0f172a] md:text-5xl xl:text-6xl">
+            <h1 className="mb-5 text-4xl font-bold leading-[1.12] text-heading md:text-5xl xl:text-6xl">
               Know every step
               <br />
-              <span className="text-[#3157d5]">before you apply.</span>
+              <span className="text-primary">before you apply.</span>
             </h1>
 
             <p className="mb-8 max-w-xl text-lg leading-relaxed text-slate-600">
@@ -103,24 +104,25 @@ export default function Hero() {
             </p>
 
             <div className="mb-8 flex flex-col gap-3 sm:flex-row">
-              <Link
+              <Button
                 href="/find-my-path"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3157d5] px-6 py-3.5 font-semibold text-white shadow-sm transition hover:bg-[#2647b8]"
+                className="gap-2 py-3.5 shadow-sm"
               >
                 Find My Study Path
                 <span>→</span>
-              </Link>
+              </Button>
 
-              <Link
+              <Button
                 href="/study-abroad"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3.5 font-semibold text-slate-700 transition hover:bg-slate-50"
+                variant="secondary"
+                className="py-3.5"
               >
                 Explore Countries
-              </Link>
+              </Button>
             </div>
 
             <div className="flex items-center gap-2 text-sm text-slate-500">
-              <span className="text-[#0f9f8f]">✓</span>
+              <span className="text-accent">✓</span>
               Guidance connected to official university, government, and embassy
               sources.
             </div>
@@ -129,7 +131,7 @@ export default function Hero() {
           {/* RIGHT */}
           <div className="flex justify-center lg:col-span-5 lg:justify-end">
             <div className="w-full max-w-sm">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <Card className="p-6 shadow-sm">
                 <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-400">
                   Your study path
                 </p>
@@ -143,7 +145,7 @@ export default function Hero() {
                   <path
                     d="M 50 260 C 80 230 100 180 140 150 C 175 125 195 100 230 70"
                     fill="none"
-                    stroke="#3157d5"
+                    stroke="var(--primary)"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeDasharray="400"
@@ -158,7 +160,7 @@ export default function Hero() {
                   <path
                     d="M 230 70 L 255 45"
                     fill="none"
-                    stroke="#3157d5"
+                    stroke="var(--primary)"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeDasharray="60"
@@ -173,7 +175,7 @@ export default function Hero() {
                   <path
                     d="M 230 70 L 258 72"
                     fill="none"
-                    stroke="#0f9f8f"
+                    stroke="var(--accent)"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeDasharray="60"
@@ -188,7 +190,7 @@ export default function Hero() {
                   <path
                     d="M 230 70 L 250 100"
                     fill="none"
-                    stroke="#3157d5"
+                    stroke="var(--primary)"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeDasharray="60"
@@ -248,7 +250,7 @@ export default function Hero() {
                         cy={destination.cy}
                         r="5"
                         fill="#ffffff"
-                        stroke="#3157d5"
+                        stroke="var(--primary)"
                         strokeWidth="1.5"
                       />
 
@@ -270,7 +272,7 @@ export default function Hero() {
                       key={item}
                       className="flex items-center gap-2 text-xs text-slate-600"
                     >
-                      <div className="flex h-4 w-4 items-center justify-center rounded-full border border-[#c2d3ff] bg-[#eaf0ff] text-[9px] text-[#3157d5]">
+                      <div className="flex h-4 w-4 items-center justify-center rounded-full border border-soft-blue-border bg-soft-blue text-[9px] text-primary">
                         ✓
                       </div>
 
@@ -278,7 +280,7 @@ export default function Hero() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
         </div>
