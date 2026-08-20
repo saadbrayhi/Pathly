@@ -166,3 +166,137 @@ export const quickCategories = [
     badge: "AI-assisted",
   },
 ];
+
+export const educationOptions = [
+  {
+    value: "bac-high-school",
+    title: "BAC / High School",
+    description:
+      "I have completed secondary school and hold my BAC or equivalent.",
+  },
+  {
+    value: "bachelor-student",
+    title: "Bachelor Student",
+    description: "I am currently completing my undergraduate degree.",
+  },
+  {
+    value: "bachelor-graduate",
+    title: "Bachelor Graduate",
+    description: "I have completed my undergraduate degree.",
+  },
+  {
+    value: "master-student",
+    title: "Master Student",
+    description: "I am currently completing a Master's degree.",
+  },
+  {
+    value: "master-graduate",
+    title: "Master Graduate",
+    description: "I have completed a Master's degree.",
+  },
+];
+
+export const degreeOptions = [
+  {
+    value: "bachelor",
+    title: "Bachelor",
+    description: "Undergraduate degree program (3–4 years).",
+  },
+  {
+    value: "master",
+    title: "Master",
+    description: "Postgraduate degree program (1–2 years).",
+  },
+  {
+    value: "phd",
+    title: "PhD",
+    description: "Doctoral research program (3–5 years).",
+  },
+  {
+    value: "exchange",
+    title: "Exchange Program",
+    description: "A semester or year abroad at a partner university.",
+  },
+];
+
+export const fieldOptions = [
+  {
+    value: "computer-science",
+    title: "Computer Science",
+    description: "Software, AI, data science, and related fields.",
+  },
+  {
+    value: "engineering",
+    title: "Engineering",
+    description: "Mechanical, civil, electrical, and other disciplines.",
+  },
+  {
+    value: "business",
+    title: "Business",
+    description: "Management, finance, marketing, and economics.",
+  },
+  {
+    value: "medicine",
+    title: "Medicine",
+    description: "Medical and healthcare programs.",
+  },
+  {
+    value: "architecture",
+    title: "Architecture",
+    description: "Architecture and urban design.",
+  },
+  {
+    value: "sciences",
+    title: "Sciences",
+    description: "Physics, chemistry, biology, and natural sciences.",
+  },
+  {
+    value: "arts-humanities",
+    title: "Arts & Humanities",
+    description: "Languages, history, arts, and humanities.",
+  },
+];
+
+export const destinationOptions = [
+  {
+    value: "france",
+    title: "🇫🇷 France",
+    description:
+      "Grandes écoles, broad scholarship access, French and English programs.",
+  },
+  {
+    value: "germany",
+    title: "🇩🇪 Germany",
+    description:
+      "Many low-tuition public universities, strong engineering and sciences.",
+  },
+  {
+    value: "italy",
+    title: "🇮🇹 Italy",
+    description:
+      "Broad regional scholarship opportunities, Italian and English programs.",
+  },
+  {
+    value: "canada",
+    title: "🇨🇦 Canada",
+    description:
+      "World-class universities, English and French programs.",
+  },
+  {
+    value: "turkey",
+    title: "🇹🇷 Turkey",
+    description:
+      "Türkiye Scholarships, Turkish and English programs.",
+  },
+  {
+    value: "netherlands",
+    title: "🇳🇱 Netherlands",
+    description:
+      "Many English-taught programs, strong international community.",
+  },
+  {
+    value: "not-sure",
+    title: "I'm not sure yet",
+    description: "Show me suitable countries based on my other choices.",
+  },
+];
