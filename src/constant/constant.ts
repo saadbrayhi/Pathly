@@ -1,4 +1,4 @@
-export const  destinations = [
+export const destinations = [
   {
     name: "France",
     flag: "🇫🇷",
@@ -68,5 +68,38 @@ export const  destinations = [
     href: "/study-abroad/spain",
     scholarships: true,
     visaRequired: true,
+  },
+];
+
+export const scholarships = [
+  {
+    name: "Erasmus Mundus Joint Masters",
+    country: "Europe",
+    flag: "🇪🇺",
+    level: "Master",
+    funding: "Fully funded scholarship for international students.",
+    deadline: "January 2027",
+    image: "/images/home/scholarships/erasmus-mundus.jpg",
+    href: "/scholarships/erasmus-mundus",
+  },
+  {
+    name: "DAAD EPOS",
+    country: "Germany",
+    flag: "🇩🇪",
+    level: "Master",
+    funding: "Funding for development-related postgraduate programs.",
+    deadline: "Varies by program",
+    image: "/images/home/scholarships/daad-epos.jpg",
+    href: "/scholarships/daad-epos",
+  },
+  {
+    name: "Eiffel Excellence Scholarship",
+    country: "France",
+    flag: "🇫🇷",
+    level: "Master",
+    funding: "French government scholarship for international students.",
+    deadline: "January 2027",
+    image: "/images/home/scholarships/eiffel.jpg",
+    href: "/scholarships/eiffel",
   },
 ];

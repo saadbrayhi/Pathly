@@ -1,44 +1,12 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import ScholarshipCard from "./ScolarshipCard";
-
-const scholarships = [
-  {
-    name: "Erasmus Mundus Joint Masters",
-    country: "Europe",
-    flag: "🇪🇺",
-    level: "Master",
-    funding: "Fully funded scholarship for international students.",
-    deadline: "January 2027",
-    image: "/images/home/scholarships/erasmus-mundus.jpg",
-    href: "/scholarships/erasmus-mundus",
-  },
-  {
-    name: "DAAD EPOS",
-    country: "Germany",
-    flag: "🇩🇪",
-    level: "Master",
-    funding: "Funding for development-related postgraduate programs.",
-    deadline: "Varies by program",
-    image: "/images/home/scholarships/daad-epos.jpg",
-    href: "/scholarships/daad-epos",
-  },
-  {
-    name: "Eiffel Excellence Scholarship",
-    country: "France",
-    flag: "🇫🇷",
-    level: "Master",
-    funding: "French government scholarship for international students.",
-    deadline: "January 2027",
-    image: "/images/home/scholarships/eiffel.jpg",
-    href: "/scholarships/eiffel",
-  },
-];
+import { scholarships } from "@/constant/constant";
 
 export default function FeaturedScholarships() {
   return (
     <section className="bg-white py-20">
-      <div className="mx-auto max-w-[1200px] px-6">
+      <div className="mx-auto max-w-300 px-6">
         {/* HEADER */}
         <div className="mb-8 flex items-end justify-between">
           <div>
@@ -64,10 +32,7 @@ export default function FeaturedScholarships() {
         {/* CARDS */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {scholarships.map((scholarship) => (
-            <ScholarshipCard
-              key={scholarship.href}
-              {...scholarship}
-            />
+            <ScholarshipCard key={scholarship.href} {...scholarship} />
           ))}
         </div>
       </div>

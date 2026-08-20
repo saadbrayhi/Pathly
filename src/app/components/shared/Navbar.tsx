@@ -4,13 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "Study Abroad", href: "/study-aboard" },
+  { label: "Study Abroad", href: "/study-abroad" },
   { label: "Scholarships", href: "/scholarship" },
   { label: "Documents", href: "/documents" },
   { label: "Student Visa", href: "/student-visa" },
   { label: "AI Navigator", href: "/ai-navigator" },
   { label: "Personal Support", href: "/personal-support" },
-   { label: "find-my-path", href: "/find-my-path" },
 
 ];
 
@@ -54,7 +53,7 @@ export default function Navbar() {
 
                 {/* UNDERLINE */}
                 <span
-                  className={`absolute bottom-0 left-0 h-[2px] bg-[#3157d5] transition-all duration-300 ease-out ${
+                  className={`absolute bottom-0 left-0 h-0.5 bg-[#3157d5] transition-all duration-300 ease-out ${
                     isActive
                       ? "w-full"
                       : "w-0 group-hover:w-full"

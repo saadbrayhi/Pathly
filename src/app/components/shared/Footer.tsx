@@ -3,7 +3,7 @@ import { ShieldCheck } from "lucide-react";
 
 const exploreLinks = [
   { label: "Study Path Finder", href: "/find-my-path" },
-  { label: "Countries", href: "/study-aboard" },
+  { label: "Countries", href: "/study-abroad" },
   { label: "Scholarships", href: "/scholarship" },
 ];
 
@@ -23,7 +23,7 @@ const helpLinks = [
 export default function Footer() {
   return (
     <footer className="mt-auto bg-[#0f172a] text-slate-300">
-      <div className="mx-auto max-w-[1200px] px-6 py-16">
+      <div className="mx-auto max-w-300 px-6 py-16">
         <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">

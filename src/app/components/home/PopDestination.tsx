@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import DestinationCard from "./DestinationCard";
-import { destinations } from "@/constent/constant";
+import { destinations } from "@/constant/constant";
 
 
 export default function PopDestination() {
   return (
     <section className="bg-[#fafaf7] py-20">
-      <div className="mx-auto max-w-[1200px] px-6">
+      <div className="mx-auto max-w-300 px-6">
         {/* HEADER */}
         <div className="mb-8 flex items-end justify-between">
           <div>

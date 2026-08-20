@@ -38,7 +38,7 @@ export default function ScholarshipCard({
       />
 
       {/* Dark gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/30 to-black/10" />
 
       {/* TOP */}
       <div className="relative flex items-center justify-between p-4">

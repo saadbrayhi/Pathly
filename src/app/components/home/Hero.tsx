@@ -81,8 +81,8 @@ export default function Hero() {
   ];
 
   return (
-    <section className="bg-gradient-to-br from-[#e8eef7] via-[#eef3f8] to-[#e3ebf6]">
-      <div className="mx-auto min-h-[680px] max-w-[1200px] px-6 pt-16 pb-32">
+    <section className="bg-linear-to-br from-[#e8eef7] via-[#eef3f8] to-[#e3ebf6]">
+      <div className="mx-auto min-h-170 max-w-300 px-6 pt-16 pb-32">
         <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#c2d3ff] bg-[#eaf0ff] px-3 py-1.5 text-xs font-semibold text-[#3157d5]">
