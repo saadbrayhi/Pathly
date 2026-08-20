@@ -1,8 +1,12 @@
+import SupportForm from "../personal-support/SupportForm";
+import Container from "../components/shared/Container";
+
 export default function PersonalSupportPage() {
   return (
-    <div>
-      <h1>Personal Support</h1>
-      <p>Information about personal support goes here.</p>
-    </div>
+    <main className="py-16">
+      <Container>
+        <SupportForm />
+      </Container>
+    </main>
   );
 }
