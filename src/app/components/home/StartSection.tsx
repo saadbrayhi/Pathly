@@ -1,71 +1,11 @@
 import Link from "next/link";
-import {
-  TrendingUp,
-  Globe,
-  BookOpen,
-  FileText,
-  Award,
-  Plane,
-  Bot,
-} from "lucide-react";
+import {quickCategories} from "@/constant/constant";
 
-const quickCategories = [
-  {
-    icon: TrendingUp,
-    label: "Find My Study Path",
-    desc: "Get a personalized step-by-step path for your goal.",
-    href: "/find-my-path",
-    accent: "bg-[#eaf0ff] text-[#3157d5]",
-  },
-  {
-    icon: Globe,
-    label: "Explore Countries",
-    desc: "Compare admission, costs, and visas by destination.",
-    href: "/study-abroad",
-    accent: "bg-[#e7f8f4] text-[#0f9f8f]",
-  },
-  {
-    icon: BookOpen,
-    label: "Admission Requirements",
-    desc: "Know exactly what each country requires for your level.",
-    href: "/admission-requirements",
-    accent: "bg-[#eaf0ff] text-[#3157d5]",
-  },
-  {
-    icon: FileText,
-    label: "Required Documents",
-    desc: "Every document explained, with prep guidance.",
-    href: "/documents",
-    accent: "bg-[#f0fdf4] text-[#16803a]",
-  },
-  {
-    icon: Award,
-    label: "Scholarships",
-    desc: "Find funding that fits your path, level, and field.",
-    href: "/scholarships",
-    accent: "bg-[#fff5df] text-[#b76800]",
-  },
-  {
-    icon: Plane,
-    label: "Student Visa",
-    desc: "Country-by-country visa guides with official steps.",
-    href: "/student-visa",
-    accent: "bg-[#eaf0ff] text-[#3157d5]",
-  },
-  {
-    icon: Bot,
-    label: "AI Study Navigator",
-    desc: "Describe your situation — we'll organize your path.",
-    href: "/ai-navigator",
-    accent: "bg-slate-100 text-slate-600",
-    badge: "AI-assisted",
-  },
-];
 
 export default function StartSection() {
   return (
     <section className="border-b border-slate-100 bg-white py-20">
-      <div className="mx-auto max-w-[1200px] px-6">
+      <div className="mx-auto max-w-300 px-6">
         {/* Heading */}
         <div className="mb-10 text-center">
           <h2 className="mb-2 text-2xl font-bold text-[#0f172a]">
