@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { AlertTriangle, RotateCcw, Sparkles } from "lucide-react";
 
 import Card from "@/app/components/shared/Card";
@@ -58,6 +58,16 @@ export default function AINavigator() {
   const [prompt, setPrompt] = useState("");
   const [profile, setProfile] = useState<StudentProfile>(emptyProfile);
   const [status, setStatus] = useState<NavigatorStatus>("idle");
+
+  useEffect(() => {
+    if (status === "done") {
+      document.getElementById("guidance-title")?.focus();
+    }
+
+    if (status === "error") {
+      document.getElementById("navigator-error-title")?.focus();
+    }
+  }, [status]);
 
   const updateProfile = (field: ProfileField, value: string) => {
     setProfile((currentProfile) => ({
@@ -119,12 +129,23 @@ export default function AINavigator() {
           </label>
           <textarea
             id="study-goal"
+            aria-describedby="study-goal-help study-goal-count"
             value={prompt}
             onChange={(event) => setPrompt(event.target.value)}
             placeholder="I am a second-year Computer Science student from Lebanon and want to continue my studies in Germany."
+            maxLength={1000}
             rows={5}
             className="mt-3 w-full resize-y rounded-xl border border-transparent bg-[#f6f7f3] px-4 py-3 text-sm leading-6 text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-[#3157d5] focus:bg-white focus:ring-4 focus:ring-blue-100"
           />
+
+          <div className="mt-2 flex items-start justify-between gap-4 text-xs text-slate-400">
+            <p id="study-goal-help">
+              Include your current level, preferred destination and study goal.
+            </p>
+            <p id="study-goal-count" aria-live="polite" className="shrink-0">
+              {prompt.length}/1000
+            </p>
+          </div>
 
           <div className="mt-4">
             <p className="text-xs font-medium text-slate-500">Try an example</p>
@@ -133,6 +154,7 @@ export default function AINavigator() {
                 <button
                   key={question}
                   type="button"
+                  aria-label={`Use example: ${question}`}
                   onClick={() => setPrompt(question)}
                   className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-left text-xs text-slate-600 transition hover:border-[#c2d3ff] hover:bg-[#eaf0ff] hover:text-[#3157d5] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
                 >
@@ -216,7 +238,11 @@ function NavigatorError({ onRetry }: NavigatorErrorProps) {
         size={34}
         className="mx-auto text-[#b76800]"
       />
-      <h2 className="mt-3 text-xl font-bold text-[#0f172a]">
+      <h2
+        id="navigator-error-title"
+        tabIndex={-1}
+        className="mt-3 text-xl font-bold text-[#0f172a] outline-none"
+      >
         Something went wrong
       </h2>
       <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-500">

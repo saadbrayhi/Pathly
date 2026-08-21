@@ -28,7 +28,11 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
           <p className="text-xs font-semibold uppercase tracking-widest text-[#3157d5]">
             Recommended path
           </p>
-          <h2 id="guidance-title" className="mt-1 text-2xl font-bold text-[#0f172a]">
+          <h2
+            id="guidance-title"
+            tabIndex={-1}
+            className="mt-1 text-2xl font-bold text-[#0f172a] outline-none sm:text-3xl"
+          >
             {demoGuidance.path}
           </h2>
         </div>
