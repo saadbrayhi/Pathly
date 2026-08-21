@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Sparkles } from "lucide-react";
+import { AlertTriangle, RotateCcw, Sparkles } from "lucide-react";
 
 import Card from "@/app/components/shared/Card";
 
@@ -10,6 +10,8 @@ import NavigatorResults from "./NavigatorResults";
 type ProfileField = "country" | "educationLevel" | "desiredDegree" | "field";
 
 type StudentProfile = Record<ProfileField, string>;
+
+type NavigatorStatus = "idle" | "loading" | "done" | "error";
 
 const exampleQuestions = [
   "I am a second-year Computer Science student from Lebanon and want to continue my studies in Germany.",
@@ -47,10 +49,15 @@ const emptyProfile: StudentProfile = {
   field: "",
 };
 
+const waitForMockGuidance = () =>
+  new Promise<void>((resolve) => {
+    window.setTimeout(resolve, 1400);
+  });
+
 export default function AINavigator() {
   const [prompt, setPrompt] = useState("");
   const [profile, setProfile] = useState<StudentProfile>(emptyProfile);
-  const [showResults, setShowResults] = useState(false);
+  const [status, setStatus] = useState<NavigatorStatus>("idle");
 
   const updateProfile = (field: ProfileField, value: string) => {
     setProfile((currentProfile) => ({
@@ -59,19 +66,38 @@ export default function AINavigator() {
     }));
   };
 
+  const generateGuidance = async () => {
+    if (!prompt.trim()) return;
+    setStatus("loading");
+
+    try {
+      await waitForMockGuidance();
+      setStatus("done");
+    } catch {
+      setStatus("error");
+    }
+  };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!prompt.trim()) return;
-    setShowResults(true);
+    void generateGuidance();
   };
 
   const handleReset = () => {
     setPrompt("");
     setProfile(emptyProfile);
-    setShowResults(false);
+    setStatus("idle");
   };
 
-  if (showResults) {
+  if (status === "loading") {
+    return <NavigatorLoading />;
+  }
+
+  if (status === "error") {
+    return <NavigatorError onRetry={() => void generateGuidance()} />;
+  }
+
+  if (status === "done") {
     return (
       <div className="mt-10">
         <NavigatorResults onReset={handleReset} />
@@ -148,5 +174,63 @@ export default function AINavigator() {
         </form>
       </Card>
     </section>
+  );
+}
+
+function NavigatorLoading() {
+  return (
+    <Card
+      className="mt-10 p-8 text-center sm:p-12"
+    >
+      <div
+        role="status"
+        aria-live="polite"
+        className="flex flex-col items-center"
+      >
+        <span className="sr-only">Generating your study guidance</span>
+        <div className="flex size-16 items-center justify-center rounded-2xl bg-slate-100">
+          <div className="size-8 animate-spin rounded-full border-2 border-[#3157d5] border-t-transparent" />
+        </div>
+        <p className="mt-5 font-medium text-slate-700">
+          Organizing your requirements and next steps…
+        </p>
+        <div aria-hidden="true" className="mt-4 flex gap-2">
+          <span className="h-1.5 w-8 rounded-full bg-[#3157d5]" />
+          <span className="h-1.5 w-3 rounded-full bg-slate-200" />
+          <span className="h-1.5 w-3 rounded-full bg-slate-200" />
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+type NavigatorErrorProps = {
+  onRetry: () => void;
+};
+
+function NavigatorError({ onRetry }: NavigatorErrorProps) {
+  return (
+    <Card className="mt-10 p-8 text-center sm:p-10">
+      <AlertTriangle
+        aria-hidden="true"
+        size={34}
+        className="mx-auto text-[#b76800]"
+      />
+      <h2 className="mt-3 text-xl font-bold text-[#0f172a]">
+        Something went wrong
+      </h2>
+      <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-500">
+        We couldn&apos;t generate guidance right now. Your answers are still here,
+        so you can safely retry.
+      </p>
+      <button
+        type="button"
+        onClick={onRetry}
+        className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#3157d5] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#2647b8] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
+      >
+        <RotateCcw aria-hidden="true" size={15} />
+        Try again
+      </button>
+    </Card>
   );
 }

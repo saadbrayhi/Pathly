@@ -8,6 +8,8 @@ import {
   Languages,
   Plane,
   RotateCcw,
+  ShieldCheck,
+  TriangleAlert,
 } from "lucide-react";
 
 import Card from "@/app/components/shared/Card";
@@ -38,6 +40,19 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
           <RotateCcw aria-hidden="true" size={15} />
           Start over
         </button>
+      </div>
+
+      <div className="flex items-start gap-3 rounded-xl border border-[#f0d070] bg-[#fff5df] p-4">
+        <TriangleAlert
+          aria-hidden="true"
+          size={16}
+          className="mt-0.5 shrink-0 text-[#b76800]"
+        />
+        <p className="text-xs leading-5 text-[#8a5200]">
+          <strong>AI guidance is informational.</strong> Verify important
+          requirements using official university, embassy and government
+          sources before making decisions.
+        </p>
       </div>
 
       <Card className="p-5 sm:p-6">
@@ -158,6 +173,20 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
           ))}
         </div>
       </section>
+
+      <Card className="flex items-start gap-3 p-5">
+        <ShieldCheck
+          aria-hidden="true"
+          size={18}
+          className="mt-0.5 shrink-0 text-[#0f9f8f]"
+        />
+        <p className="text-sm leading-6 text-slate-600">
+          <strong className="text-[#0f9f8f]">Use this as a starting point.</strong>{" "}
+          Pathly organizes general public information; it does not assess your
+          individual application, guarantee admission or replace official
+          guidance.
+        </p>
+      </Card>
     </section>
   );
 }
