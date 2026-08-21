@@ -5,14 +5,14 @@ export const italy: Country = {
   slug: "italy",
   flag: "🇮🇹",
   image:
-    "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1529260830199-42c24126f198?w=1200&h=480&auto=format&fit=crop&q=85",
 
   description:
     "Broad scholarship access through regional DSU grants. Italian and English-taught programs across major cities.",
 
   languages: "Italian, English",
-  tuition: "€156–€10,000/yr",
-  livingCost: "Estimate — varies by city and institution",
+  tuition: "€900–€20,000+/yr (public–private)",
+  livingCost: "About €700–€1,100/mo",
   studyLevels: "Bachelor, Master, PhD",
 
   languageOptions: ["Italian", "English"],
@@ -24,7 +24,7 @@ export const italy: Country = {
   fields: [],
 
   details: {
-    lastReviewed: "Jan 2025",
+    lastReviewed: "Aug 2026",
 
     overview:
       "Italy is a destination with programs in Italian and English. Broad scholarship access through regional DSU grants. Italian and English-taught programs across major cities.",
@@ -70,21 +70,21 @@ export const italy: Country = {
         level: "Bachelor",
         duration: "Varies by program",
         language: "Italian / English",
-        tuition: "€156–€10,000/yr",
+        tuition: "€900–€20,000+/yr (public–private)",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "Master",
         duration: "Varies by program",
         language: "Italian / English",
-        tuition: "€156–€10,000/yr",
+        tuition: "€900–€20,000+/yr (public–private)",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "PhD",
         duration: "Varies by program",
         language: "Italian / English",
-        tuition: "€156–€10,000/yr",
+        tuition: "Varies by university and funding arrangement",
         note: "Verify tuition with the specific institution and program.",
       },
     ],
@@ -118,8 +118,14 @@ export const italy: Country = {
 
     officialSources: [
       {
-        name: "Official immigration portal",
-        description: "Verify the official visa and residence permit process.",
+        name: "Universitaly",
+        description: "Official program search and pre-enrolment portal for Italy.",
+        url: "https://www.universitaly.it/",
+      },
+      {
+        name: "Visa for Italy",
+        description: "Official Italian Ministry of Foreign Affairs visa guidance.",
+        url: "https://vistoperitalia.esteri.it/home/en",
       },
     ],
 

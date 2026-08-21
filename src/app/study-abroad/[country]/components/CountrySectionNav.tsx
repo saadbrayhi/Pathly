@@ -60,6 +60,13 @@ const sections = [
 export default function CountrySectionNav() {
   const [activeSection, setActiveSection] = useState("education-system");
 
+  function goToSection(sectionId: string) {
+    setActiveSection(sectionId);
+    document
+      .getElementById(sectionId)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   useEffect(() => {
     const sectionElements = sections
       .map((section) => document.getElementById(section.id))
@@ -82,8 +89,30 @@ export default function CountrySectionNav() {
   }, []);
 
   return (
-    <aside className="hidden self-start lg:block">
-      <nav className="sticky top-24" aria-label="Country guide sections">
+    <aside className="self-start lg:sticky lg:top-24">
+      <div className="mb-6 lg:hidden">
+        <label
+          htmlFor="country-section"
+          className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#8ba0c0]"
+        >
+          Jump to section
+        </label>
+
+        <select
+          id="country-section"
+          value={activeSection}
+          onChange={(event) => goToSection(event.target.value)}
+          className="w-full rounded-xl border border-[#dce5f0] bg-white px-4 py-3 text-sm font-medium text-[#344968] outline-none focus:border-[#3157d5] focus:ring-2 focus:ring-[#3157d5]/20"
+        >
+          {sections.map((section) => (
+            <option key={section.id} value={section.id}>
+              {section.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <nav className="hidden lg:block" aria-label="Country guide sections">
         <p className="mb-3 text-xs font-bold uppercase tracking-wider text-[#8ba0c0]">
           Sections
         </p>
@@ -93,7 +122,10 @@ export default function CountrySectionNav() {
             <a
               key={section.id}
               href={`#${section.id}`}
-              onClick={() => setActiveSection(section.id)}
+              onClick={(event) => {
+                event.preventDefault();
+                goToSection(section.id);
+              }}
               aria-current={
                 activeSection === section.id ? "location" : undefined
               }

@@ -26,14 +26,14 @@ export default function CountryActions({ countryName }: CountryActionsProps) {
 
         <Button
           href="/personal-support"
-          className="shrink-0 rounded-xl px-5 py-2.5"
+          className="w-full shrink-0 rounded-xl px-5 py-2.5 sm:w-auto"
         >
           Get Help From Our Team
         </Button>
       </section>
 
       {/* Final CTA */}
-      <section className="rounded-2xl bg-[#365bd8] p-8 text-white shadow-sm">
+      <section className="rounded-2xl bg-[#365bd8] p-5 text-white shadow-sm sm:p-8">
         <h2 className="text-xl font-semibold">
           Ready to build your {countryName} path?
         </h2>
@@ -46,7 +46,7 @@ export default function CountryActions({ countryName }: CountryActionsProps) {
         <Button
           href="/find-my-path"
           variant="secondary"
-          className="mt-5 bg-white px-5 py-3 text-[#3157d5]"
+          className="mt-5 w-full bg-white px-5 py-3 text-[#3157d5] sm:w-auto"
         >
           Find My Study Path
           <ArrowRight size={16} />

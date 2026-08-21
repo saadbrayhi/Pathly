@@ -28,7 +28,7 @@ export default function CountryPlanning({
     <div className="space-y-6">
       <section
         id="application-process"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">
           Application Process
@@ -58,7 +58,7 @@ export default function CountryPlanning({
 
       <section
         id="tuition-fees"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#eaf0ff] text-[#3157d5]">
@@ -95,7 +95,7 @@ export default function CountryPlanning({
 
       <section
         id="living-costs"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e7f8f4] text-[#0f9f8f]">

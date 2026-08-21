@@ -16,7 +16,7 @@ export default function CountryFunding({
     <div className="space-y-6">
       <section
         id="scholarships"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">Scholarships</h2>
 
@@ -43,7 +43,7 @@ export default function CountryFunding({
 
       <section
         id="student-visa"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">Student Visa</h2>
 

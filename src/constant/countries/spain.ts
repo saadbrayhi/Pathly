@@ -5,14 +5,14 @@ export const spain: Country = {
   slug: "spain",
   flag: "🇪🇸",
   image:
-    "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1200&h=480&auto=format&fit=crop&q=85",
 
   description:
     "Spanish and English programs with varied regional requirements. Lower cost than Northern Europe, rich academic tradition.",
 
   languages: "Spanish, English",
-  tuition: "€680–€8,000/yr",
-  livingCost: "Estimate — varies by city and institution",
+  tuition: "€700–€20,000/yr (public–private)",
+  livingCost: "About €700–€1,200/mo",
   studyLevels: "Bachelor, Master, PhD",
 
   languageOptions: ["Spanish", "English"],
@@ -24,7 +24,7 @@ export const spain: Country = {
   fields: [],
 
   details: {
-    lastReviewed: "Jan 2025",
+    lastReviewed: "Aug 2026",
 
     overview:
       "Spain is a destination with programs in Spanish and English. Spanish and English programs with varied regional requirements. Lower cost than Northern Europe, rich academic tradition.",
@@ -70,21 +70,21 @@ export const spain: Country = {
         level: "Bachelor",
         duration: "Varies by program",
         language: "Spanish / English",
-        tuition: "€680–€8,000/yr",
+        tuition: "€700–€1,700/yr at many public universities",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "Master",
         duration: "Varies by program",
         language: "Spanish / English",
-        tuition: "€680–€8,000/yr",
+        tuition: "€1,000–€3,500/yr at many public universities",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "PhD",
         duration: "Varies by program",
         language: "Spanish / English",
-        tuition: "€680–€8,000/yr",
+        tuition: "Varies by university and funding arrangement",
         note: "Verify tuition with the specific institution and program.",
       },
     ],
@@ -118,8 +118,14 @@ export const spain: Country = {
 
     officialSources: [
       {
-        name: "Official immigration portal",
-        description: "Verify the official visa and residence permit process.",
+        name: "Study in Europe — Spain",
+        description: "European Commission overview of Spanish study costs and visas.",
+        url: "https://education.ec.europa.eu/study-in-europe/country-profiles/spain",
+      },
+      {
+        name: "Spanish Ministry of Foreign Affairs",
+        description: "Official study visa requirements; verify with your responsible consulate.",
+        url: "https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Visado-de-estudios.aspx",
       },
     ],
 

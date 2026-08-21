@@ -5,14 +5,14 @@ export const germany: Country = {
   slug: "germany",
   flag: "🇩🇪",
   image:
-    "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&h=480&auto=format&fit=crop&q=85",
 
   description:
     "Many public universities charge low or no tuition fees. Strong engineering and science programs in German and English.",
 
   languages: "German, English",
-  tuition: "€0–€3,500/yr (most public) + semester fee",
-  livingCost: "Estimate — varies by city and institution",
+  tuition: "Often no public tuition + semester contribution",
+  livingCost: "About €900–€1,200/mo",
   studyLevels: "Bachelor, Master, PhD",
 
   languageOptions: ["German", "English"],
@@ -24,7 +24,7 @@ export const germany: Country = {
   fields: [],
 
   details: {
-    lastReviewed: "Jan 2025",
+    lastReviewed: "Aug 2026",
 
     overview:
       "Germany is a destination with programs in German and English. Many public universities charge low or no tuition fees. Strong engineering and science programs in German and English.",
@@ -70,21 +70,21 @@ export const germany: Country = {
         level: "Bachelor",
         duration: "Varies by program",
         language: "German / English",
-        tuition: "€0–€3,500/yr (most public) + semester fee",
+        tuition: "Often no public tuition + semester contribution",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "Master",
         duration: "Varies by program",
         language: "German / English",
-        tuition: "€0–€3,500/yr (most public) + semester fee",
+        tuition: "Often no public tuition + semester contribution",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "PhD",
         duration: "Varies by program",
         language: "German / English",
-        tuition: "€0–€3,500/yr (most public) + semester fee",
+        tuition: "Often no public tuition + semester contribution",
         note: "Verify tuition with the specific institution and program.",
       },
     ],
@@ -118,8 +118,14 @@ export const germany: Country = {
 
     officialSources: [
       {
-        name: "Official immigration portal",
-        description: "Verify the official visa and residence permit process.",
+        name: "DAAD",
+        description: "Official guidance on studying, requirements, and costs in Germany.",
+        url: "https://www.daad.de/en/studying-in-germany/",
+      },
+      {
+        name: "DAAD requirements overview",
+        description: "Entry, visa, and proof-of-funds guidance for international students.",
+        url: "https://www.daad.de/en/studying-in-germany/requirements/overview/",
       },
     ],
 

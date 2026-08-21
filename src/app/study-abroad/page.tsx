@@ -20,7 +20,7 @@ export default function StudyAbroadPage() {
 
       <div className="pointer-events-none absolute -bottom-62.5 -right-35 h-125 w-125 rounded-full border border-[#e3edf3]" />
 
-      <Container className="relative z-10 pb-24 pt-16">
+      <Container className="relative z-10 pb-16 pt-8 sm:pb-20 sm:pt-12 lg:pb-24 lg:pt-16">
         {/* Breadcrumb */}
         <div className="mb-6 flex items-center gap-2 text-sm">
           <Link
@@ -36,8 +36,8 @@ export default function StudyAbroadPage() {
         </div>
 
         {/* Heading */}
-        <div className="mb-9">
-          <h1 className="text-3xl font-semibold leading-tight tracking-[-0.02em] text-gray-900">
+        <div className="mb-7 sm:mb-9">
+          <h1 className="text-3xl font-semibold leading-tight tracking-[-0.02em] text-gray-900 sm:text-4xl">
             Explore study destinations
           </h1>
 

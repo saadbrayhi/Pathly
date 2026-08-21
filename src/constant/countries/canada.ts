@@ -5,14 +5,14 @@ export const canada: Country = {
   slug: "canada",
   flag: "🇨🇦",
   image:
-    "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=1200&h=480&auto=format&fit=crop&q=85",
 
   description:
     "English and French programs at recognized world-class universities. Study permit required for most international students.",
 
   languages: "English, French",
-  tuition: "CAD 15,000–35,000/yr",
-  livingCost: "Estimate — varies by city and institution",
+  tuition: "CAD 24,028–41,746/yr average (graduate–undergraduate)",
+  livingCost: "Budget at least CAD 23,000/yr plus tuition",
   studyLevels: "Bachelor, Master, PhD",
 
   languageOptions: ["English", "French"],
@@ -24,7 +24,7 @@ export const canada: Country = {
   fields: [],
 
   details: {
-    lastReviewed: "Jan 2025",
+    lastReviewed: "Aug 2026",
 
     overview:
       "Canada is a destination with programs in English and French. English and French programs at recognized world-class universities. Study permit required for most international students.",
@@ -70,21 +70,21 @@ export const canada: Country = {
         level: "Bachelor",
         duration: "Varies by program",
         language: "English / French",
-        tuition: "CAD 15,000–35,000/yr",
-        note: "Verify tuition with the specific institution and program.",
+        tuition: "About CAD 41,746/yr average",
+        note: "2026 national average for international undergraduate tuition; programs vary.",
       },
       {
         level: "Master",
         duration: "Varies by program",
         language: "English / French",
-        tuition: "CAD 15,000–35,000/yr",
-        note: "Verify tuition with the specific institution and program.",
+        tuition: "About CAD 24,028/yr average",
+        note: "2026 national average for international graduate tuition; programs vary.",
       },
       {
         level: "PhD",
         duration: "Varies by program",
         language: "English / French",
-        tuition: "CAD 15,000–35,000/yr",
+        tuition: "Varies by university and funding package",
         note: "Verify tuition with the specific institution and program.",
       },
     ],
@@ -118,8 +118,14 @@ export const canada: Country = {
 
     officialSources: [
       {
-        name: "Official immigration portal",
-        description: "Verify the official visa and residence permit process.",
+        name: "EduCanada",
+        description: "Government of Canada guidance on programs and study costs.",
+        url: "https://www.educanada.ca/programs-programmes/education_cost-cout_education.aspx?lang=eng",
+      },
+      {
+        name: "IRCC study permit guide",
+        description: "Official instructions for applying for a Canadian study permit.",
+        url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/guide-5269-applying-study-permit-outside-canada.html",
       },
     ],
 

@@ -13,7 +13,7 @@ export default function CountryStudyInfo({ details }: CountryStudyInfoProps) {
       {/* Study Levels */}
       <section
         id="study-levels"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">Study Levels</h2>
 
@@ -73,7 +73,7 @@ export default function CountryStudyInfo({ details }: CountryStudyInfoProps) {
       {/* Required Documents */}
       <section
         id="required-documents"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">
           Required Documents

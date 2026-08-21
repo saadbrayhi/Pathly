@@ -12,7 +12,7 @@ export default function CountrySources({ details }: CountrySourcesProps) {
       {/* Official Sources */}
       <section
         id="official-sources"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">
           Official Sources
@@ -51,7 +51,7 @@ export default function CountrySources({ details }: CountrySourcesProps) {
       {/* Common Mistakes */}
       <section
         id="common-mistakes"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">
           Common Mistakes

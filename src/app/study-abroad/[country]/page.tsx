@@ -5,15 +5,15 @@ import { notFound } from "next/navigation";
 import Container from "../../components/shared/Container";
 import { countries } from "../../../constant/countries";
 
-import CountryActions from "./componentss/CountryActions";
-import CountryAdmissions from "./componentss/CountryAdmissions";
-import CountryFunding from "./componentss/CountryFunding";
-import CountryOverview from "./componentss/CountryOverview";
-import CountryPlanning from "./componentss/CountryPlanning";
-import CountryRequirements from "./componentss/CountryRequirements";
-import CountrySectionNav from "./componentss/CountrySectionNav";
-import CountrySources from "./componentss/CountrySources";
-import CountryStudyInfo from "./componentss/CountryStudyInfo";
+import CountryActions from "./components/CountryActions";
+import CountryAdmissions from "./components/CountryAdmissions";
+import CountryFunding from "./components/CountryFunding";
+import CountryOverview from "./components/CountryOverview";
+import CountryPlanning from "./components/CountryPlanning";
+import CountryRequirements from "./components/CountryRequirements";
+import CountrySectionNav from "./components/CountrySectionNav";
+import CountrySources from "./components/CountrySources";
+import CountryStudyInfo from "./components/CountryStudyInfo";
 
 type CountryPageProps = {
   params: Promise<{
@@ -43,9 +43,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
         <div className="absolute -bottom-40 -left-40 h-125 w-125 rounded-full bg-[#edf3f4]" />
       </div>
 
-      <Container className="relative z-10 py-14">
+      <Container className="relative z-10 py-8 sm:py-12 lg:py-14">
         {/* Breadcrumb */}
-        <div className="mb-7 flex items-center gap-2 text-sm">
+        <div className="mb-7 flex flex-wrap items-center gap-2 text-sm">
           <Link
             href="/"
             className="text-[#7f94b4] transition hover:text-[#3157d5]"
@@ -71,7 +71,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
         <CountryOverview country={country} details={details} />
 
         {/* Sidebar + Content */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[230px_1fr]">
+        <div className="grid grid-cols-1 gap-0 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[230px_minmax(0,1fr)] xl:gap-10">
           <CountrySectionNav />
 
           <div className="space-y-6">

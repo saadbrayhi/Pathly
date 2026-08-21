@@ -14,13 +14,15 @@ export default function CountryOverview({
   details,
 }: CountryOverviewProps) {
   return (
-    <section className="mb-6 rounded-2xl border border-[#dce5f0] bg-white p-8">
+    <section className="mb-6 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-8">
       <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
-        <div className="flex items-center gap-4">
-          <span className="text-5xl">{country.flag}</span>
+        <div className="flex items-start gap-3 sm:items-center sm:gap-4">
+          <span className="text-4xl sm:text-5xl" aria-hidden="true">
+            {country.flag}
+          </span>
 
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-[#111827]">
+            <h1 className="text-2xl font-semibold tracking-tight text-[#111827] sm:text-3xl">
               {country.name}
             </h1>
 
@@ -39,7 +41,10 @@ export default function CountryOverview({
           </div>
         </div>
 
-        <Button href="/find-my-path" className="shrink-0 rounded-xl px-6 py-3">
+        <Button
+          href="/find-my-path"
+          className="w-full shrink-0 rounded-xl px-6 py-3 sm:w-auto"
+        >
           Find my {country.name} path
           <ArrowRight size={16} />
         </Button>
@@ -49,7 +54,7 @@ export default function CountryOverview({
         {details.overview}
       </p>
 
-      <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
         <QuickInfo label="Study Levels" value={country.studyLevels} />
 
         <QuickInfo label="Main Language" value={details.mainLanguage} />

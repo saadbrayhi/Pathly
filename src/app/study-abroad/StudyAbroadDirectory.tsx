@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 
-import Button from "../components/shared/Button";
 import Input from "../components/shared/Input";
 
 import CountryCard from "./CountryCard";
@@ -100,7 +99,7 @@ export default function StudyAbroadDirectory({
   return (
     <section>
       {/* Search + Filters */}
-      <div className="mb-4 flex items-center gap-3">
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="relative flex-1">
           <Search
             size={18}
@@ -129,11 +128,12 @@ export default function StudyAbroadDirectory({
           )}
         </div>
 
-        <Button
+        <button
           type="button"
-          variant="secondary"
           onClick={() => setShowFilters((previousValue) => !previousValue)}
-          className={`flex h-12.5 shrink-0 items-center gap-2 rounded-xl border px-5 text-sm font-semibold ${
+          aria-expanded={showFilters}
+          aria-controls="study-abroad-filters"
+          className={`inline-flex h-12.5 w-full shrink-0 items-center justify-center gap-2 rounded-xl border px-5 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-[#3157d5]/30 sm:w-auto ${
             showFilters
               ? "border-[#3157d5] bg-[#eaf0ff] text-[#3157d5]"
               : "border-[#4468df] bg-white text-[#3157d5]"
@@ -141,7 +141,7 @@ export default function StudyAbroadDirectory({
         >
           <SlidersHorizontal size={17} strokeWidth={1.8} />
           Filters{filterCount > 0 ? ` (${filterCount})` : ""}
-        </Button>
+        </button>
       </div>
 
       {/* Filter details */}

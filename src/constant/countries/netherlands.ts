@@ -5,14 +5,14 @@ export const netherlands: Country = {
   slug: "netherlands",
   flag: "🇳🇱",
   image:
-    "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&h=480&auto=format&fit=crop&q=85",
 
   description:
     "Extensive English-taught programs. Higher cost of living but strong academic reputation and international student community.",
 
   languages: "English, Dutch",
-  tuition: "€2,314–€20,000/yr",
-  livingCost: "Estimate — varies by city and institution",
+  tuition: "€9,000–€30,000/yr (typical non-EU range)",
+  livingCost: "About €1,000–€1,500/mo",
   studyLevels: "Bachelor, Master, PhD",
 
   languageOptions: ["English", "Dutch"],
@@ -24,7 +24,7 @@ export const netherlands: Country = {
   fields: [],
 
   details: {
-    lastReviewed: "Jan 2025",
+    lastReviewed: "Aug 2026",
 
     overview:
       "Netherlands is a destination with programs in English and Dutch. Extensive English-taught programs. Higher cost of living but strong academic reputation and international student community.",
@@ -70,21 +70,21 @@ export const netherlands: Country = {
         level: "Bachelor",
         duration: "Varies by program",
         language: "English / Dutch",
-        tuition: "€2,314–€20,000/yr",
+        tuition: "€9,000–€20,000/yr typical for non-EU students",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "Master",
         duration: "Varies by program",
         language: "English / Dutch",
-        tuition: "€2,314–€20,000/yr",
+        tuition: "€12,000–€30,000/yr typical for non-EU students",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "PhD",
         duration: "Varies by program",
         language: "English / Dutch",
-        tuition: "€2,314–€20,000/yr",
+        tuition: "Varies by institution and funding arrangement",
         note: "Verify tuition with the specific institution and program.",
       },
     ],
@@ -118,8 +118,14 @@ export const netherlands: Country = {
 
     officialSources: [
       {
-        name: "Official immigration portal",
-        description: "Verify the official visa and residence permit process.",
+        name: "Study in NL",
+        description: "Official starting point for programs, applications, and costs.",
+        url: "https://www.studyinnl.org/",
+      },
+      {
+        name: "IND",
+        description: "Official higher-education student residence permit guidance.",
+        url: "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education",
       },
     ],
 

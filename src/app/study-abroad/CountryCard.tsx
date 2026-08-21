@@ -28,13 +28,14 @@ export default function CountryCard({ country }: CountryCardProps) {
       href={`/study-abroad/${country.slug}`}
       className="group block overflow-hidden rounded-2xl border border-[#dbe4f0] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#b8caf8] hover:shadow-xl"
     >
-      <div className="relative h-32 w-full overflow-hidden">
+      <div className="relative aspect-[5/2] w-full overflow-hidden bg-slate-100">
         <Image
           src={country.image}
           alt={`${country.name} study destination`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition duration-500 group-hover:scale-105"
+          quality={85}
+          className="object-cover object-center transition duration-500 group-hover:scale-105"
         />
 
         <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/10 to-transparent" />
@@ -52,7 +53,7 @@ export default function CountryCard({ country }: CountryCardProps) {
       </div>
 
       <div className="p-4">
-        <p className="mb-5 min-h-16.5 text-[13px] leading-5 text-[#5f7395]">
+        <p className="mb-5 text-[13px] leading-5 text-[#5f7395] sm:min-h-16.5">
           {country.description}
         </p>
 

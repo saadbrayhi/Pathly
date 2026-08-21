@@ -31,7 +31,7 @@ export default function CountryAdmissions({ details }: CountryAdmissionsProps) {
       {/* Education System */}
       <section
         id="education-system"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">
           Education System
@@ -45,7 +45,7 @@ export default function CountryAdmissions({ details }: CountryAdmissionsProps) {
       {/* Who Can Apply */}
       <section
         id="who-can-apply"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">Who Can Apply?</h2>
 
@@ -65,7 +65,7 @@ export default function CountryAdmissions({ details }: CountryAdmissionsProps) {
       {/* Admission Requirements */}
       <section
         id="admission-requirements"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-5 sm:p-6"
       >
         <h2 className="text-xl font-semibold text-[#111827]">
           Admission Requirements

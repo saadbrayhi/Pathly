@@ -5,14 +5,14 @@ export const france: Country = {
   slug: "france",
   flag: "🇫🇷",
   image:
-    "https://images.unsplash.com/photo-1431274172761-fca41d930114?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1431274172761-fca41d930114?w=1200&h=480&auto=format&fit=crop&q=85",
 
   description:
     "Leading destination with prestigious grandes écoles, broad scholarship access, and programs in French and English.",
 
   languages: "French, English",
-  tuition: "€2,770–€15,000/yr (public–private)",
-  livingCost: "Estimate — varies by city and institution",
+  tuition: "€398–€18,000+/yr (varies by level and institution)",
+  livingCost: "About €800–€1,200/mo (Paris can be higher)",
   studyLevels: "Bachelor, Master, PhD, Exchange",
 
   languageOptions: ["French", "English"],
@@ -24,7 +24,7 @@ export const france: Country = {
   fields: [],
 
   details: {
-    lastReviewed: "Jan 2025",
+    lastReviewed: "Aug 2026",
 
     overview:
       "France is one of the world's leading study destinations, with a prestigious higher education system that includes grandes écoles, research universities, and institutes of technology. Programs range from affordable public degrees to private and engineering schools. France welcomes over 400,000 international students annually.",
@@ -74,22 +74,22 @@ export const france: Country = {
         level: "Bachelor (Licence)",
         duration: "3 years",
         language: "French / some English",
-        tuition: "€2,770–€15,000/yr",
-        note: "Public universities: fixed national tuition. Selective grandes écoles: higher.",
+        tuition: "€2,902/yr at many public institutions",
+        note: "2026/27 non-EU differentiated rate; exemptions and institution-specific fees may apply.",
       },
       {
         level: "Master",
         duration: "2 years",
         language: "French & English",
-        tuition: "€3,770–€20,000/yr",
-        note: "Many programs in English. Highly competitive for leading schools.",
+        tuition: "€3,950/yr at many public institutions",
+        note: "2026/27 non-EU differentiated rate; private and selective schools charge more.",
       },
       {
         level: "PhD (Doctorat)",
         duration: "3–5 years",
         language: "Primarily French",
-        tuition: "€3,770/yr + supervisor",
-        note: "Often funded through research contracts. Requires research proposal.",
+        tuition: "€398/yr at public institutions",
+        note: "2026/27 public registration rate; doctoral funding and program conditions vary.",
       },
       {
         level: "Exchange Program",

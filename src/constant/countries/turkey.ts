@@ -5,14 +5,14 @@ export const turkey: Country = {
   slug: "turkey",
   flag: "🇹🇷",
   image:
-    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&h=480&auto=format&fit=crop&q=85",
 
   description:
     "Growing scholarship opportunities through Türkiye Scholarships. Turkish and English programs across major universities.",
 
   languages: "Turkish, English",
-  tuition: "₺20,000–₺80,000/yr (varies widely)",
-  livingCost: "Estimate — varies by city and institution",
+  tuition: "€250–€20,000/yr (public–private)",
+  livingCost: "About €400–€800/mo",
   studyLevels: "Bachelor, Master, PhD",
 
   languageOptions: ["Turkish", "English"],
@@ -24,7 +24,7 @@ export const turkey: Country = {
   fields: [],
 
   details: {
-    lastReviewed: "Jan 2025",
+    lastReviewed: "Aug 2026",
 
     overview:
       "Turkey is a destination with programs in Turkish and English. Growing scholarship opportunities through Türkiye Scholarships. Turkish and English programs across major universities.",
@@ -70,21 +70,21 @@ export const turkey: Country = {
         level: "Bachelor",
         duration: "Varies by program",
         language: "Turkish / English",
-        tuition: "₺20,000–₺80,000/yr (varies widely)",
+        tuition: "€250–€700/yr public; private programs cost more",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "Master",
         duration: "Varies by program",
         language: "Turkish / English",
-        tuition: "₺20,000–₺80,000/yr (varies widely)",
+        tuition: "€500–€1,200/yr public; private programs cost more",
         note: "Verify tuition with the specific institution and program.",
       },
       {
         level: "PhD",
         duration: "Varies by program",
         language: "Turkish / English",
-        tuition: "₺20,000–₺80,000/yr (varies widely)",
+        tuition: "Varies by university and funding arrangement",
         note: "Verify tuition with the specific institution and program.",
       },
     ],
@@ -118,8 +118,14 @@ export const turkey: Country = {
 
     officialSources: [
       {
-        name: "Official immigration portal",
-        description: "Verify the official visa and residence permit process.",
+        name: "Study in Europe — Türkiye",
+        description: "European Commission overview of tuition, living costs, and visas.",
+        url: "https://education.ec.europa.eu/study-in-europe/country-profiles/turkiye",
+      },
+      {
+        name: "Türkiye Ministry of Foreign Affairs",
+        description: "Official information about student and education visas.",
+        url: "https://www.mfa.gov.tr/general-information-about-turkish-visas.en.mfa",
       },
     ],
 
