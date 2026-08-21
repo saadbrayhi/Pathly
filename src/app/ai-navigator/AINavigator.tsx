@@ -5,6 +5,8 @@ import { Sparkles } from "lucide-react";
 
 import Card from "@/app/components/shared/Card";
 
+import NavigatorResults from "./NavigatorResults";
+
 type ProfileField = "country" | "educationLevel" | "desiredDegree" | "field";
 
 type StudentProfile = Record<ProfileField, string>;
@@ -48,6 +50,7 @@ const emptyProfile: StudentProfile = {
 export default function AINavigator() {
   const [prompt, setPrompt] = useState("");
   const [profile, setProfile] = useState<StudentProfile>(emptyProfile);
+  const [showResults, setShowResults] = useState(false);
 
   const updateProfile = (field: ProfileField, value: string) => {
     setProfile((currentProfile) => ({
@@ -58,7 +61,23 @@ export default function AINavigator() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!prompt.trim()) return;
+    setShowResults(true);
   };
+
+  const handleReset = () => {
+    setPrompt("");
+    setProfile(emptyProfile);
+    setShowResults(false);
+  };
+
+  if (showResults) {
+    return (
+      <div className="mt-10">
+        <NavigatorResults onReset={handleReset} />
+      </div>
+    );
+  }
 
   return (
     <section aria-labelledby="navigator-form-title" className="mt-10">
