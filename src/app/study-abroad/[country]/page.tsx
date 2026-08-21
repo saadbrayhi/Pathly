@@ -7,7 +7,9 @@ import { countries } from "../../../constant/countries";
 
 import CountryActions from "./componentss/CountryActions";
 import CountryAdmissions from "./componentss/CountryAdmissions";
+import CountryFunding from "./componentss/CountryFunding";
 import CountryOverview from "./componentss/CountryOverview";
+import CountryPlanning from "./componentss/CountryPlanning";
 import CountryRequirements from "./componentss/CountryRequirements";
 import CountrySectionNav from "./componentss/CountrySectionNav";
 import CountrySources from "./componentss/CountrySources";
@@ -77,7 +79,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
             <CountryStudyInfo details={details} />
 
-            <CountryRequirements details={details} countryName={country.name} />
+            <CountryRequirements details={details} />
+
+            <CountryPlanning country={country} details={details} />
+
+            <CountryFunding details={details} countryName={country.name} />
 
             <CountrySources details={details} />
 
