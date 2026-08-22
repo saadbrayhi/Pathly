@@ -93,7 +93,7 @@ export default function DocumentLibrary() {
           placeholder="Search documents"
           aria-label="Search documents"
           aria-controls="document-results"
-          className="bg-white pl-11 pr-11"
+          className="bg-white pl-11 pr-11 text-slate-700 placeholder:text-slate-400"
         />
         {search && (
           <button
