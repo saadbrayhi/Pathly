@@ -64,16 +64,16 @@ export default function PersonalSupportPage() {
           </p>
         </header>
 
-        <section aria-labelledby="support-process-title" className="mt-10">
+        <section aria-labelledby="support-process-title" className="mt-8 sm:mt-10">
           <h2 id="support-process-title" className="text-xl font-bold text-heading">
             How it works
           </h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <div className="mt-4 grid items-stretch gap-4 md:grid-cols-3">
             {SUPPORT_STEPS.map((step, index) => {
               const Icon = stepIcons[index];
 
               return (
-                <Card key={step.number} className="p-5">
+                <Card key={step.number} className="h-full p-5">
                   <div className="flex items-start justify-between gap-4">
                     <span className="flex size-10 items-center justify-center rounded-xl bg-soft-blue text-primary">
                       <Icon aria-hidden="true" size={18} />
@@ -92,16 +92,16 @@ export default function PersonalSupportPage() {
           </div>
         </section>
 
-        <section aria-labelledby="support-services-title" className="mt-10">
+        <section aria-labelledby="support-services-title" className="mt-8 sm:mt-10">
           <h2 id="support-services-title" className="text-xl font-bold text-heading">
             What we can help with
           </h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SUPPORT_SERVICES.map((service) => {
               const Icon = serviceIcons[service.icon];
 
               return (
-                <Card key={service.title} className="p-5">
+                <Card key={service.title} className="h-full p-5">
                   <span
                     className={`flex size-10 items-center justify-center rounded-xl ${serviceStyles[service.icon]}`}
                   >

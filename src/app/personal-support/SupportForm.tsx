@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import {
   AlertCircle,
   AlertTriangle,
@@ -59,6 +59,7 @@ function validateSupportRequest(values: SupportRequestValues) {
 }
 
 export default function SupportForm() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [values, setValues] = useState<SupportRequestValues>(EMPTY_SUPPORT_REQUEST);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>("idle");
@@ -72,10 +73,17 @@ export default function SupportForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    if (submissionStatus === "submitting") return;
+
     const validationErrors = validateSupportRequest(values);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       setSubmissionStatus("idle");
+      window.requestAnimationFrame(() => {
+        formRef.current
+          ?.querySelector<HTMLElement>("[aria-invalid='true'], [data-invalid='true']")
+          ?.focus();
+      });
       return;
     }
 
@@ -93,7 +101,12 @@ export default function SupportForm() {
 
   return (
     <Card className="mt-10 p-5 sm:p-8">
-      <form onSubmit={handleSubmit} noValidate>
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        aria-busy={submissionStatus === "submitting"}
+        noValidate
+      >
         <header>
           <h2 className="text-2xl font-bold text-heading">Request Personal Support</h2>
           <p className="mt-1 text-sm leading-6 text-slate-500">
@@ -184,27 +197,34 @@ export default function SupportForm() {
           <legend className="text-sm font-medium text-slate-700">
             Type of Help Needed <span className="text-red-500">*</span>
           </legend>
-          <div
-            className="mt-2 flex flex-wrap gap-2"
-            aria-describedby={errors.helpType ? "support-help-type-error" : undefined}
-          >
+          <div className="mt-2 flex flex-wrap gap-2">
             {HELP_TYPE_OPTIONS.map((option) => {
               const isSelected = values.helpType === option.value;
 
               return (
-                <button
-                  key={option.value}
-                  type="button"
-                  aria-pressed={isSelected}
-                  onClick={() => handleChange("helpType", option.value)}
-                  className={`min-h-10 rounded-xl border px-4 py-2 text-sm font-medium transition ${
-                    isSelected
-                      ? "border-primary bg-primary text-white"
-                      : "border-slate-200 bg-white text-slate-600 hover:border-soft-blue-border hover:text-primary"
-                  }`}
-                >
-                  {option.label}
-                </button>
+                <label key={option.value} className="cursor-pointer">
+                  <input
+                    type="radio"
+                    name="support-help-type"
+                    value={option.value}
+                    checked={isSelected}
+                    onChange={() => handleChange("helpType", option.value)}
+                    data-invalid={errors.helpType ? "true" : undefined}
+                    aria-describedby={
+                      errors.helpType ? "support-help-type-error" : undefined
+                    }
+                    className="peer sr-only"
+                  />
+                  <span
+                    className={`inline-flex min-h-10 items-center rounded-xl border px-4 py-2 text-sm font-medium transition peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-100 ${
+                      isSelected
+                        ? "border-primary bg-primary text-white"
+                        : "border-slate-200 bg-white text-slate-600 hover:border-soft-blue-border hover:text-primary"
+                    }`}
+                  >
+                    {option.label}
+                  </span>
+                </label>
               );
             })}
           </div>
