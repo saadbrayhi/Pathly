@@ -1,8 +1,16 @@
+import Container from "../components/shared/Container";
+import VisaHero from "../components/student-visa/VisaHero";
+import VisaCountryList from "../components/student-visa/VisaCountryList";
+
 export default function StudentVisaPage() {
   return (
-    <div>
-      <h1>Student Visa</h1>
-      <p>Information about student visas goes here.</p>
-    </div>
+    <main className="min-h-screen bg-warm-surface py-8">
+      <Container>
+        <div className="mx-auto max-w-280">
+          <VisaHero />
+          <VisaCountryList />
+        </div>
+      </Container>
+    </main>
   );
 }

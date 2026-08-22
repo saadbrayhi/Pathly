@@ -34,7 +34,7 @@ export default function DocumentCard({ document }: DocumentCardProps) {
           />
         </div>
 
-        <h3 className="break-words text-sm font-bold text-heading">{document.name}</h3>
+        <h3 className="wrap-break-words text-sm font-bold text-heading">{document.name}</h3>
         <p className="mt-1 flex-1 text-xs leading-relaxed text-slate-500">
           {document.description}
         </p>
