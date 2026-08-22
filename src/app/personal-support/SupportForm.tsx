@@ -1,7 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { AlertTriangle, Send } from "lucide-react";
+import {
+  AlertCircle,
+  AlertTriangle,
+  CheckCircle2,
+  LoaderCircle,
+  Send,
+} from "lucide-react";
 
 import Button from "../components/shared/Button";
 import Card from "../components/shared/Card";
@@ -16,8 +22,10 @@ import {
   HELP_TYPE_OPTIONS,
   type SupportRequestValues,
 } from "../data/personalSupport";
+import { submitPersonalSupportRequest } from "../services/personalSupport";
 
 type FormErrors = Partial<Record<keyof SupportRequestValues, string>>;
+type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phonePattern = /^\+?[\d\s()-]{7,20}$/;
@@ -53,28 +61,34 @@ function validateSupportRequest(values: SupportRequestValues) {
 export default function SupportForm() {
   const [values, setValues] = useState<SupportRequestValues>(EMPTY_SUPPORT_REQUEST);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>("idle");
 
   function handleChange(field: keyof SupportRequestValues, value: string) {
     setValues((currentValues) => ({ ...currentValues, [field]: value }));
     setErrors((currentErrors) => ({ ...currentErrors, [field]: undefined }));
-    setSubmitted(false);
+    setSubmissionStatus("idle");
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const validationErrors = validateSupportRequest(values);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      setSubmitted(false);
+      setSubmissionStatus("idle");
       return;
     }
 
-    console.log("Personal support request", values);
     setErrors({});
-    setSubmitted(true);
-    setValues(EMPTY_SUPPORT_REQUEST);
+    setSubmissionStatus("submitting");
+
+    try {
+      await submitPersonalSupportRequest(values);
+      setValues(EMPTY_SUPPORT_REQUEST);
+      setSubmissionStatus("success");
+    } catch {
+      setSubmissionStatus("error");
+    }
   }
 
   return (
@@ -241,15 +255,43 @@ export default function SupportForm() {
           </p>
         </div>
 
-        <Button type="submit" className="mt-5 w-full gap-2">
-          <Send aria-hidden="true" size={16} />
-          Send My Request
+        <Button
+          type="submit"
+          className="mt-5 w-full gap-2"
+          disabled={submissionStatus === "submitting"}
+        >
+          {submissionStatus === "submitting" ? (
+            <LoaderCircle aria-hidden="true" size={16} className="animate-spin" />
+          ) : (
+            <Send aria-hidden="true" size={16} />
+          )}
+          {submissionStatus === "submitting" ? "Sending Request..." : "Send My Request"}
         </Button>
 
-        {submitted && (
-          <p role="status" className="mt-4 text-sm font-medium text-success">
-            Your request was submitted successfully.
-          </p>
+        {submissionStatus === "success" && (
+          <div
+            role="status"
+            className="mt-4 flex items-start gap-2 rounded-xl border border-green-200 bg-soft-success p-4 text-success"
+          >
+            <CheckCircle2 aria-hidden="true" size={17} className="mt-0.5 shrink-0" />
+            <p className="text-sm leading-6">
+              Your request was received. The Pathly team will review it and contact you
+              before any paid work begins.
+            </p>
+          </div>
+        )}
+
+        {submissionStatus === "error" && (
+          <div
+            role="alert"
+            className="mt-4 flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700"
+          >
+            <AlertCircle aria-hidden="true" size={17} className="mt-0.5 shrink-0" />
+            <p className="text-sm leading-6">
+              We could not send your request. Your answers are still available, so you
+              can try again.
+            </p>
+          </div>
         )}
       </form>
     </Card>
