@@ -59,7 +59,7 @@ export default async function DocumentDetailPage({ params }: DocumentDetailPageP
   const guide = getDocumentGuide(document);
 
   return (
-    <main className="min-h-screen bg-warm-surface py-10 sm:py-12">
+    <main className="min-h-screen overflow-x-hidden bg-warm-surface py-8 sm:py-12">
       <Container className="max-w-[948px]">
         <Breadcrumb
           items={[
@@ -70,15 +70,15 @@ export default async function DocumentDetailPage({ params }: DocumentDetailPageP
         />
 
         <Card className="mt-6 p-5 sm:p-7">
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3 sm:gap-4">
             <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-soft-blue text-primary sm:size-14">
               <FileText aria-hidden="true" size={25} />
             </span>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs font-medium text-slate-400">
                 {document.category} Document
               </p>
-              <h1 className="mt-1 text-2xl font-bold tracking-tight text-heading sm:text-3xl">
+              <h1 className="mt-1 break-words text-2xl font-bold tracking-tight text-heading sm:text-3xl">
                 {document.name}
               </h1>
               <p className="mt-1 text-sm text-slate-500">

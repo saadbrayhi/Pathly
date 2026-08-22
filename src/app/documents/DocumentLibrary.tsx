@@ -86,11 +86,13 @@ export default function DocumentLibrary() {
           className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
         />
         <Input
+          id="document-search"
           type="search"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
           placeholder="Search documents"
           aria-label="Search documents"
+          aria-controls="document-results"
           className="bg-white pl-11 pr-11"
         />
         {search && (
@@ -105,7 +107,8 @@ export default function DocumentLibrary() {
         )}
       </div>
 
-      <div aria-label="Document filters" className="mt-3 flex flex-wrap gap-2">
+      <fieldset className="mt-3 flex flex-wrap gap-2">
+        <legend className="sr-only">Filter documents</legend>
         {DOCUMENT_CATEGORIES.map((category) => {
           const isSelected = selectedCategories.includes(category);
 
@@ -114,8 +117,9 @@ export default function DocumentLibrary() {
               key={category}
               type="button"
               aria-pressed={isSelected}
+              aria-controls="document-results"
               onClick={() => toggleCategory(category)}
-              className={`rounded-full border px-3 py-1.5 text-xs font-medium transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${
+              className={`min-h-9 rounded-full border px-3 py-1.5 text-xs font-medium transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100 ${
                 isSelected
                   ? "border-primary bg-primary text-white"
                   : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
@@ -129,8 +133,9 @@ export default function DocumentLibrary() {
         <button
           type="button"
           aria-pressed={translationOnly}
+          aria-controls="document-results"
           onClick={() => setTranslationOnly((currentValue) => !currentValue)}
-          className={`rounded-full border px-3 py-1.5 text-xs font-medium transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-100 ${
+          className={`min-h-9 rounded-full border px-3 py-1.5 text-xs font-medium transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-100 ${
             translationOnly
               ? "border-warning bg-warning text-white"
               : "border-slate-200 bg-white text-slate-600 hover:border-slate-300"
@@ -143,13 +148,13 @@ export default function DocumentLibrary() {
           <button
             type="button"
             onClick={clearFilters}
-            className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-400 transition hover:text-slate-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
+            className="inline-flex min-h-9 items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-400 transition hover:text-slate-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
           >
             <X aria-hidden="true" size={11} />
             Clear
           </button>
         )}
-      </div>
+      </fieldset>
 
       <div className="mt-4 flex items-center justify-between gap-4">
         <h2 id="document-results-title" className="sr-only">
@@ -160,41 +165,43 @@ export default function DocumentLibrary() {
         </p>
       </div>
 
-      {visibleCount === 0 ? (
-        <Card className="mt-4 flex flex-col items-center px-6 py-16 text-center">
-          <FileText aria-hidden="true" size={32} className="text-slate-300" />
-          <h3 className="mt-3 font-semibold text-heading">No documents found</h3>
-          <p className="mt-1 max-w-md text-sm text-slate-500">
-            Try another search term or clear your filters to see the complete library.
-          </p>
-          <Button onClick={clearFilters} variant="secondary" className="mt-5">
-            Clear filters
-          </Button>
-        </Card>
-      ) : (
-        <div className="mt-4 space-y-8">
-          {DOCUMENT_CATEGORIES.map((category) => {
-            const categoryDocuments = groupedDocuments[category];
-            if (!categoryDocuments) return null;
+      <div id="document-results">
+        {visibleCount === 0 ? (
+          <Card className="mt-4 flex flex-col items-center px-6 py-16 text-center">
+            <FileText aria-hidden="true" size={32} className="text-slate-300" />
+            <h3 className="mt-3 font-semibold text-heading">No documents found</h3>
+            <p className="mt-1 max-w-md text-sm text-slate-500">
+              Try another search term or clear your filters to see the complete library.
+            </p>
+            <Button onClick={clearFilters} variant="secondary" className="mt-5">
+              Clear filters
+            </Button>
+          </Card>
+        ) : (
+          <div className="mt-4 space-y-8">
+            {DOCUMENT_CATEGORIES.map((category) => {
+              const categoryDocuments = groupedDocuments[category];
+              if (!categoryDocuments) return null;
 
-            return (
-              <section key={category} aria-labelledby={`${category}-documents`}>
-                <h2
-                  id={`${category}-documents`}
-                  className="mb-4 text-lg font-bold text-heading"
-                >
-                  {category} Documents
-                </h2>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {categoryDocuments.map((document) => (
-                    <DocumentCard key={document.slug} document={document} />
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
-      )}
+              return (
+                <section key={category} aria-labelledby={`${category}-documents`}>
+                  <h2
+                    id={`${category}-documents`}
+                    className="mb-4 text-lg font-bold text-heading"
+                  >
+                    {category} Documents
+                  </h2>
+                  <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {categoryDocuments.map((document) => (
+                      <DocumentCard key={document.slug} document={document} />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+        )}
+      </div>
     </section>
   );
 }

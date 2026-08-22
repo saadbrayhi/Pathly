@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function DocumentsPage() {
   return (
-    <main className="min-h-screen bg-warm-surface py-10 sm:py-12">
+    <main className="min-h-screen overflow-x-hidden bg-warm-surface py-8 sm:py-12">
       <Container>
         <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Documents" }]} />
 

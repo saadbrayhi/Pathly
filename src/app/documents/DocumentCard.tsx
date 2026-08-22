@@ -22,7 +22,7 @@ export default function DocumentCard({ document }: DocumentCardProps) {
       className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-100"
       aria-label={`Open ${document.name} guide`}
     >
-      <Card className="card-interactive flex h-full flex-col p-5 group-hover:border-soft-blue-border">
+      <Card className="card-interactive flex h-full min-w-0 flex-col p-5 group-hover:border-soft-blue-border">
         <div className="mb-3 flex items-start justify-between">
           <span className="flex size-10 items-center justify-center rounded-xl bg-soft-blue text-primary">
             <FileText aria-hidden="true" size={18} />
@@ -34,7 +34,7 @@ export default function DocumentCard({ document }: DocumentCardProps) {
           />
         </div>
 
-        <h3 className="text-sm font-bold text-heading">{document.name}</h3>
+        <h3 className="break-words text-sm font-bold text-heading">{document.name}</h3>
         <p className="mt-1 flex-1 text-xs leading-relaxed text-slate-500">
           {document.description}
         </p>
