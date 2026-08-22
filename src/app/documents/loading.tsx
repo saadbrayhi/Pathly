@@ -9,7 +9,7 @@ export default function DocumentsLoading() {
           <span className="sr-only">Loading document guidance</span>
           <div className="h-4 w-36 rounded bg-slate-200" />
           <div className="mt-7 h-10 w-72 max-w-full rounded bg-slate-200" />
-          <div className="mt-3 h-5 w-[520px] max-w-full rounded bg-slate-200" />
+          <div className="mt-3 h-5 w-130 max-w-full rounded bg-slate-200" />
           <div className="mt-8 h-12 rounded-xl border border-slate-200 bg-white" />
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
