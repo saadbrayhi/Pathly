@@ -1,9 +1,12 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+
 import Container from "../shared/Container";
 import ResultSummary from "./ResultSummary";
-import StudyPathOverview from "./StudyPathOverview";
+import ResultSidebar from "./ResultSidebar";
+import JourneyTimeline from "./JourneyTimeline";
+import SupportCTA from "./SupportCTA";
 
 export default function StudyPathResult() {
   const searchParams = useSearchParams();
@@ -14,43 +17,56 @@ export default function StudyPathResult() {
   const destination = searchParams.get("destination");
 
   return (
-    <main className="min-h-screen bg-warm-surface py-10">
+    <main className="relative min-h-screen overflow-hidden bg-warm-surface py-8">
+      {/* Background decorations */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 bottom-20 h-80 w-80 rounded-full bg-slate-100/70"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 top-0 h-105 w-105 rounded-full border border-slate-200/60"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-16 top-16 h-75 w-75 rounded-full border border-slate-200/40"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-4 top-32 h-47.5 w-47.5 rounded-full border border-slate-200/30"
+      />
       <Container>
-        <div className="mx-auto max-w-225">
+        <div className="relative z-10 mx-auto max-w-280">
           {/* Breadcrumb */}
-          <p className="mb-6 text-sm text-slate-500">
-            Home
-            <span className="mx-2">›</span>
-            <span className="font-medium text-slate-700">Your Study Path</span>
-          </p>
+          <div className="mb-5 flex items-center gap-2 text-sm text-slate-500">
+            <span>Home</span>
+            <span>›</span>
+            <span>Study Path Finder</span>
+            <span>›</span>
 
-          {/* Page header */}
-          <div className="mb-8">
-            <p className="mb-2 text-sm font-semibold text-primary">
-              YOUR PERSONALIZED PATH
-            </p>
-
-            <h1 className="text-3xl font-bold text-heading">Your Study Path</h1>
-
-            <p className="mt-2 text-slate-500">
-              Based on your answers, here is your recommended study-abroad path.
-            </p>
+            <span className="font-semibold text-heading">Your Result</span>
           </div>
 
-          {/* Result summary */}
-          <ResultSummary
-            education={education}
-            degree={degree}
-            field={field}
-            destination={destination}
-          />
+          {/* Result layout */}
+          <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1fr)_300px]">
+            <div>
+              <ResultSummary
+                education={education}
+                degree={degree}
+                field={field}
+                destination={destination}
+              />
 
-          {/* Temporary journey overview */}
-          <StudyPathOverview
-            degree={degree}
-            field={field}
-            destination={destination}
-          />
+              <SupportCTA />
+
+              <JourneyTimeline destination={destination} />
+            </div>
+
+            <ResultSidebar destination={destination} />
+          </div>
         </div>
       </Container>
     </main>

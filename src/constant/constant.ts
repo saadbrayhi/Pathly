@@ -383,3 +383,11 @@ export const resultSummaryConfig: {
     style: "bg-soft-blue text-primary",
   },
 ];
+
+export const resultNextSteps = [
+  "Check admission eligibility",
+  "Prepare academic documents",
+  "Complete the language requirement",
+  "Select universities and programs",
+  "Apply to universities",
+];
