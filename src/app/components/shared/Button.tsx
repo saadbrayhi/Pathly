@@ -8,6 +8,7 @@ type ButtonProps = {
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   className?: string;
+  disabled?: boolean;
 };
 
 export default function Button({
@@ -17,6 +18,7 @@ export default function Button({
   type = "button",
   onClick,
   className = "",
+  disabled = false,
 }: ButtonProps) {
   const baseStyles = "btn";
 
@@ -24,7 +26,9 @@ export default function Button({
     primary: "btn-primary",
     secondary: "btn-secondary",
   };
-
+  const disabledStyles = disabled
+    ? "cursor-not-allowed border-slate-200 bg-white text-slate-300 shadow-none hover:translate-y-0 hover:bg-white hover:shadow-none"
+    : "";
   const styles = `${baseStyles} ${variants[variant]} ${className}`;
 
   if (href) {
@@ -36,7 +40,12 @@ export default function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={styles}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={`${styles} ${disabledStyles}`}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
