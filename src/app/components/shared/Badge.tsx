@@ -4,7 +4,8 @@ type BadgeVariant =
   | "default"
   | "primary"
   | "success"
-  | "warning";
+  | "warning"
+  | "danger";
 
 type BadgeProps = {
   children: ReactNode;
@@ -29,6 +30,9 @@ export default function Badge({
 
     warning:
       "border-[#f0d070] bg-[#fff5df] text-[#b76800]",
+
+    danger:
+      "border-red-200 bg-[#fff0ee] text-[#c9362b]",
   };
 
   return (
