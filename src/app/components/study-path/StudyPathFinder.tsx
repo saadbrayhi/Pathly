@@ -44,7 +44,7 @@ export default function StudyPathFinder() {
           : form.destination;
 
   const canContinue = Boolean(currentValue);
-  
+
   function updateField(field: keyof StudyPathForm, value: string) {
     setForm((prev) => ({
       ...prev,
@@ -57,8 +57,14 @@ export default function StudyPathFinder() {
       setStep((prev) => prev + 1);
       return;
     }
+    const params = new URLSearchParams({
+      education: form.educationLevel,
+      degree: form.desiredDegree,
+      field: form.field,
+      destination: form.destination,
+    });
 
-    router.push("/find-my-path/result");
+    router.push(`/find-my-path/result?${params.toString()}`);
   }
 
   function handleBack() {

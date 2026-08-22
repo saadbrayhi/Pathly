@@ -279,14 +279,12 @@ export const destinationOptions = [
   {
     value: "canada",
     title: "🇨🇦 Canada",
-    description:
-      "World-class universities, English and French programs.",
+    description: "World-class universities, English and French programs.",
   },
   {
     value: "turkey",
     title: "🇹🇷 Turkey",
-    description:
-      "Türkiye Scholarships, Turkish and English programs.",
+    description: "Türkiye Scholarships, Turkish and English programs.",
   },
   {
     value: "netherlands",
@@ -298,5 +296,90 @@ export const destinationOptions = [
     value: "not-sure",
     title: "I'm not sure yet",
     description: "Show me suitable countries based on my other choices.",
+  },
+];
+
+export type StudyPathStepKey =
+  | "admission"
+  | "documents"
+  | "scholarships"
+  | "visa";
+
+export type StudyPathStep = {
+  key: StudyPathStepKey;
+  title: string;
+  href: string;
+};
+
+export const studyPathSteps: StudyPathStep[] = [
+  {
+    key: "admission",
+    title: "Check admission requirements",
+    href: "study-abroad",
+  },
+  {
+    key: "documents",
+    title: "Prepare required documents",
+    href: "documents",
+  },
+  {
+    key: "scholarships",
+    title: "Explore scholarships",
+    href: "scholarship",
+  },
+  {
+    key: "visa",
+    title: "Prepare your student visa",
+    href: "student-visa",
+  },
+];
+export type ResultSummaryKey =
+  | "eligibility"
+  | "language"
+  | "documents"
+  | "tuition"
+  | "livingCost"
+  | "scholarships"
+  | "visa";
+
+export const resultSummaryConfig: {
+  key: ResultSummaryKey;
+  label: string;
+  style: string;
+}[] = [
+  {
+    key: "eligibility",
+    label: "Eligibility",
+    style: "bg-soft-success text-success",
+  },
+  {
+    key: "language",
+    label: "Language",
+    style: "bg-white text-heading",
+  },
+  {
+    key: "documents",
+    label: "Documents",
+    style: "bg-white text-heading",
+  },
+  {
+    key: "tuition",
+    label: "Est. Tuition",
+    style: "bg-white text-heading",
+  },
+  {
+    key: "livingCost",
+    label: "Living Cost",
+    style: "bg-white text-heading",
+  },
+  {
+    key: "scholarships",
+    label: "Scholarships",
+    style: "bg-soft-warning text-warning",
+  },
+  {
+    key: "visa",
+    label: "Visa",
+    style: "bg-soft-blue text-primary",
   },
 ];
