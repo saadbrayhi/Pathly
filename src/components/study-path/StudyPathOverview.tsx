@@ -86,10 +86,10 @@ export default function StudyPathOverview({
             <Link
               key={step.key}
               href={getStepHref(step.key, step.href)}
-              className="group flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-sm"
+              className="card-surface group flex gap-4 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-sm"
             >
               {/* Icon */}
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-soft-blue text-primary">
+              <div className="icon-circle">
                 <Icon size={19} />
               </div>
 

@@ -44,7 +44,7 @@ const serviceStyles = {
 
 export default function PersonalSupportPage() {
   return (
-    <main className="min-h-screen bg-warm-surface py-8 sm:py-12">
+    <main className="warm-page py-8 sm:py-12">
       <Container>
         <Breadcrumb
           items={[{ label: "Home", href: "/" }, { label: "Personal Support" }]}
@@ -81,7 +81,7 @@ export default function PersonalSupportPage() {
               return (
                 <Card key={step.number} className="h-full p-5">
                   <div className="flex items-start justify-between gap-4">
-                    <span className="flex size-10 items-center justify-center rounded-xl bg-soft-blue text-primary">
+                    <span className="icon-tile">
                       <Icon aria-hidden="true" size={18} />
                     </span>
                     <span className="text-xs font-semibold text-slate-300">

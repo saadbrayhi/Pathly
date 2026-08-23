@@ -86,7 +86,7 @@ export default function VisaDetails({ visa }: VisaDetailsProps) {
       </section>
 
       {/* Required documents checklist */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-5">
+      <section className="card-surface p-5">
         <h2 className="text-xl font-bold text-heading">
           Required documents checklist
         </h2>
@@ -111,7 +111,7 @@ export default function VisaDetails({ visa }: VisaDetailsProps) {
       </section>
 
       {/* Visa application timeline */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-5">
+      <section className="card-surface p-5">
         <h2 className="text-xl font-bold text-heading">
           Visa application timeline
         </h2>
@@ -145,7 +145,7 @@ export default function VisaDetails({ visa }: VisaDetailsProps) {
       </section>
 
       {/* Common mistakes */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-5">
+      <section className="card-surface p-5">
         <h2 className="text-xl font-bold text-heading">Common mistakes</h2>
 
         <div className="mt-4 space-y-2">

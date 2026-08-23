@@ -3,7 +3,7 @@ import Container from "@/components/shared/Container";
 
 export default function DocumentsLoading() {
   return (
-    <main className="min-h-screen bg-warm-surface py-10 sm:py-12">
+    <main className="warm-page py-10 sm:py-12">
       <Container>
         <div role="status" aria-live="polite" className="animate-pulse">
           <span className="sr-only">Loading document guidance</span>

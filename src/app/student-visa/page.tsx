@@ -4,7 +4,7 @@ import VisaCountryList from "@/components/student-visa/VisaCountryList";
 
 export default function StudentVisaPage() {
   return (
-    <main className="min-h-screen bg-warm-surface py-8">
+    <main className="warm-page py-8">
       <Container>
         <div className="mx-auto max-w-280">
           <VisaHero />

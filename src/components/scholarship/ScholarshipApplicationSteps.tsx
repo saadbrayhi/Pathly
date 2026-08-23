@@ -10,8 +10,8 @@ export default function ScholarshipApplicationSteps({
   scholarship,
 }: ScholarshipApplicationStepsProps) {
   return (
-    <Card className="border-[#dce5f0] bg-white p-6 shadow-none">
-      <h2 className="text-xl font-semibold text-[#111827]">
+    <Card className="content-card">
+      <h2 className="content-heading">
         Application Steps
       </h2>
 

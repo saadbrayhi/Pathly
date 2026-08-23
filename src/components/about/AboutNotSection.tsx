@@ -11,7 +11,7 @@ const points = [
 export default function AboutNotSection() {
   return (
     <Card className="mt-11 p-7 shadow-none">
-      <h2 className="text-xl font-semibold text-[#111827]">
+      <h2 className="content-heading">
         What Pathly is not
       </h2>
 

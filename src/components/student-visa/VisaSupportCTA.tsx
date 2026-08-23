@@ -3,10 +3,10 @@ import { HeartHandshake } from "lucide-react";
 
 export default function VisaSupportCTA() {
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-5">
+    <section className="card-surface p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-soft-blue text-primary">
+          <div className="icon-circle">
             <HeartHandshake size={18} />
           </div>
 

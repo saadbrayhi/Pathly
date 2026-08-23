@@ -17,9 +17,9 @@ export default function CountryRequirements({
       {/* Language Requirements */}
       <section
         id="language-requirements"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">
+        <h2 className="content-heading">
           Language Requirements
         </h2>
 
@@ -49,7 +49,7 @@ export default function CountryRequirements({
         )}
 
         {details.languageWarning && (
-          <div className="mt-4 flex gap-3 rounded-xl bg-[#fff4d9] p-4">
+          <div className="warning-note mt-4">
             <AlertTriangle
               size={17}
               className="mt-0.5 shrink-0 text-[#b76800]"
@@ -65,15 +65,15 @@ export default function CountryRequirements({
       {/* Scholarships */}
       <section
         id="scholarships"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">Scholarships</h2>
+        <h2 className="content-heading">Scholarships</h2>
 
         <div className="mt-5 space-y-2.5">
           {details.scholarships.map((scholarship) => (
             <div
               key={scholarship}
-              className="flex items-center gap-3 rounded-xl bg-[#f7f8f5] px-4 py-3"
+              className="content-list-row"
             >
               <Award size={16} className="shrink-0 text-[#c88719]" />
 
@@ -84,7 +84,7 @@ export default function CountryRequirements({
 
         <Link
           href="/scholarship"
-          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#3157d5]"
+          className="action-link mt-5"
         >
           Explore all scholarships
           <ArrowRight size={15} />
@@ -94,9 +94,9 @@ export default function CountryRequirements({
       {/* Student Visa */}
       <section
         id="student-visa"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">Student Visa</h2>
+        <h2 className="content-heading">Student Visa</h2>
 
         <p className="mt-4 text-sm text-[#43597b]">
           Visa type:{" "}
@@ -105,7 +105,7 @@ export default function CountryRequirements({
           </span>
         </p>
 
-        <div className="mt-5 flex gap-3 rounded-xl bg-[#fff4d9] p-4">
+        <div className="warning-note mt-5">
           <AlertTriangle size={17} className="mt-0.5 shrink-0 text-[#b76800]" />
 
           <p className="text-sm leading-6 text-[#8a5a00]">
@@ -115,7 +115,7 @@ export default function CountryRequirements({
 
         <Link
           href="/student-visa"
-          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#3157d5]"
+          className="action-link mt-5"
         >
           View {countryName} visa guide
           <ArrowRight size={15} />

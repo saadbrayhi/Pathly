@@ -24,7 +24,7 @@ export default function DocumentCard({ document }: DocumentCardProps) {
     >
       <Card className="card-interactive flex h-full min-w-0 flex-col p-5 group-hover:border-soft-blue-border">
         <div className="mb-3 flex items-start justify-between">
-          <span className="flex size-10 items-center justify-center rounded-xl bg-soft-blue text-primary">
+          <span className="icon-tile">
             <FileText aria-hidden="true" size={18} />
           </span>
           <ArrowRight

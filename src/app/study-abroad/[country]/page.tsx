@@ -31,7 +31,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
   const details = country.details;
 
   return (
-    <main className="relative min-h-screen bg-[#fafbf9]">
+    <main className="pathly-page relative">
       {/* Background decorations */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -right-40 top-0 h-125 w-125 rounded-full border border-[#e8eef7]" />
@@ -43,26 +43,26 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
       <Container className="relative z-10 py-14">
         {/* Breadcrumb */}
-        <div className="mb-7 flex items-center gap-2 text-sm">
+        <div className="breadcrumb mb-7">
           <Link
             href="/"
-            className="text-[#7f94b4] transition hover:text-[#3157d5]"
+            className="breadcrumb-link"
           >
             Home
           </Link>
 
-          <ChevronRight size={14} className="text-[#9badc7]" />
+          <ChevronRight size={14} className="breadcrumb-separator" />
 
           <Link
             href="/study-abroad"
-            className="text-[#7f94b4] transition hover:text-[#3157d5]"
+            className="breadcrumb-link"
           >
             Study Abroad
           </Link>
 
-          <ChevronRight size={14} className="text-[#9badc7]" />
+          <ChevronRight size={14} className="breadcrumb-separator" />
 
-          <span className="font-semibold text-[#263a5b]">{country.name}</span>
+          <span className="breadcrumb-current">{country.name}</span>
         </div>
 
         {/* Country Overview */}

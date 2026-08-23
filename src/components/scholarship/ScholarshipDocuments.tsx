@@ -13,8 +13,8 @@ export default function ScholarshipDocuments({
 }: ScholarshipDocumentsProps) {
   return (
     <div id="required-documents" className="scroll-mt-24">
-      <Card className="border-[#dce5f0] bg-white p-6 shadow-none">
-        <h2 className="text-xl font-semibold text-[#111827]">
+      <Card className="content-card">
+        <h2 className="content-heading">
           Required Documents
         </h2>
 
@@ -22,7 +22,7 @@ export default function ScholarshipDocuments({
           {scholarship.requiredDocuments.map((document) => (
             <div
               key={document}
-              className="flex items-center gap-3 rounded-xl bg-[#f7f8f5] px-4 py-3"
+              className="content-list-row"
             >
               <FileText size={15} className="shrink-0 text-[#8ba0c0]" />
 

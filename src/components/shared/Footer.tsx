@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
 const exploreLinks = [
   { label: "Study Path Finder", href: "/find-my-path" },
@@ -27,12 +28,16 @@ export default function Footer() {
         <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="mb-4 flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
-                <span className="font-bold text-white">P</span>
-              </div>
-
-              <span className="text-lg font-bold text-white">Pathly</span>
+            <div className="mb-4">
+              <Link href="/" className="inline-flex items-center">
+                <Image
+                  src="/branding/pathly-logo-light.png"
+                  alt="Pathly"
+                  width={160}
+                  height={52}
+                  className="h-auto w-32"
+                />
+              </Link>
             </div>
 
             <p className="mb-6 max-w-xs text-sm leading-relaxed text-slate-400">
@@ -42,10 +47,7 @@ export default function Footer() {
             </p>
 
             <div className="flex items-start gap-2 rounded-xl border border-slate-700/60 bg-slate-800/60 p-3">
-              <ShieldCheck
-                size={16}
-                className="mt-0.5 shrink-0 text-accent"
-              />
+              <ShieldCheck size={16} className="mt-0.5 shrink-0 text-accent" />
 
               <p className="text-xs leading-relaxed text-slate-400">
                 Information can change. Always verify important requirements
@@ -56,17 +58,12 @@ export default function Footer() {
 
           {/* Explore */}
           <div>
-            <h3 className="footer-heading">
-              Explore
-            </h3>
+            <h3 className="footer-heading">Explore</h3>
 
             <ul className="space-y-2.5">
               {exploreLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="footer-link"
-                  >
+                  <Link href={link.href} className="footer-link">
                     {link.label}
                   </Link>
                 </li>
@@ -76,17 +73,12 @@ export default function Footer() {
 
           {/* Prepare */}
           <div>
-            <h3 className="footer-heading">
-              Prepare
-            </h3>
+            <h3 className="footer-heading">Prepare</h3>
 
             <ul className="space-y-2.5">
               {prepareLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="footer-link"
-                  >
+                  <Link href={link.href} className="footer-link">
                     {link.label}
                   </Link>
                 </li>
@@ -96,17 +88,12 @@ export default function Footer() {
 
           {/* Help */}
           <div>
-            <h3 className="footer-heading">
-              Help
-            </h3>
+            <h3 className="footer-heading">Help</h3>
 
             <ul className="space-y-2.5">
               {helpLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="footer-link"
-                  >
+                  <Link href={link.href} className="footer-link">
                     {link.label}
                   </Link>
                 </li>
@@ -122,17 +109,11 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-4">
-            <Link
-              href="/privacy"
-              className="footer-meta-link"
-            >
+            <Link href="/privacy" className="footer-meta-link">
               Privacy
             </Link>
 
-            <Link
-              href="/terms"
-              className="footer-meta-link"
-            >
+            <Link href="/terms" className="footer-meta-link">
               Terms
             </Link>
           </div>

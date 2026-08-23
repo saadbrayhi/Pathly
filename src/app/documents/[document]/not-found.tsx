@@ -6,19 +6,19 @@ import Container from "@/components/shared/Container";
 
 export default function DocumentNotFound() {
   return (
-    <main className="min-h-screen bg-warm-surface py-16">
+    <main className="warm-page py-16">
       <Container className="max-w-3xl">
-        <Card className="flex flex-col items-center p-8 text-center sm:p-12">
-          <span className="flex size-14 items-center justify-center rounded-2xl bg-soft-blue text-primary">
+        <Card className="state-panel">
+          <span className="state-icon bg-soft-blue text-primary">
             <FileQuestion aria-hidden="true" size={28} />
           </span>
-          <h1 className="mt-5 text-2xl font-bold text-heading">
+          <h1 className="state-title">
             Document guide not found
           </h1>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-slate-500">
+          <p className="state-description">
             This guide may have moved, or the document address may be incorrect.
           </p>
-          <Button href="/documents" className="mt-6">
+          <Button href="/documents" className="state-action">
             View all documents
           </Button>
         </Card>

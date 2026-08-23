@@ -67,6 +67,14 @@ body {
     @apply mx-auto w-full max-w-300 px-6;
   }
 
+  .pathly-page {
+    @apply min-h-screen bg-[#fafbf9];
+  }
+
+  .warm-page {
+    @apply min-h-screen bg-warm-surface;
+  }
+
   .section-spacing {
     @apply py-20;
   }
@@ -90,7 +98,6 @@ body {
   .view-all-link {
     @apply hidden items-center gap-1 rounded text-sm font-semibold text-primary transition-colors hover:text-primary-dark md:flex;
   }
-
 
   .hero-gradient {
     @apply bg-linear-to-br from-hero-start via-hero-middle to-hero-end;
@@ -126,6 +133,64 @@ body {
     @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-md;
   }
 
+  .card-padding {
+    @apply p-5 sm:p-6;
+  }
+
+  .content-card {
+    @apply border-[#dce5f0] p-6 shadow-none;
+  }
+
+  .content-heading {
+    @apply text-xl font-semibold text-[#111827];
+  }
+
+  .content-list-row {
+    @apply flex items-center gap-3 rounded-xl bg-[#f7f8f5] px-4 py-3;
+  }
+
+  .warning-panel {
+    @apply flex gap-3 rounded-xl border border-warning-border bg-[#fff7e5] px-4 py-3;
+  }
+
+  .warning-note {
+    @apply flex gap-3 rounded-xl bg-[#fff4d9] p-4;
+  }
+
+  .action-link {
+    @apply inline-flex items-center gap-2 text-sm font-semibold text-primary;
+  }
+
+  /* Breadcrumbs */
+  .breadcrumb {
+    @apply flex items-center gap-2 text-sm;
+  }
+
+  .breadcrumb-link {
+    @apply text-[#7f94b4] transition hover:text-primary;
+  }
+
+  .breadcrumb-separator {
+    @apply text-[#9badc7];
+  }
+
+  .breadcrumb-current {
+    @apply font-semibold text-[#263a5b];
+  }
+
+  .pathly-page-title {
+    @apply text-[32px] font-semibold tracking-[-0.02em] text-[#111827];
+  }
+
+  /* Filters */
+  .filter-label {
+    @apply mb-2.5 text-[11px] font-bold uppercase tracking-[0.04em] text-[#8ba0c0];
+  }
+
+  .filter-chip {
+    @apply rounded-full border px-3.5 py-1.5 text-xs font-medium transition;
+  }
+
   /* Small reusable UI */
   .eyebrow-badge {
     @apply inline-flex items-center gap-2 rounded-full border border-soft-blue-border bg-soft-blue px-3 py-1.5 text-xs font-semibold text-primary;
@@ -137,6 +202,47 @@ body {
 
   .success-badge {
     @apply rounded-full bg-soft-mint px-2 py-0.5 text-xs font-medium text-accent;
+  }
+
+  .icon-tile {
+    @apply flex size-10 items-center justify-center rounded-xl bg-soft-blue text-primary;
+  }
+
+  .icon-circle {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-soft-blue text-primary;
+  }
+
+  /* Reusable UI states */
+  .state-panel {
+    @apply flex flex-col items-center p-8 text-center sm:p-12;
+  }
+
+  .state-icon {
+    @apply flex size-14 items-center justify-center rounded-2xl;
+  }
+
+  .state-title {
+    @apply mt-5 text-2xl font-bold text-heading;
+  }
+
+  .state-description {
+    @apply mt-2 max-w-xl text-sm leading-6 text-slate-500;
+  }
+
+  .state-action {
+    @apply mt-6;
+  }
+
+  .loading-state {
+    @apply flex items-center justify-center gap-3 py-12 text-sm text-slate-500;
+  }
+
+  .loading-indicator {
+    @apply size-8 animate-spin rounded-full border-2 border-primary border-t-transparent;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded bg-slate-200;
   }
 
   /* Navigation/footer */

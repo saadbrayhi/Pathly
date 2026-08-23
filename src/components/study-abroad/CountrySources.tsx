@@ -12,9 +12,9 @@ export default function CountrySources({ details }: CountrySourcesProps) {
       {/* Official Sources */}
       <section
         id="official-sources"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">
+        <h2 className="content-heading">
           Official Sources
         </h2>
 
@@ -51,9 +51,9 @@ export default function CountrySources({ details }: CountrySourcesProps) {
       {/* Common Mistakes */}
       <section
         id="common-mistakes"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">
+        <h2 className="content-heading">
           Common Mistakes
         </h2>
 
@@ -61,7 +61,7 @@ export default function CountrySources({ details }: CountrySourcesProps) {
           {details.commonMistakes.map((mistake) => (
             <div
               key={mistake}
-              className="flex gap-3 rounded-xl border border-[#f0d070] bg-[#fff7e5] px-4 py-3"
+              className="warning-panel"
             >
               <AlertTriangle
                 size={16}

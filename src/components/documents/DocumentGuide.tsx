@@ -22,7 +22,7 @@ const preparationVariant = {
 
 export default function DocumentGuide({ document, guide }: DocumentGuideProps) {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-warm-surface py-8 sm:py-12">
+    <main className="warm-page overflow-x-hidden py-8 sm:py-12">
       <Container className="max-w-[948px]">
         <Breadcrumb
           items={[
@@ -174,7 +174,7 @@ type GuideSectionProps = {
 
 function GuideSection({ title, children }: GuideSectionProps) {
   return (
-    <Card className="p-5 sm:p-6">
+    <Card className="card-padding">
       <h2 className="mb-3 text-lg font-bold text-heading">{title}</h2>
       {children}
     </Card>

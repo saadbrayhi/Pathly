@@ -12,14 +12,14 @@ export default function ScholarshipCommonMistakes({
   scholarship,
 }: ScholarshipCommonMistakesProps) {
   return (
-    <Card className="border-[#dce5f0] bg-white p-6 shadow-none">
-      <h2 className="text-xl font-semibold text-[#111827]">Common Mistakes</h2>
+    <Card className="content-card">
+      <h2 className="content-heading">Common Mistakes</h2>
 
       <div className="mt-5 space-y-3">
         {scholarship.commonMistakes.map((mistake) => (
           <div
             key={mistake}
-            className="flex gap-3 rounded-xl border border-[#f0d070] bg-[#fff7e5] px-4 py-3"
+            className="warning-panel"
           >
             <AlertTriangle
               size={16}

@@ -8,7 +8,7 @@ import ScholarshipNotice from "@/components/scholarship/ScholarshipNotice";
 
 export default function ScholarshipPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#fafbf9]">
+    <main className="pathly-page relative overflow-hidden">
       {/* Top background decorations */}
       <div className="pointer-events-none absolute -right-36 top-0 h-120 w-120 rounded-full border border-[#e8eef7]" />
 
@@ -35,22 +35,22 @@ export default function ScholarshipPage() {
 
       <Container className="relative z-10 py-12 lg:py-16">
         {/* Breadcrumb */}
-        <div className="mb-7 flex items-center gap-2 text-sm">
+        <div className="breadcrumb mb-7">
           <Link
             href="/"
-            className="text-[#7f94b4] transition hover:text-[#3157d5]"
+            className="breadcrumb-link"
           >
             Home
           </Link>
 
-          <ChevronRight size={14} className="text-[#9badc7]" />
+          <ChevronRight size={14} className="breadcrumb-separator" />
 
-          <span className="font-semibold text-[#263a5b]">Scholarships</span>
+          <span className="breadcrumb-current">Scholarships</span>
         </div>
 
         {/* Intro */}
         <section>
-          <h1 className="text-[32px] font-semibold tracking-[-0.02em] text-[#111827]">
+          <h1 className="pathly-page-title">
             Find scholarships that fit your study path
           </h1>
 

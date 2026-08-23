@@ -49,7 +49,7 @@ export default function ResultSummary({
   return (
     <>
       {/* Main result card */}
-      <section className="rounded-2xl border border-slate-200 bg-white p-5">
+      <section className="card-surface p-5">
         {/* Selected answers */}
         <div className="flex flex-wrap items-center gap-2">
           {[educationLabel, degreeLabel, fieldLabel, destinationLabel].map(
