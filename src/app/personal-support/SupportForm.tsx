@@ -22,7 +22,7 @@ import {
   HELP_TYPE_OPTIONS,
   type SupportRequestValues,
 } from "../data/personalSupport";
-import { submitPersonalSupportRequest } from "../services/personalSupport";
+import { submitPersonalSupportRequest } from "@/services/personalSupport";
 
 type FormErrors = Partial<Record<keyof SupportRequestValues, string>>;
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
@@ -60,9 +60,12 @@ function validateSupportRequest(values: SupportRequestValues) {
 
 export default function SupportForm() {
   const formRef = useRef<HTMLFormElement>(null);
-  const [values, setValues] = useState<SupportRequestValues>(EMPTY_SUPPORT_REQUEST);
+  const [values, setValues] = useState<SupportRequestValues>(
+    EMPTY_SUPPORT_REQUEST,
+  );
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>("idle");
+  const [submissionStatus, setSubmissionStatus] =
+    useState<SubmissionStatus>("idle");
 
   function handleChange(field: keyof SupportRequestValues, value: string) {
     setValues((currentValues) => ({ ...currentValues, [field]: value }));
@@ -81,7 +84,9 @@ export default function SupportForm() {
       setSubmissionStatus("idle");
       window.requestAnimationFrame(() => {
         formRef.current
-          ?.querySelector<HTMLElement>("[aria-invalid='true'], [data-invalid='true']")
+          ?.querySelector<HTMLElement>(
+            "[aria-invalid='true'], [data-invalid='true']",
+          )
           ?.focus();
       });
       return;
@@ -108,10 +113,12 @@ export default function SupportForm() {
         noValidate
       >
         <header>
-          <h2 className="text-2xl font-bold text-heading">Request Personal Support</h2>
+          <h2 className="text-2xl font-bold text-heading">
+            Request Personal Support
+          </h2>
           <p className="mt-1 text-sm leading-6 text-slate-500">
-            No payment is required now. The team will review your request and contact
-            you with the service scope, timeline, and price.
+            No payment is required now. The team will review your request and
+            contact you with the service scope, timeline, and price.
           </p>
         </header>
 
@@ -154,7 +161,9 @@ export default function SupportForm() {
             autoComplete="country-name"
             placeholder="e.g. Lebanon"
             value={values.currentCountry}
-            onChange={(event) => handleChange("currentCountry", event.target.value)}
+            onChange={(event) =>
+              handleChange("currentCountry", event.target.value)
+            }
             error={errors.currentCountry}
             required
           />
@@ -163,7 +172,9 @@ export default function SupportForm() {
             label="Current Education Level"
             placeholder="Select level"
             value={values.educationLevel}
-            onChange={(event) => handleChange("educationLevel", event.target.value)}
+            onChange={(event) =>
+              handleChange("educationLevel", event.target.value)
+            }
             options={[...EDUCATION_LEVEL_OPTIONS]}
             error={errors.educationLevel}
             required
@@ -173,7 +184,9 @@ export default function SupportForm() {
             label="Desired Degree"
             placeholder="Select degree"
             value={values.desiredDegree}
-            onChange={(event) => handleChange("desiredDegree", event.target.value)}
+            onChange={(event) =>
+              handleChange("desiredDegree", event.target.value)
+            }
             options={[...DEGREE_OPTIONS]}
           />
           <Select
@@ -181,7 +194,9 @@ export default function SupportForm() {
             label="Preferred Country"
             placeholder="Select country"
             value={values.preferredCountry}
-            onChange={(event) => handleChange("preferredCountry", event.target.value)}
+            onChange={(event) =>
+              handleChange("preferredCountry", event.target.value)
+            }
             options={[...COUNTRY_OPTIONS]}
           />
           <Input
@@ -189,7 +204,9 @@ export default function SupportForm() {
             label="Field of Study"
             placeholder="e.g. Computer Science"
             value={values.fieldOfStudy}
-            onChange={(event) => handleChange("fieldOfStudy", event.target.value)}
+            onChange={(event) =>
+              handleChange("fieldOfStudy", event.target.value)
+            }
           />
         </div>
 
@@ -229,7 +246,10 @@ export default function SupportForm() {
             })}
           </div>
           {errors.helpType && (
-            <p id="support-help-type-error" className="mt-1 text-xs text-red-600">
+            <p
+              id="support-help-type-error"
+              className="mt-1 text-xs text-red-600"
+            >
               {errors.helpType}
             </p>
           )}
@@ -258,7 +278,9 @@ export default function SupportForm() {
             label="Short Description of Your Request"
             rows={5}
             value={values.description}
-            onChange={(event) => handleChange("description", event.target.value)}
+            onChange={(event) =>
+              handleChange("description", event.target.value)
+            }
             placeholder="Briefly describe what you need help with, your current situation, and any specific questions."
             error={errors.description}
             className="min-h-32"
@@ -267,11 +289,17 @@ export default function SupportForm() {
         </div>
 
         <div className="mt-6 flex items-start gap-2 rounded-xl border border-warning-border bg-soft-warning p-4 text-warning">
-          <AlertTriangle aria-hidden="true" size={16} className="mt-0.5 shrink-0" />
+          <AlertTriangle
+            aria-hidden="true"
+            size={16}
+            className="mt-0.5 shrink-0"
+          />
           <p className="text-xs leading-5">
-            <strong className="font-semibold">No payment is required now.</strong> The
-            Pathly team will first review your request, confirm the service, define the
-            scope and timeline, and then share the price with you.
+            <strong className="font-semibold">
+              No payment is required now.
+            </strong>{" "}
+            The Pathly team will first review your request, confirm the service,
+            define the scope and timeline, and then share the price with you.
           </p>
         </div>
 
@@ -281,11 +309,17 @@ export default function SupportForm() {
           disabled={submissionStatus === "submitting"}
         >
           {submissionStatus === "submitting" ? (
-            <LoaderCircle aria-hidden="true" size={16} className="animate-spin" />
+            <LoaderCircle
+              aria-hidden="true"
+              size={16}
+              className="animate-spin"
+            />
           ) : (
             <Send aria-hidden="true" size={16} />
           )}
-          {submissionStatus === "submitting" ? "Sending Request..." : "Send My Request"}
+          {submissionStatus === "submitting"
+            ? "Sending Request..."
+            : "Send My Request"}
         </Button>
 
         {submissionStatus === "success" && (
@@ -293,10 +327,14 @@ export default function SupportForm() {
             role="status"
             className="mt-4 flex items-start gap-2 rounded-xl border border-green-200 bg-soft-success p-4 text-success"
           >
-            <CheckCircle2 aria-hidden="true" size={17} className="mt-0.5 shrink-0" />
+            <CheckCircle2
+              aria-hidden="true"
+              size={17}
+              className="mt-0.5 shrink-0"
+            />
             <p className="text-sm leading-6">
-              Your request was received. The Pathly team will review it and contact you
-              before any paid work begins.
+              Your request was received. The Pathly team will review it and
+              contact you before any paid work begins.
             </p>
           </div>
         )}
@@ -306,10 +344,14 @@ export default function SupportForm() {
             role="alert"
             className="mt-4 flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700"
           >
-            <AlertCircle aria-hidden="true" size={17} className="mt-0.5 shrink-0" />
+            <AlertCircle
+              aria-hidden="true"
+              size={17}
+              className="mt-0.5 shrink-0"
+            />
             <p className="text-sm leading-6">
-              We could not send your request. Your answers are still available, so you
-              can try again.
+              We could not send your request. Your answers are still available,
+              so you can try again.
             </p>
           </div>
         )}

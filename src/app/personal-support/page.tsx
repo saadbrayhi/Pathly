@@ -64,8 +64,14 @@ export default function PersonalSupportPage() {
           </p>
         </header>
 
-        <section aria-labelledby="support-process-title" className="mt-8 sm:mt-10">
-          <h2 id="support-process-title" className="text-xl font-bold text-heading">
+        <section
+          aria-labelledby="support-process-title"
+          className="mt-8 sm:mt-10"
+        >
+          <h2
+            id="support-process-title"
+            className="text-xl font-bold text-heading"
+          >
             How it works
           </h2>
           <div className="mt-4 grid items-stretch gap-4 md:grid-cols-3">
@@ -82,7 +88,9 @@ export default function PersonalSupportPage() {
                       {step.number}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-sm font-bold text-heading">{step.title}</h3>
+                  <h3 className="mt-4 text-sm font-bold text-heading">
+                    {step.title}
+                  </h3>
                   <p className="mt-2 text-xs leading-5 text-slate-500">
                     {step.description}
                   </p>
@@ -92,8 +100,14 @@ export default function PersonalSupportPage() {
           </div>
         </section>
 
-        <section aria-labelledby="support-services-title" className="mt-8 sm:mt-10">
-          <h2 id="support-services-title" className="text-xl font-bold text-heading">
+        <section
+          aria-labelledby="support-services-title"
+          className="mt-8 sm:mt-10"
+        >
+          <h2
+            id="support-services-title"
+            className="text-xl font-bold text-heading"
+          >
             What we can help with
           </h2>
           <div className="mt-4 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -123,22 +137,39 @@ export default function PersonalSupportPage() {
           aria-labelledby="support-terms-title"
           className="mt-10 flex items-start gap-3 rounded-2xl border border-[#9be5dc] bg-soft-mint p-5"
         >
-          <ShieldCheck aria-hidden="true" size={19} className="mt-0.5 shrink-0 text-accent" />
+          <ShieldCheck
+            aria-hidden="true"
+            size={19}
+            className="mt-0.5 shrink-0 text-accent"
+          />
           <div>
-            <h2 id="support-terms-title" className="text-sm font-bold text-heading">
+            <h2
+              id="support-terms-title"
+              className="text-sm font-bold text-heading"
+            >
               How Pathly Personal Support works
             </h2>
             <p className="mt-2 text-xs leading-5 text-slate-600">
               Pathly provides personal administrative and application support.
               <strong className="font-semibold text-slate-700">
-                {" "}Final decisions are made by universities, scholarship providers,
+                {" "}
+                Final decisions are made by universities, scholarship providers,
                 embassies, and official authorities.
               </strong>
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-5 text-slate-600 marker:text-accent">
-              <li>Pathly does not guarantee admission, scholarships, or visa approval.</li>
-              <li>The student must provide correct information and review important documents before submission.</li>
-              <li>External university, embassy, translation, authentication, or visa fees are separate.</li>
+              <li>
+                Pathly does not guarantee admission, scholarships, or visa
+                approval.
+              </li>
+              <li>
+                The student must provide correct information and review
+                important documents before submission.
+              </li>
+              <li>
+                External university, embassy, translation, authentication, or
+                visa fees are separate.
+              </li>
             </ul>
           </div>
         </section>
