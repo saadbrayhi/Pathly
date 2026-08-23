@@ -1,5 +1,5 @@
 import Button from "../shared/Button";
-
+import Link from "next/link"
 const steps = [
   {
     number: "01",
@@ -71,9 +71,8 @@ export default function HowItWorks() {
             </div>
           ))}
         </div>
-
         <div className="mt-10 text-center">
-          <Button href="/study-path" className="gap-2 px-7 py-3.5 shadow-sm">
+          <Button href="/find-my-path" className="gap-2 px-7 py-3.5 shadow-sm">
             Start Your Study Path
             <span aria-hidden="true">→</span>
           </Button>
