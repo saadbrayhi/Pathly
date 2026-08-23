@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pathly — Study Abroad Navigator
 
-## Getting Started
+Pathly is a student-focused platform designed to simplify the study-abroad journey by organizing essential information, guidance, and official resources in one place and the personal support if you want .
 
-First, run the development server:
+## Project Idea
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Studying abroad can be confusing because students often need to search across multiple university websites, scholarship platforms, embassy pages, and government portals.
+
+Pathly simplifies this process by helping students understand their study-abroad journey step by step.
+
+The platform provides:
+
+- Personalized Study Path Finder
+- Study destination guides
+- Admission requirements
+- Required document guides
+- Scholarship opportunities
+- Student visa guides
+- AI Study Navigator
+- Personal support
+
+Pathly also provides links to official university, government, embassy, and immigration sources so students can verify important information before applying.
+
+## Technologies Used
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Lucide React
+
+## How to Run the Project
+
+### 1. Clone the repository
+
+
+git clone https://github.com/saadbrayhi/Pathly.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Enter the project directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+cd Pathly
+```
 
-## Learn More
+### 3. Install dependencies
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Start the development server
 
-## Deploy on Vercel
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Open the application
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open the following URL in your browser:
+
+
+http://localhost:3000
+```
+
+## Production Build
+
+To create and verify a production build:
+
+
+npm run build
+```
+
+## Lint
+
+To check the project for linting issues:
+
+npm run lint
+```
+
+## Team
+
+### Pathfinders
+
+- Saad Brayhi {team lead}
+- Abderahmen Lmeknass
+- Abderahmen Chalabi
+
+## Important Note
+
+Pathly provides study-abroad guidance and educational information.
+
+University requirements, scholarship conditions, application deadlines, fees, and visa regulations may change over time. Important information should always be verified through official university, government, embassy, immigration, or scholarship provider sources.
