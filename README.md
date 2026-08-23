@@ -1,6 +1,6 @@
 # Pathly — Study Abroad Navigator
 
-Pathly is a student-focused platform designed to simplify the study-abroad journey by organizing essential information, guidance, and official resources in one place and the personal support if you want .
+Pathly is a student-focused platform designed to simplify the study-abroad journey by organizing essential information, guidance, and official resources in one place.
 
 ## Project Idea
 
@@ -35,24 +35,25 @@ Pathly also provides links to official university, government, embassy, and immi
 
 ### 1. Clone the repository
 
-
+```bash
 git clone https://github.com/saadbrayhi/Pathly.git
 ```
 
 ### 2. Enter the project directory
 
-
+```bash
 cd Pathly
 ```
 
 ### 3. Install dependencies
 
-
+```bash
 npm install
 ```
 
 ### 4. Start the development server
 
+```bash
 npm run dev
 ```
 
@@ -60,7 +61,7 @@ npm run dev
 
 Open the following URL in your browser:
 
-
+```text
 http://localhost:3000
 ```
 
@@ -68,7 +69,7 @@ http://localhost:3000
 
 To create and verify a production build:
 
-
+```bash
 npm run build
 ```
 
@@ -76,6 +77,7 @@ npm run build
 
 To check the project for linting issues:
 
+```bash
 npm run lint
 ```
 
