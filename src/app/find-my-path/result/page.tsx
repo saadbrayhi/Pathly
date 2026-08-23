@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import StudyPathResult from "../../components/study-path/StudyPathResult";
+import StudyPathResult from "@/components/study-path/StudyPathResult";
 
 export default function StudyPathResultPage() {
   return (

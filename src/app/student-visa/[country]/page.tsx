@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import Container from "../../components/shared/Container";
-import VisaDetails from "../../components/student-visa/VisaDetails";
-import VisaSupportCTA from "../../components/student-visa/VisaSupportCTA";
-import VisaRelatedLinks from "../../components/student-visa/VisaRelatedLinks";
-import VisaPageBackground from "../../components/student-visa/VisaPageBackground";
+import Container from "@/components/shared/Container";
+import VisaDetails from "@/components/student-visa/VisaDetails";
+import VisaSupportCTA from "@/components/student-visa/VisaSupportCTA";
+import VisaRelatedLinks from "@/components/student-visa/VisaRelatedLinks";
+import VisaPageBackground from "@/components/student-visa/VisaPageBackground";
 
 import { visaDetails } from "@/constant/visa/visaDetails";
 

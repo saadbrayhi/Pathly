@@ -2,9 +2,9 @@
 
 import { AlertTriangle } from "lucide-react";
 
-import Button from "@/app/components/shared/Button";
-import Card from "@/app/components/shared/Card";
-import Container from "@/app/components/shared/Container";
+import Button from "@/components/shared/Button";
+import Card from "@/components/shared/Card";
+import Container from "@/components/shared/Container";
 
 type DocumentsErrorProps = {
   error: Error & { digest?: string };

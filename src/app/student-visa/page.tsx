@@ -1,6 +1,6 @@
-import Container from "../components/shared/Container";
-import VisaHero from "../components/student-visa/VisaHero";
-import VisaCountryList from "../components/student-visa/VisaCountryList";
+import Container from "@/components/shared/Container";
+import VisaHero from "@/components/student-visa/VisaHero";
+import VisaCountryList from "@/components/student-visa/VisaCountryList";
 
 export default function StudentVisaPage() {
   return (
