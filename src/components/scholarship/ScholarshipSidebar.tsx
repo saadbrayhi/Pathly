@@ -29,7 +29,7 @@ export default function ScholarshipSidebar({
   return (
     <aside className="space-y-5">
       {/* Deadline Status */}
-      <Card className="border-[#dce5f0] bg-white p-5 shadow-none">
+      <Card className="content-card p-5">
         <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#8ba0c0]">
           Deadline Status
         </p>
@@ -72,7 +72,7 @@ export default function ScholarshipSidebar({
       </Card>
 
       {/* Official Source */}
-      <Card className="border-[#dce5f0] bg-white p-5 shadow-none">
+      <Card className="content-card p-5">
         <div className="flex items-center gap-2">
           <ShieldCheck size={16} className="text-[#0f9f8f]" />
 
@@ -96,7 +96,7 @@ export default function ScholarshipSidebar({
       </Card>
 
       {/* Related Resources */}
-      <Card className="border-[#dce5f0] bg-white p-5 shadow-none">
+      <Card className="content-card p-5">
         <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#8ba0c0]">
           Related Resources
         </p>

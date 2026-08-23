@@ -31,9 +31,9 @@ export default function CountryAdmissions({ details }: CountryAdmissionsProps) {
       {/* Education System */}
       <section
         id="education-system"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">
+        <h2 className="content-heading">
           Education System
         </h2>
 
@@ -45,15 +45,15 @@ export default function CountryAdmissions({ details }: CountryAdmissionsProps) {
       {/* Who Can Apply */}
       <section
         id="who-can-apply"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">Who Can Apply?</h2>
+        <h2 className="content-heading">Who Can Apply?</h2>
 
         <p className="mt-4 text-sm leading-6 text-[#43597b]">
           {details.whoCanApply}
         </p>
 
-        <div className="mt-5 flex gap-3 rounded-xl bg-[#fff4d9] p-4">
+        <div className="warning-note mt-5">
           <AlertTriangle size={17} className="mt-0.5 shrink-0 text-[#b76800]" />
 
           <p className="text-sm leading-6 text-[#8a5a00]">
@@ -65,9 +65,9 @@ export default function CountryAdmissions({ details }: CountryAdmissionsProps) {
       {/* Admission Requirements */}
       <section
         id="admission-requirements"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">
+        <h2 className="content-heading">
           Admission Requirements
         </h2>
 

@@ -13,7 +13,7 @@ export default function ResultSidebar({ destination }: ResultSidebarProps) {
     : "/study-abroad";
 
   return (
-    <aside className="h-fit self-start rounded-2xl border border-slate-200 bg-white p-5 lg:sticky lg:top-24">
+    <aside className="card-surface h-fit self-start p-5 lg:sticky lg:top-24">
       <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
         Your next steps
       </p>

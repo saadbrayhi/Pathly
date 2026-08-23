@@ -13,9 +13,9 @@ export default function CountryStudyInfo({ details }: CountryStudyInfoProps) {
       {/* Study Levels */}
       <section
         id="study-levels"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">Study Levels</h2>
+        <h2 className="content-heading">Study Levels</h2>
 
         <div className="mt-5 overflow-x-auto">
           <table className="w-full min-w-175 text-left">
@@ -73,9 +73,9 @@ export default function CountryStudyInfo({ details }: CountryStudyInfoProps) {
       {/* Required Documents */}
       <section
         id="required-documents"
-        className="scroll-mt-24 rounded-2xl border border-[#dce5f0] bg-white p-6"
+        className="card-surface content-card scroll-mt-24"
       >
-        <h2 className="text-xl font-semibold text-[#111827]">
+        <h2 className="content-heading">
           Required Documents
         </h2>
 
@@ -88,7 +88,7 @@ export default function CountryStudyInfo({ details }: CountryStudyInfoProps) {
           {details.requiredDocuments.map((document) => (
             <div
               key={document}
-              className="flex items-center gap-3 rounded-xl bg-[#f7f8f5] px-4 py-3"
+              className="content-list-row"
             >
               <FileText size={15} className="shrink-0 text-[#8ba0c0]" />
 
@@ -99,7 +99,7 @@ export default function CountryStudyInfo({ details }: CountryStudyInfoProps) {
 
         <Link
           href="/documents"
-          className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#3157d5]"
+          className="action-link mt-5"
         >
           View full document guide
           <ArrowRight size={15} />

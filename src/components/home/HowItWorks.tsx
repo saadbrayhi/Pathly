@@ -1,5 +1,5 @@
 import Button from "../shared/Button";
-import Link from "next/link"
+
 const steps = [
   {
     number: "01",

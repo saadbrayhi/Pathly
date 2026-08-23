@@ -47,7 +47,7 @@ export default function ScholarshipFilters({
   onClear,
 }: ScholarshipFiltersProps) {
   function chipClass(isActive: boolean) {
-    return `rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
+    return `filter-chip ${
       isActive
         ? "border-[#3157d5] bg-[#eef3ff] text-[#3157d5]"
         : "border-[#dce5f0] bg-white text-[#344968] hover:border-[#3157d5] hover:text-[#3157d5]"
@@ -59,7 +59,7 @@ export default function ScholarshipFilters({
       <div className="grid grid-cols-1 gap-7 md:grid-cols-[1fr_1fr_0.9fr]">
         {/* Study Level */}
         <div>
-          <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.04em] text-[#8ba0c0]">
+          <p className="filter-label">
             Study Level
           </p>
 
@@ -79,7 +79,7 @@ export default function ScholarshipFilters({
 
         {/* Country */}
         <div>
-          <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.04em] text-[#8ba0c0]">
+          <p className="filter-label">
             Country
           </p>
 
@@ -101,7 +101,7 @@ export default function ScholarshipFilters({
 
         {/* Funding */}
         <div>
-          <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.04em] text-[#8ba0c0]">
+          <p className="filter-label">
             Funding
           </p>
 

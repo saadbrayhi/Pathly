@@ -22,17 +22,17 @@ export default function StudyAbroadPage() {
 
       <Container className="relative z-10 pb-24 pt-16">
         {/* Breadcrumb */}
-        <div className="mb-6 flex items-center gap-2 text-sm">
+        <div className="breadcrumb mb-6">
           <Link
             href="/"
-            className="text-[#7f94b4] transition hover:text-[#3157d5]"
+            className="breadcrumb-link"
           >
             Home
           </Link>
 
-          <ChevronRight size={15} className="text-[#9badc7]" />
+          <ChevronRight size={15} className="breadcrumb-separator" />
 
-          <span className="font-semibold text-[#263a5b]">Study Abroad</span>
+          <span className="breadcrumb-current">Study Abroad</span>
         </div>
 
         {/* Heading */}

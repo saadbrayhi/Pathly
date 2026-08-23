@@ -27,7 +27,7 @@ export default async function StudentVisaCountryPage({
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-warm-surface py-10">
+    <main className="warm-page relative overflow-hidden py-10">
       <VisaPageBackground />
 
       <div className="relative z-10">

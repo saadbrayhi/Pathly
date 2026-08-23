@@ -59,7 +59,7 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
         </p>
       </div>
 
-      <Card className="p-5 sm:p-6">
+      <Card className="card-padding">
         <div className="flex flex-wrap gap-2">
           {demoGuidance.levels.map((level) => (
             <span
@@ -72,7 +72,7 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
         </div>
       </Card>
 
-      <Card className="p-5 sm:p-6">
+      <Card className="card-padding">
         <SectionTitle icon={Globe2} title="Recommended destinations" />
         <div className="mt-4 space-y-3">
           {demoGuidance.destinations.map((destination) => (
@@ -96,7 +96,7 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
         </div>
       </Card>
 
-      <Card className="p-5 sm:p-6">
+      <Card className="card-padding">
         <SectionTitle icon={CheckCircle2} title="Admission summary" />
         <ul className="mt-4 space-y-2">
           {demoGuidance.admission.map((requirement) => (
@@ -119,7 +119,7 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
       </Card>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <Card className="p-5 sm:p-6">
+        <Card className="card-padding">
           <SectionTitle icon={FileText} title="Documents summary" />
           <ul className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-1">
             {demoGuidance.documents.map((document) => (
@@ -133,7 +133,7 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
           </ul>
         </Card>
 
-        <Card className="p-5 sm:p-6">
+        <Card className="card-padding">
           <SectionTitle icon={Award} title="Scholarship recommendations" />
           <ul className="mt-4 space-y-2">
             {demoGuidance.scholarships.map((scholarship) => (
@@ -147,14 +147,14 @@ export default function NavigatorResults({ onReset }: NavigatorResultsProps) {
           </ul>
         </Card>
 
-        <Card className="p-5 sm:p-6">
+        <Card className="card-padding">
           <SectionTitle icon={Languages} title="Language requirements" />
           <p className="mt-4 text-sm leading-6 text-slate-600">
             {demoGuidance.language}
           </p>
         </Card>
 
-        <Card className="p-5 sm:p-6">
+        <Card className="card-padding">
           <SectionTitle icon={Plane} title="Student visa recommendation" />
           <p className="mt-4 text-sm leading-6 text-slate-600">
             {demoGuidance.visa}

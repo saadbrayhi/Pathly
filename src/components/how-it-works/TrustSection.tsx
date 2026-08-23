@@ -33,7 +33,7 @@ export default function TrustSection() {
           <ShieldCheck size={21} strokeWidth={1.8} />
         </div>
 
-        <h2 className="text-xl font-semibold text-[#111827]">
+        <h2 className="content-heading">
           How Pathly handles trust
         </h2>
       </div>

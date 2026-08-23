@@ -32,7 +32,7 @@ export default async function ScholarshipDetailsPage({
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#fafbf9]">
+    <main className="pathly-page relative overflow-hidden">
       {/* Background decorations */}
       <div className="pointer-events-none absolute -right-40 top-0 h-120 w-120 rounded-full border border-[#e8eef7]" />
 
@@ -50,26 +50,26 @@ export default async function ScholarshipDetailsPage({
 
       <Container className="relative z-10 py-12 lg:py-16">
         {/* Breadcrumb */}
-        <div className="mb-7 flex flex-wrap items-center gap-2 text-sm">
+        <div className="breadcrumb mb-7 flex-wrap">
           <Link
             href="/"
-            className="text-[#7f94b4] transition hover:text-[#3157d5]"
+            className="breadcrumb-link"
           >
             Home
           </Link>
 
-          <ChevronRight size={14} className="text-[#9badc7]" />
+          <ChevronRight size={14} className="breadcrumb-separator" />
 
           <Link
             href="/scholarship"
-            className="text-[#7f94b4] transition hover:text-[#3157d5]"
+            className="breadcrumb-link"
           >
             Scholarships
           </Link>
 
-          <ChevronRight size={14} className="text-[#9badc7]" />
+          <ChevronRight size={14} className="breadcrumb-separator" />
 
-          <span className="font-semibold text-[#263a5b]">
+          <span className="breadcrumb-current">
             {scholarship.title}
           </span>
         </div>

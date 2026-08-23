@@ -54,7 +54,7 @@ export default function CountryExplorer() {
 
   return (
     <section className="py-12">
-      <div className="grid gap-4 rounded-2xl border border-slate-200 bg-white p-5 md:grid-cols-[1fr_220px_auto]">
+      <div className="card-surface grid gap-4 p-5 md:grid-cols-[1fr_220px_auto]">
         <Input
           aria-label="Search countries"
           type="search"

@@ -17,7 +17,7 @@ export default function StudyPathResult() {
   const destination = searchParams.get("destination");
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-warm-surface py-8">
+    <main className="warm-page relative overflow-hidden py-8">
       {/* Background decorations */}
       <div
         aria-hidden="true"

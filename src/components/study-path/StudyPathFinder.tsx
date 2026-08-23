@@ -79,7 +79,7 @@ export default function StudyPathFinder() {
   }
 
   return (
-    <main className="min-h-screen bg-warm-surface py-10">
+    <main className="warm-page py-10">
       <Container>
         <div className="mx-auto max-w-180">
           {" "}

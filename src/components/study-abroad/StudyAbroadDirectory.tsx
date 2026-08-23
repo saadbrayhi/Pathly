@@ -72,7 +72,7 @@ export default function StudyAbroadDirectory({
           <div className="grid grid-cols-1 gap-7 md:grid-cols-[1.1fr_1.1fr_1fr]">
             {/* Study Level */}
             <div>
-              <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.04em] text-[#8ba0c0]">
+              <p className="filter-label">
                 Study Level
               </p>
 
@@ -81,7 +81,7 @@ export default function StudyAbroadDirectory({
                   <button
                     key={level}
                     type="button"
-                    className="rounded-full border border-[#dce5f0] bg-white px-3.5 py-1.5 text-xs font-medium text-[#344968] transition hover:border-[#4468df] hover:text-[#3157d5]"
+                    className="filter-chip border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
                   >
                     {level}
                   </button>
@@ -91,7 +91,7 @@ export default function StudyAbroadDirectory({
 
             {/* Language */}
             <div>
-              <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.04em] text-[#8ba0c0]">
+              <p className="filter-label">
                 Language
               </p>
 
@@ -100,7 +100,7 @@ export default function StudyAbroadDirectory({
                   <button
                     key={language}
                     type="button"
-                    className="rounded-full border border-[#dce5f0] bg-white px-3.5 py-1.5 text-xs font-medium text-[#344968] transition hover:border-[#4468df] hover:text-[#3157d5]"
+                    className="filter-chip border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
                   >
                     {language}
                   </button>
@@ -110,13 +110,13 @@ export default function StudyAbroadDirectory({
 
             {/* Scholarships */}
             <div>
-              <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.04em] text-[#8ba0c0]">
+              <p className="filter-label">
                 Scholarships
               </p>
 
               <button
                 type="button"
-                className="rounded-full border border-[#dce5f0] bg-white px-3.5 py-1.5 text-xs font-medium text-[#344968] transition hover:border-[#4468df] hover:text-[#3157d5]"
+                className="filter-chip border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
               >
                 Scholarships available
               </button>
