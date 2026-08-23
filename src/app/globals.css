@@ -48,13 +48,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -80,7 +73,7 @@ body {
   }
 
   .section-header {
-    @apply mb-8 flex items-end justify-between;
+    @apply mb-8 flex items-end justify-between gap-4;
   }
 
   .section-heading {
@@ -96,7 +89,7 @@ body {
   }
 
   .view-all-link {
-    @apply hidden items-center gap-1 rounded text-sm font-semibold text-primary transition-colors hover:text-primary-dark md:flex;
+    @apply inline-flex shrink-0 items-center gap-1 rounded text-sm font-semibold text-primary transition-colors hover:text-primary-dark;
   }
 
   .hero-gradient {

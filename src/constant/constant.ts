@@ -110,7 +110,7 @@ export const scholarships = [
     funding: "French government scholarship for international students.",
     deadline: "January 2027",
     image: "/images/home/scholarships/eiffel.jpg",
-    href: "/scholarship/eiffel",
+    href: "/scholarship/eiffel-excellence",
   },
 ];
 

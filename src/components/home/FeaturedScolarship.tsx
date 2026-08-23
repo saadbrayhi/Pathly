@@ -21,7 +21,7 @@ export default function FeaturedScholarships() {
           </div>
 
           <Link
-            href="/scholarships"
+            href="/scholarship"
             className="view-all-link"
           >
             View all

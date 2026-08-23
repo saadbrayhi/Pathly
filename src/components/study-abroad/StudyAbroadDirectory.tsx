@@ -30,10 +30,60 @@ export default function StudyAbroadDirectory({
 }: StudyAbroadDirectoryProps) {
   const [search, setSearch] = useState("");
   const [showFilters, setShowFilters] = useState(false);
+  const [selectedLevels, setSelectedLevels] = useState<string[]>([]);
+  const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
+  const [scholarshipsOnly, setScholarshipsOnly] = useState(false);
 
-  const filteredCountries = countries.filter((country) =>
-    country.name.toLowerCase().includes(search.trim().toLowerCase()),
-  );
+  const filteredCountries = countries.filter((country) => {
+    const matchesSearch = country.name
+      .toLowerCase()
+      .includes(search.trim().toLowerCase());
+    const matchesLevel =
+      selectedLevels.length === 0 ||
+      selectedLevels.some((level) =>
+        country.studyLevelOptions.includes(
+          level as (typeof country.studyLevelOptions)[number],
+        ),
+      );
+    const matchesLanguage =
+      selectedLanguages.length === 0 ||
+      selectedLanguages.some((language) =>
+        country.languageOptions.includes(language),
+      );
+    const matchesScholarships =
+      !scholarshipsOnly || country.scholarshipAvailable;
+
+    return (
+      matchesSearch &&
+      matchesLevel &&
+      matchesLanguage &&
+      matchesScholarships
+    );
+  });
+
+  const hasActiveFilters =
+    search.trim() !== "" ||
+    selectedLevels.length > 0 ||
+    selectedLanguages.length > 0 ||
+    scholarshipsOnly;
+
+  function toggleValue(
+    value: string,
+    setter: React.Dispatch<React.SetStateAction<string[]>>,
+  ) {
+    setter((currentValues) =>
+      currentValues.includes(value)
+        ? currentValues.filter((item) => item !== value)
+        : [...currentValues, value],
+    );
+  }
+
+  function clearFilters() {
+    setSearch("");
+    setSelectedLevels([]);
+    setSelectedLanguages([]);
+    setScholarshipsOnly(false);
+  }
 
   return (
     <section>
@@ -81,7 +131,13 @@ export default function StudyAbroadDirectory({
                   <button
                     key={level}
                     type="button"
-                    className="filter-chip border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
+                    aria-pressed={selectedLevels.includes(level)}
+                    onClick={() => toggleValue(level, setSelectedLevels)}
+                    className={`filter-chip ${
+                      selectedLevels.includes(level)
+                        ? "border-[#4468df] bg-[#eef3ff] text-[#3157d5]"
+                        : "border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
+                    }`}
                   >
                     {level}
                   </button>
@@ -100,7 +156,13 @@ export default function StudyAbroadDirectory({
                   <button
                     key={language}
                     type="button"
-                    className="filter-chip border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
+                    aria-pressed={selectedLanguages.includes(language)}
+                    onClick={() => toggleValue(language, setSelectedLanguages)}
+                    className={`filter-chip ${
+                      selectedLanguages.includes(language)
+                        ? "border-[#4468df] bg-[#eef3ff] text-[#3157d5]"
+                        : "border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
+                    }`}
                   >
                     {language}
                   </button>
@@ -116,12 +178,28 @@ export default function StudyAbroadDirectory({
 
               <button
                 type="button"
-                className="filter-chip border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
+                aria-pressed={scholarshipsOnly}
+                onClick={() => setScholarshipsOnly((current) => !current)}
+                className={`filter-chip ${
+                  scholarshipsOnly
+                    ? "border-[#4468df] bg-[#eef3ff] text-[#3157d5]"
+                    : "border-[#dce5f0] bg-white text-[#344968] hover:border-[#4468df] hover:text-[#3157d5]"
+                }`}
               >
                 Scholarships available
               </button>
             </div>
           </div>
+
+          {hasActiveFilters && (
+            <button
+              type="button"
+              onClick={clearFilters}
+              className="mt-5 text-sm font-semibold text-[#3157d5] transition hover:text-[#2647b8]"
+            >
+              Clear all filters
+            </button>
+          )}
         </div>
       )}
 
@@ -145,6 +223,17 @@ export default function StudyAbroadDirectory({
           <p className="mt-2 text-sm text-[#8aa0c1]">
             Try another country name.
           </p>
+
+          {hasActiveFilters && (
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={clearFilters}
+              className="mt-5"
+            >
+              Clear filters
+            </Button>
+          )}
         </div>
       )}
     </section>
