@@ -90,7 +90,7 @@ export const scholarships = [
     funding: "Fully funded scholarship for international students.",
     deadline: "January 2027",
     image: "/images/home/scholarships/erasmus-mundus.jpg",
-    href: "/scholarships/erasmus-mundus",
+    href: "/scholarship/erasmus-mundus",
   },
   {
     name: "DAAD EPOS",
@@ -100,7 +100,7 @@ export const scholarships = [
     funding: "Funding for development-related postgraduate programs.",
     deadline: "Varies by program",
     image: "/images/home/scholarships/daad-epos.jpg",
-    href: "/scholarships/daad-epos",
+    href: "/scholarship/daad-epos",
   },
   {
     name: "Eiffel Excellence Scholarship",
@@ -110,7 +110,7 @@ export const scholarships = [
     funding: "French government scholarship for international students.",
     deadline: "January 2027",
     image: "/images/home/scholarships/eiffel.jpg",
-    href: "/scholarships/eiffel",
+    href: "/scholarship/eiffel",
   },
 ];
 
@@ -133,7 +133,7 @@ export const quickCategories = [
     icon: BookOpen,
     label: "Admission Requirements",
     desc: "Know exactly what each country requires for your level.",
-    href: "/admission-requirements",
+    href: "/study-abroad/france",
     accent: "bg-[#eaf0ff] text-[#3157d5]",
   },
   {
@@ -147,7 +147,7 @@ export const quickCategories = [
     icon: Award,
     label: "Scholarships",
     desc: "Find funding that fits your path, level, and field.",
-    href: "/scholarships",
+    href: "/scholarship",
     accent: "bg-[#fff5df] text-[#b76800]",
   },
   {

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-import Container from "../components/shared/Container";
-import { countries } from "../../constant/countries";
-import StudyAbroadDirectory from "./StudyAbroadDirectory";
+import Container from "@/components/shared/Container";
+import { countries } from "@/constant/countries";
+import StudyAbroadDirectory from "@/components/study-abroad/StudyAbroadDirectory";
 
 export default function StudyAbroadPage() {
   return (

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-import Container from "../components/shared/Container";
+import Container from "@/components/shared/Container";
 
-import ScholarshipExplorer from "./components/ScholarshipExplorer";
-import ScholarshipNotice from "./components/ScholarshipNotice";
+import ScholarshipExplorer from "@/components/scholarship/ScholarshipExplorer";
+import ScholarshipNotice from "@/components/scholarship/ScholarshipNotice";
 
 export default function ScholarshipPage() {
   return (

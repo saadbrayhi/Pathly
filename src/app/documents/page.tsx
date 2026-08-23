@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-import Breadcrumb from "@/app/components/shared/Breadcrumb";
-import Container from "@/app/components/shared/Container";
+import Breadcrumb from "@/components/shared/Breadcrumb";
+import Container from "@/components/shared/Container";
 
-import DocumentLibrary from "./DocumentLibrary";
+import DocumentLibrary from "@/components/documents/DocumentLibrary";
 
 export const metadata: Metadata = {
   title: "Document Library | Pathly",

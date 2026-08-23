@@ -2,16 +2,16 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
-import Container from "../../components/shared/Container";
-import { countries } from "../../../constant/countries";
+import Container from "@/components/shared/Container";
+import { countries } from "@/constant/countries";
 
-import CountryActions from "./componentss/CountryActions";
-import CountryAdmissions from "./componentss/CountryAdmissions";
-import CountryOverview from "./componentss/CountryOverview";
-import CountryRequirements from "./componentss/CountryRequirements";
-import CountrySectionNav from "./componentss/CountrySectionNav";
-import CountrySources from "./componentss/CountrySources";
-import CountryStudyInfo from "./componentss/CountryStudyInfo";
+import CountryActions from "@/components/study-abroad/CountryActions";
+import CountryAdmissions from "@/components/study-abroad/CountryAdmissions";
+import CountryOverview from "@/components/study-abroad/CountryOverview";
+import CountryRequirements from "@/components/study-abroad/CountryRequirements";
+import CountrySectionNav from "@/components/study-abroad/CountrySectionNav";
+import CountrySources from "@/components/study-abroad/CountrySources";
+import CountryStudyInfo from "@/components/study-abroad/CountryStudyInfo";
 
 type CountryPageProps = {
   params: Promise<{

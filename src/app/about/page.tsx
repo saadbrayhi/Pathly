@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { BookOpen, ChevronRight, Globe2, ShieldCheck } from "lucide-react";
 
-import Container from "../components/shared/Container";
+import Container from "@/components/shared/Container";
 
-import AboutFeatureCard from "./components/AboutFeatureCard";
-import AboutNotSection from "./components/AboutNotSection";
-import AboutCta from "./components/AboutCta";
+import AboutFeatureCard from "@/components/about/AboutFeatureCard";
+import AboutNotSection from "@/components/about/AboutNotSection";
+import AboutCta from "@/components/about/AboutCta";
 
 export default function AboutPage() {
   return (

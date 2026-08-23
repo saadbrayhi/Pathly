@@ -1,5 +1,5 @@
-import Card from "@/app/components/shared/Card";
-import Container from "@/app/components/shared/Container";
+import Card from "@/components/shared/Card";
+import Container from "@/components/shared/Container";
 
 export default function DocumentsLoading() {
   return (

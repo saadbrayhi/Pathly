@@ -1,4 +1,4 @@
-import type { SupportRequestValues } from "../app/data/personalSupport";
+import type { SupportRequestValues } from "@/data/personalSupport";
 
 export type PersonalSupportRequestPayload = SupportRequestValues & {
   submittedAt: string;

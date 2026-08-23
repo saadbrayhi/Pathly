@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-import Container from "../components/shared/Container";
+import Container from "@/components/shared/Container";
 
-import HowItWorksStep from "./components/HowItWorksStep";
-import TrustSection from "./components/TrustSection";
-import HowItWorksCta from "./components/HowItWorksCta";
+import HowItWorksStep from "@/components/how-it-works/HowItWorksStep";
+import TrustSection from "@/components/how-it-works/TrustSection";
+import HowItWorksCta from "@/components/how-it-works/HowItWorksCta";
 
 const steps = [
   {

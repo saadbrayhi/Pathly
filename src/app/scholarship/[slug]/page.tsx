@@ -2,17 +2,17 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
-import Container from "../../components/shared/Container";
+import Container from "@/components/shared/Container";
 
-import { scholarships } from "../../../constant/scholarships";
+import { scholarships } from "@/constant/scholarships";
 
-import ScholarshipApplicationSteps from "./components/ScholarshipApplicationSteps";
-import ScholarshipCommonMistakes from "./components/ScholarshipCommonMistakes";
-import ScholarshipDocuments from "./components/ScholarshipDocuments";
-import ScholarshipHeader from "./components/ScholarshipHeader";
-import ScholarshipHelpCta from "./components/ScholarshipHelpCta";
-import ScholarshipMainSections from "./components/ScholarshipMainSections";
-import ScholarshipSidebar from "./components/ScholarshipSidebar";
+import ScholarshipApplicationSteps from "@/components/scholarship/ScholarshipApplicationSteps";
+import ScholarshipCommonMistakes from "@/components/scholarship/ScholarshipCommonMistakes";
+import ScholarshipDocuments from "@/components/scholarship/ScholarshipDocuments";
+import ScholarshipHeader from "@/components/scholarship/ScholarshipHeader";
+import ScholarshipHelpCta from "@/components/scholarship/ScholarshipHelpCta";
+import ScholarshipMainSections from "@/components/scholarship/ScholarshipMainSections";
+import ScholarshipSidebar from "@/components/scholarship/ScholarshipSidebar";
 
 type ScholarshipDetailsPageProps = {
   params: Promise<{

@@ -11,12 +11,12 @@ import {
   Users,
 } from "lucide-react";
 
-import Badge from "../components/shared/Badge";
-import Breadcrumb from "../components/shared/Breadcrumb";
-import Card from "../components/shared/Card";
-import Container from "../components/shared/Container";
-import { SUPPORT_SERVICES, SUPPORT_STEPS } from "../data/personalSupport";
-import SupportForm from "./SupportForm";
+import Badge from "@/components/shared/Badge";
+import Breadcrumb from "@/components/shared/Breadcrumb";
+import Card from "@/components/shared/Card";
+import Container from "@/components/shared/Container";
+import { SUPPORT_SERVICES, SUPPORT_STEPS } from "@/data/personalSupport";
+import SupportForm from "@/components/personal-support/SupportForm";
 
 export const metadata: Metadata = {
   title: "Personal Support | Pathly",

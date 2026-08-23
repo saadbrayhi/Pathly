@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ChevronRight, Sparkles } from "lucide-react";
 
-import Container from "@/app/components/shared/Container";
+import Container from "@/components/shared/Container";
 
-import AINavigator from "./AINavigator";
+import AINavigator from "@/components/ai-navigator/AINavigator";
 
 export default function AINavigatorPage() {
   return (
