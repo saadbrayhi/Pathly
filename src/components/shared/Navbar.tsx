@@ -23,9 +23,9 @@ export default function Navbar() {
 
   return (
     <nav className="relative z-50 border-b border-slate-200 bg-white">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+      <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-4">
         {/* LOGO */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="justify-self-start">
           <Image
             src="/branding/pathly-logo2.png"
             alt="Pathly"
@@ -74,7 +74,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((current) => !current)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-heading lg:hidden"
+          className="flex h-10 w-10 items-center justify-center justify-self-end rounded-lg border border-slate-200 text-heading lg:hidden"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isOpen}
         >
