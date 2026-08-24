@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 
+import LoadingState from "@/components/shared/states/LoadingState";
 import StudyPathResult from "@/components/study-path/StudyPathResult";
 
 export default function StudyPathResultPage() {
@@ -14,7 +15,10 @@ function ResultLoading() {
   return (
     <main className="warm-page">
       <div className="page-container py-8">
-        <p className="text-sm text-slate-500">Loading your study path...</p>
+        <LoadingState
+          message="Loading your study path..."
+          className="justify-start py-0"
+        />
       </div>
     </main>
   );

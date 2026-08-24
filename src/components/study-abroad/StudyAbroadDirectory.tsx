@@ -5,7 +5,7 @@ import { Search, SlidersHorizontal } from "lucide-react";
 
 import Button from "@/components/shared/Button";
 import Input from "@/components/shared/Input";
-
+import EmptyState from "@/components/shared/states/EmptyState";
 import CountryCard from "./CountryCard";
 import type { Country } from "@/constant/countries";
 
@@ -208,24 +208,12 @@ export default function StudyAbroadDirectory({
           ))}
         </div>
       ) : (
-        <div className="rounded-xl border border-[#dce5f0] bg-white px-6 py-14 text-center">
-          <h3 className="font-semibold text-[#233858]">No country found</h3>
-
-          <p className="mt-2 text-sm text-[#8aa0c1]">
-            Try another country name.
-          </p>
-
-          {hasActiveFilters && (
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={clearFilters}
-              className="mt-5"
-            >
-              Clear filters
-            </Button>
-          )}
-        </div>
+        <EmptyState
+          title="No country found"
+          description="Try another country name or language."
+          actionLabel={hasActiveFilters ? "Clear filters" : undefined}
+          onAction={hasActiveFilters ? clearFilters : undefined}
+        />
       )}
     </section>
   );

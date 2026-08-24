@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import Badge from "@/components/shared/Badge";
+import EmptyState from "@/components/shared/states/EmptyState";
 
 import ScholarshipCard from "./ScholarshipCard";
 import ScholarshipFilters from "./ScholarshipFilters";
@@ -102,15 +103,13 @@ export default function ScholarshipExplorer() {
           ))}
         </section>
       ) : (
-        <div className="mt-5 rounded-2xl border border-slate-200 bg-white px-6 py-14 text-center">
-          <h3 className="font-semibold text-[#263a5b]">
-            No scholarships found
-          </h3>
-
-          <p className="mt-2 text-sm text-[#7f94b4]">
-            Try changing your search or filters.
-          </p>
-        </div>
+        <EmptyState
+          title="No scholarships found"
+          description="Try changing your search or filters."
+          actionLabel="Clear filters"
+          onAction={clearFilters}
+          className="mt-5"
+        />
       )}
     </>
   );

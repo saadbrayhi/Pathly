@@ -4,6 +4,7 @@ import { Award, FileText, Globe2, Plane, Search } from "lucide-react";
 
 import Card from "@/components/shared/Card";
 import Container from "@/components/shared/Container";
+import EmptyState from "@/components/shared/states/EmptyState";
 import { countries } from "@/constant/countries";
 import { scholarships } from "@/constant/scholarships";
 import { visaCountries } from "@/constant/visa/visaData";
@@ -182,12 +183,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             </div>
           </section>
         ) : (
-          <Card className="mt-6 p-8 text-center">
-            <h2 className="text-xl font-bold text-heading">No results found</h2>
-            <p className="mt-2 text-sm text-slate-500">
-              Try a country name, scholarship provider, visa type, or document name.
-            </p>
-          </Card>
+          <EmptyState
+            title="No results found"
+            description="Try a country name, scholarship provider, visa type, or document name."
+            className="mt-6"
+          />
         )}
       </Container>
     </main>

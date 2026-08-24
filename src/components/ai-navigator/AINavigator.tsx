@@ -1,9 +1,11 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { AlertTriangle, RotateCcw, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 import Card from "@/components/shared/Card";
+import ErrorState from "@/components/shared/states/ErrorState";
+import LoadingState from "@/components/shared/states/LoadingState";
 
 import NavigatorResults from "./NavigatorResults";
 
@@ -50,8 +52,17 @@ const emptyProfile: StudentProfile = {
 };
 
 const waitForMockGuidance = () =>
-  new Promise<void>((resolve) => {
-    window.setTimeout(resolve, 1400);
+  new Promise<void>((resolve, reject) => {
+    window.setTimeout(() => {
+      const shouldFail = Math.random() < 0.5;
+
+      if (shouldFail) {
+        reject(new Error("Mock AI error"));
+        return;
+      }
+
+      resolve();
+    }, 1400);
   });
 
 export default function AINavigator() {
@@ -119,7 +130,10 @@ export default function AINavigator() {
     <section aria-labelledby="navigator-form-title" className="mt-10">
       <Card className="p-5 sm:p-7">
         <form onSubmit={handleSubmit}>
-          <h2 id="navigator-form-title" className="text-base font-semibold text-[#0f172a]">
+          <h2
+            id="navigator-form-title"
+            className="text-base font-semibold text-[#0f172a]"
+          >
             Tell us your current education level and what you want to study
             abroad.
           </h2>
@@ -177,7 +191,9 @@ export default function AINavigator() {
                   id={field.id}
                   type="text"
                   value={profile[field.id]}
-                  onChange={(event) => updateProfile(field.id, event.target.value)}
+                  onChange={(event) =>
+                    updateProfile(field.id, event.target.value)
+                  }
                   placeholder={field.placeholder}
                   className="w-full rounded-lg border border-transparent bg-[#f6f7f3] px-3 py-2.5 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-[#3157d5] focus:bg-white focus:ring-4 focus:ring-blue-100"
                 />
@@ -201,17 +217,13 @@ export default function AINavigator() {
 
 function NavigatorLoading() {
   return (
-    <Card
-      className="mt-10 p-8 text-center sm:p-12"
-    >
-      <div
-        role="status"
-        aria-live="polite"
-        className="flex flex-col items-center"
-      >
-        <span className="sr-only">Generating your study guidance</span>
+    <Card className="mt-10 p-8 text-center sm:p-12">
+      <div className="flex flex-col items-center">
         <div className="flex size-16 items-center justify-center rounded-2xl bg-slate-100">
-          <div className="size-8 animate-spin rounded-full border-2 border-[#3157d5] border-t-transparent" />
+          <LoadingState
+            message="Generating your study guidance"
+            className="py-0 [&>span]:sr-only"
+          />
         </div>
         <p className="mt-5 font-medium text-slate-700">
           Organizing your requirements and next steps…
@@ -232,31 +244,13 @@ type NavigatorErrorProps = {
 
 function NavigatorError({ onRetry }: NavigatorErrorProps) {
   return (
-    <Card className="mt-10 p-8 text-center sm:p-10">
-      <AlertTriangle
-        aria-hidden="true"
-        size={34}
-        className="mx-auto text-[#b76800]"
+    <div id="navigator-error-title" tabIndex={-1} className="outline-none">
+      <ErrorState
+        title="Something went wrong"
+        description="We couldn't generate guidance right now. Your answers are still here, so you can safely retry."
+        onRetry={onRetry}
+        className="mt-10 p-8 sm:p-10"
       />
-      <h2
-        id="navigator-error-title"
-        tabIndex={-1}
-        className="mt-3 text-xl font-bold text-[#0f172a] outline-none"
-      >
-        Something went wrong
-      </h2>
-      <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-500">
-        We couldn&apos;t generate guidance right now. Your answers are still here,
-        so you can safely retry.
-      </p>
-      <button
-        type="button"
-        onClick={onRetry}
-        className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#3157d5] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#2647b8] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
-      >
-        <RotateCcw aria-hidden="true" size={15} />
-        Try again
-      </button>
-    </Card>
+    </div>
   );
 }

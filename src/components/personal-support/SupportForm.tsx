@@ -1,18 +1,14 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import {
-  AlertCircle,
-  AlertTriangle,
-  CheckCircle2,
-  LoaderCircle,
-  Send,
-} from "lucide-react";
+import { AlertTriangle, CheckCircle2, Send } from "lucide-react";
 
 import Button from "@/components/shared/Button";
 import Card from "@/components/shared/Card";
 import Input from "@/components/shared/Input";
 import Select from "@/components/shared/Select";
+import ErrorState from "@/components/shared/states/ErrorState";
+import LoadingState from "@/components/shared/states/LoadingState";
 import Textarea from "@/components/shared/Textarea";
 import {
   COUNTRY_OPTIONS,
@@ -66,6 +62,7 @@ export default function SupportForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [submissionStatus, setSubmissionStatus] =
     useState<SubmissionStatus>("idle");
+  const isSubmitting = submissionStatus === "submitting";
 
   function handleChange(field: keyof SupportRequestValues, value: string) {
     setValues((currentValues) => ({ ...currentValues, [field]: value }));
@@ -76,7 +73,7 @@ export default function SupportForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (submissionStatus === "submitting") return;
+    if (isSubmitting) return;
 
     const validationErrors = validateSupportRequest(values);
     if (Object.keys(validationErrors).length > 0) {
@@ -109,7 +106,7 @@ export default function SupportForm() {
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        aria-busy={submissionStatus === "submitting"}
+        aria-busy={isSubmitting}
         noValidate
       >
         <header>
@@ -303,24 +300,17 @@ export default function SupportForm() {
           </p>
         </div>
 
-        <Button
-          type="submit"
-          className="mt-5 w-full gap-2"
-          disabled={submissionStatus === "submitting"}
-        >
-          {submissionStatus === "submitting" ? (
-            <LoaderCircle
-              aria-hidden="true"
-              size={16}
-              className="animate-spin"
-            />
-          ) : (
+        {isSubmitting ? (
+          <LoadingState
+            message="Sending Request..."
+            className="mt-5 w-full rounded-xl border border-slate-200 bg-white py-3 text-slate-300 [&_.loading-indicator]:size-4"
+          />
+        ) : (
+          <Button type="submit" className="mt-5 w-full gap-2">
             <Send aria-hidden="true" size={16} />
-          )}
-          {submissionStatus === "submitting"
-            ? "Sending Request..."
-            : "Send My Request"}
-        </Button>
+            Send My Request
+          </Button>
+        )}
 
         {submissionStatus === "success" && (
           <div
@@ -340,20 +330,11 @@ export default function SupportForm() {
         )}
 
         {submissionStatus === "error" && (
-          <div
-            role="alert"
-            className="mt-4 flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700"
-          >
-            <AlertCircle
-              aria-hidden="true"
-              size={17}
-              className="mt-0.5 shrink-0"
-            />
-            <p className="text-sm leading-6">
-              We could not send your request. Your answers are still available,
-              so you can try again.
-            </p>
-          </div>
+          <ErrorState
+            title="We could not send your request"
+            description="Your answers are still available, so you can try again."
+            className="mt-4"
+          />
         )}
       </form>
     </Card>

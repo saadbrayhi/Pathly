@@ -1,11 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FileText, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 
-import Button from "@/components/shared/Button";
-import Card from "@/components/shared/Card";
 import Input from "@/components/shared/Input";
+import EmptyState from "@/components/shared/states/EmptyState";
 import {
   DOCUMENT_CATEGORIES,
   documents,
@@ -167,16 +166,13 @@ export default function DocumentLibrary() {
 
       <div id="document-results">
         {visibleCount === 0 ? (
-          <Card className="mt-4 flex flex-col items-center px-6 py-16 text-center">
-            <FileText aria-hidden="true" size={32} className="text-slate-300" />
-            <h3 className="mt-3 font-semibold text-heading">No documents found</h3>
-            <p className="mt-1 max-w-md text-sm text-slate-500">
-              Try another search term or clear your filters to see the complete library.
-            </p>
-            <Button onClick={clearFilters} variant="secondary" className="mt-5">
-              Clear filters
-            </Button>
-          </Card>
+          <EmptyState
+            title="No documents found"
+            description="Try another search term or clear your filters to see the complete library."
+            actionLabel="Clear filters"
+            onAction={clearFilters}
+            className="mt-4"
+          />
         ) : (
           <div className="mt-4 space-y-8">
             {DOCUMENT_CATEGORIES.map((category) => {

@@ -8,6 +8,7 @@ import Badge from "@/components/shared/Badge";
 import Card from "@/components/shared/Card";
 import Input from "@/components/shared/Input";
 import Select from "@/components/shared/Select";
+import EmptyState from "@/components/shared/states/EmptyState";
 import {countries}  from "@/constant/countries";
 
 const languageOptions = [
@@ -148,15 +149,13 @@ export default function CountryExplorer() {
           ))}
         </div>
       ) : (
-        <Card className="mt-6 px-6 py-14 text-center">
-          <h3 className="text-xl font-bold text-heading">
-            No countries found
-          </h3>
-
-          <p className="mt-2 text-slate-500">
-            Try another country or language, or clear the filters.
-          </p>
-        </Card>
+        <EmptyState
+          title="No countries found"
+          description="Try another country or language, or clear the filters."
+          actionLabel="Clear filters"
+          onAction={clearFilters}
+          className="mt-6"
+        />
       )}
     </section>
   );
