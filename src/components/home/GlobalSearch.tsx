@@ -1,18 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
-import Button from "../shared/Button";
+
+import Button from "@/components/shared/Button";
+import LoadingState from "@/components/shared/states/LoadingState";
 
 export default function GlobalSearch() {
   const [query, setQuery] = useState("");
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
   function handleSearch() {
     if (!query.trim()) return;
 
-    router.push(`/search?q=${encodeURIComponent(query)}`);
+    startTransition(() => {
+      router.push(`/search?q=${encodeURIComponent(query)}`);
+    });
   }
 
   return (
@@ -39,13 +44,20 @@ export default function GlobalSearch() {
           />
         </div>
 
-        <Button
-          type="button"
-          onClick={handleSearch}
-          className="shrink-0 rounded-lg px-7 py-3 text-sm"
-        >
-          Search
-        </Button>
+        {isPending ? (
+          <LoadingState
+            message="Searching..."
+            className="shrink-0 px-3 py-0 [&_.loading-indicator]:size-5"
+          />
+        ) : (
+          <Button
+            type="button"
+            onClick={handleSearch}
+            className="shrink-0 rounded-lg px-7 py-3 text-sm"
+          >
+            Search
+          </Button>
+        )}
       </div>
     </div>
   );

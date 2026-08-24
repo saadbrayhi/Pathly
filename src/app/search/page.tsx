@@ -12,7 +12,8 @@ import { documents } from "@/data/documents";
 
 export const metadata: Metadata = {
   title: "Search | Pathly",
-  description: "Search Pathly countries, scholarships, documents, and visa guides.",
+  description:
+    "Search Pathly countries, scholarships, documents, and visa guides.",
 };
 
 type SearchPageProps = {
@@ -29,7 +30,9 @@ type SearchResult = {
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const rawQuery = (await searchParams).q;
-  const query = (Array.isArray(rawQuery) ? rawQuery[0] : rawQuery ?? "").trim();
+  const query = (
+    Array.isArray(rawQuery) ? rawQuery[0] : (rawQuery ?? "")
+  ).trim();
   const normalizedQuery = query.toLowerCase();
 
   const results: SearchResult[] = normalizedQuery
@@ -120,7 +123,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
         <form action="/search" className="card-surface mt-7 flex gap-3 p-3">
           <div className="search-field min-w-0">
-            <Search aria-hidden="true" size={18} className="shrink-0 text-slate-400" />
+            <Search
+              aria-hidden="true"
+              size={18}
+              className="shrink-0 text-slate-400"
+            />
             <label htmlFor="site-search" className="sr-only">
               Search Pathly
             </label>
@@ -144,12 +151,16 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         {!query ? (
           <Card className="mt-6 p-8 text-center">
             <p className="text-slate-600">
-              Enter a country, scholarship, visa, or document to start searching.
+              Enter a country, scholarship, visa, or document to start
+              searching.
             </p>
           </Card>
         ) : results.length > 0 ? (
           <section className="mt-7" aria-labelledby="results-heading">
-            <h2 id="results-heading" className="text-sm font-medium text-slate-500">
+            <h2
+              id="results-heading"
+              className="text-sm font-medium text-slate-500"
+            >
               {results.length} {results.length === 1 ? "result" : "results"} for
               &quot;{query}&quot;
             </h2>
@@ -171,7 +182,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                         <p className="text-xs font-semibold text-primary">
                           {result.category}
                         </p>
-                        <h3 className="mt-1 font-bold text-heading">{result.title}</h3>
+                        <h3 className="mt-1 font-bold text-heading">
+                          {result.title}
+                        </h3>
                         <p className="mt-1 text-sm leading-6 text-slate-500">
                           {result.description}
                         </p>
