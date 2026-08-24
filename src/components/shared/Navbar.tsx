@@ -74,7 +74,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((current) => !current)}
-          className="flex h-10 w-10 items-center justify-center justify-self-end rounded-lg border border-slate-200 text-heading lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-heading lg:hidden"
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isOpen}
         >

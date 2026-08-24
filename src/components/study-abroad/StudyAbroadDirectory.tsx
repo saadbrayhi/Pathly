@@ -54,10 +54,7 @@ export default function StudyAbroadDirectory({
       !scholarshipsOnly || country.scholarshipAvailable;
 
     return (
-      matchesSearch &&
-      matchesLevel &&
-      matchesLanguage &&
-      matchesScholarships
+      matchesSearch && matchesLevel && matchesLanguage && matchesScholarships
     );
   });
 
@@ -122,9 +119,7 @@ export default function StudyAbroadDirectory({
           <div className="grid grid-cols-1 gap-7 md:grid-cols-[1.1fr_1.1fr_1fr]">
             {/* Study Level */}
             <div>
-              <p className="filter-label">
-                Study Level
-              </p>
+              <p className="filter-label">Study Level</p>
 
               <div className="flex flex-wrap gap-2">
                 {studyLevels.map((level) => (
@@ -147,9 +142,7 @@ export default function StudyAbroadDirectory({
 
             {/* Language */}
             <div>
-              <p className="filter-label">
-                Language
-              </p>
+              <p className="filter-label">Language</p>
 
               <div className="flex flex-wrap gap-2">
                 {languages.map((language) => (
@@ -172,9 +165,7 @@ export default function StudyAbroadDirectory({
 
             {/* Scholarships */}
             <div>
-              <p className="filter-label">
-                Scholarships
-              </p>
+              <p className="filter-label">Scholarships</p>
 
               <button
                 type="button"
