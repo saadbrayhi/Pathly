@@ -86,8 +86,8 @@ npm run lint
 ### Pathfinders
 
 - Saad Brayhi {team lead}
-- Abderahmen Lmeknass
-- Abderahmen Chalabi
+- Abdelrahmen Lmeknass
+- Abdelrahmen Chalabi
 
 ## Important Note
 
