@@ -23,7 +23,7 @@ const helpLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-heading text-slate-300">
+    <footer className="mt-auto bg-footer-surface text-slate-300">
       <div className="page-container py-16">
         <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}

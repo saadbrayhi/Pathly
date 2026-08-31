@@ -20,7 +20,7 @@ export default function Hero() {
       cx: 50,
       cy: 260,
       label: "Your Level",
-      color: "#64748b",
+      color: "var(--text-muted)",
       delay: 0,
     },
     {
@@ -226,7 +226,7 @@ export default function Hero() {
                         x={dot.cx - 30}
                         y={dot.cy + 22}
                         fontSize="9"
-                        fill="#64748b"
+                        fill="var(--text-muted)"
                       >
                         {dot.label}
                       </text>
@@ -246,7 +246,7 @@ export default function Hero() {
                         cx={destination.cx}
                         cy={destination.cy}
                         r="5"
-                        fill="#ffffff"
+                        fill="var(--surface)"
                         stroke="var(--primary)"
                         strokeWidth="1.5"
                       />
@@ -255,7 +255,7 @@ export default function Hero() {
                         x={destination.cx + 9}
                         y={destination.cy + 4}
                         fontSize="9"
-                        fill="#334155"
+                        fill="var(--text-content)"
                       >
                         {destination.label}
                       </text>
