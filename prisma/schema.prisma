@@ -3,7 +3,6 @@
 
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -11,4 +10,304 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+}
+
+enum RequirementStatus {
+  REQUIRED
+  MAY_BE_REQUIRED
+  OPTIONAL
+  VARIES
+}
+
+enum VerificationStatus {
+  VERIFIED
+  COMMUNITY_CONFIRMED
+  NEEDS_VERIFICATION
+}
+
+enum DeadlineState {
+  OPEN
+  UPCOMING
+  CLOSED
+  VARIES
+  NOT_PUBLISHED
+  UNKNOWN
+}
+
+enum DocumentCategory {
+  ACADEMIC
+  PERSONAL
+  APPLICATION
+  LANGUAGE
+  FINANCIAL
+}
+
+enum PreparationLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum SupportRequestStatus {
+  NEW
+  IN_REVIEW
+  CONTACTED
+  CLOSED
+}
+
+model Country {
+  id          String  @id @default(uuid()) @db.Uuid
+  name        String  @unique
+  slug        String  @unique
+  flag        String?
+  image       String?
+  description String?
+
+  languages    String?
+  tuition      String?
+  livingCost   String?
+  tuitionRange String?
+
+  overview          String?
+  lastReviewedAt    DateTime? @db.Date
+  mainLanguage      String?
+  livingCostSummary String?
+
+  educationSystem    String?
+  whoCanApply        String?
+  eligibilityWarning String?
+  languageWarning    String?
+
+  visaType                String?
+  visaSummary             String?
+  visaDescription         String?
+  visaProcessingTime      String?
+  visaAppointment         String?
+  visaEstimatedFee        String?
+  visaFinancialProof      String?
+  visaWarning             String?
+  visaLastReviewedAt      DateTime? @db.Date
+  visaOfficialSourceLabel String?
+  visaOfficialSourceUrl   String?
+
+  languageOptions    String[] @default([])
+  studyLevelOptions  String[] @default([])
+  requiredDocuments  String[] @default([])
+  commonMistakes     String[] @default([])
+  visaDocuments      String[] @default([])
+  visaSteps          String[] @default([])
+  visaCommonMistakes String[] @default([])
+  scholarshipNotes   String[] @default([])
+
+  admissionRequirements AdmissionRequirement[]
+  studyLevelDetails     StudyLevelDetail[]
+  languageRequirements  LanguageRequirement[]
+  officialSources       OfficialSource[]
+  scholarships          Scholarship[]
+  studyPathRequests     StudyPathRequest[]
+  supportRequests       PersonalSupportRequest[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AdmissionRequirement {
+  id        String            @id @default(uuid()) @db.Uuid
+  label     String
+  status    RequirementStatus
+  sortOrder Int               @default(0)
+
+  countryId String  @db.Uuid
+  country   Country @relation(fields: [countryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model StudyLevelDetail {
+  id        String  @id @default(uuid()) @db.Uuid
+  level     String
+  duration  String?
+  language  String?
+  tuition   String?
+  note      String?
+  sortOrder Int     @default(0)
+
+  countryId String  @db.Uuid
+  country   Country @relation(fields: [countryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LanguageRequirement {
+  id          String @id @default(uuid()) @db.Uuid
+  title       String
+  description String
+  sortOrder   Int    @default(0)
+
+  countryId String  @db.Uuid
+  country   Country @relation(fields: [countryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OfficialSource {
+  id          String  @id @default(uuid()) @db.Uuid
+  name        String
+  description String?
+  url         String
+  sortOrder   Int     @default(0)
+
+  countryId String  @db.Uuid
+  country   Country @relation(fields: [countryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Scholarship {
+  id    String  @id @default(uuid()) @db.Uuid
+  slug  String  @unique
+  title String
+  image String?
+
+  flag       String?
+  scopeLabel String?
+
+  provider String?
+  level    String?
+  field    String?
+  funding  String?
+
+  overview        String?
+  whoCanApply     String?
+  eligibilityNote String?
+
+  fundingCoverage String?
+  fundingNote     String?
+
+  officialUrl        String?
+  verificationStatus VerificationStatus @default(NEEDS_VERIFICATION)
+  lastReviewedAt     DateTime?          @db.Date
+  requiredDocuments  String[]           @default([])
+  applicationSteps   String[]           @default([])
+  commonMistakes     String[]           @default([])
+
+  countries Country[]
+  deadlines ScholarshipDeadline[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ScholarshipDeadline {
+  id           String    @id @default(uuid()) @db.Uuid
+  label        String?
+  displayText  String
+  deadlineDate DateTime? @db.Date
+
+  state              DeadlineState
+  verificationStatus VerificationStatus
+
+  lastVerifiedAt DateTime?
+  sourceUrl      String?
+  sortOrder      Int       @default(0)
+
+  scholarshipId String      @db.Uuid
+  scholarship   Scholarship @relation(fields: [scholarshipId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model StudyPathRequest {
+  id               String @id @default(uuid()) @db.Uuid
+  educationLevel   String
+  desiredDegree    String
+  fieldOfStudy     String
+  destinationValue String
+
+  countryId String?  @db.Uuid
+  country   Country? @relation(fields: [countryId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+}
+
+model PersonalSupportRequest {
+  id             String @id @default(uuid()) @db.Uuid
+  fullName       String
+  email          String
+  phone          String
+  currentCountry String
+
+  educationLevel String
+  desiredDegree  String?
+  fieldOfStudy   String?
+
+  helpType    String
+  target      String?
+  deadline    String?
+  description String
+
+  status SupportRequestStatus @default(NEW)
+
+  preferredCountryId String?  @db.Uuid
+  preferredCountry   Country? @relation(fields: [preferredCountryId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AiNavigatorRequest {
+  id             String  @id @default(uuid()) @db.Uuid
+  prompt         String
+  currentCountry String?
+  educationLevel String?
+  desiredDegree  String?
+  fieldOfStudy   String?
+
+  createdAt DateTime @default(now())
+}
+
+model DocumentGuide {
+  id          String           @id @default(uuid()) @db.Uuid
+  slug        String           @unique
+  name        String
+  category    DocumentCategory
+  description String?
+  neededFor   String
+  preparation PreparationLevel
+
+  translationRequired    Boolean            @default(false)
+  translationNote        String?
+  verificationStatus     VerificationStatus @default(NEEDS_VERIFICATION)
+  authenticationRequired Boolean            @default(false)
+  authenticationNote     String?
+
+  whatItIs      String
+  whyItIsNeeded String
+
+  structureNote String?
+
+  mistakes String[] @default([])
+
+  structureSteps DocumentStructureStep[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DocumentStructureStep {
+  id          String @id @default(uuid()) @db.Uuid
+  title       String
+  description String
+  sortOrder   Int    @default(0)
+
+  documentGuideId String        @db.Uuid
+  documentGuide   DocumentGuide @relation(fields: [documentGuideId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

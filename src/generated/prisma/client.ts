@@ -31,8 +31,8 @@ export * from "./enums"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Countries
+ * const countries = await prisma.country.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -41,4 +41,63 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
-
+/**
+ * Model Country
+ * 
+ */
+export type Country = Prisma.CountryModel
+/**
+ * Model AdmissionRequirement
+ * 
+ */
+export type AdmissionRequirement = Prisma.AdmissionRequirementModel
+/**
+ * Model StudyLevelDetail
+ * 
+ */
+export type StudyLevelDetail = Prisma.StudyLevelDetailModel
+/**
+ * Model LanguageRequirement
+ * 
+ */
+export type LanguageRequirement = Prisma.LanguageRequirementModel
+/**
+ * Model OfficialSource
+ * 
+ */
+export type OfficialSource = Prisma.OfficialSourceModel
+/**
+ * Model Scholarship
+ * 
+ */
+export type Scholarship = Prisma.ScholarshipModel
+/**
+ * Model ScholarshipDeadline
+ * 
+ */
+export type ScholarshipDeadline = Prisma.ScholarshipDeadlineModel
+/**
+ * Model StudyPathRequest
+ * 
+ */
+export type StudyPathRequest = Prisma.StudyPathRequestModel
+/**
+ * Model PersonalSupportRequest
+ * 
+ */
+export type PersonalSupportRequest = Prisma.PersonalSupportRequestModel
+/**
+ * Model AiNavigatorRequest
+ * 
+ */
+export type AiNavigatorRequest = Prisma.AiNavigatorRequestModel
+/**
+ * Model DocumentGuide
+ * 
+ */
+export type DocumentGuide = Prisma.DocumentGuideModel
+/**
+ * Model DocumentStructureStep
+ * 
+ */
+export type DocumentStructureStep = Prisma.DocumentStructureStepModel

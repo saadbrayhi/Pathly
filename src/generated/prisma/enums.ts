@@ -9,7 +9,62 @@
 * 🟢 You can import this file directly.
 */
 
+export const RequirementStatus = {
+  REQUIRED: 'REQUIRED',
+  MAY_BE_REQUIRED: 'MAY_BE_REQUIRED',
+  OPTIONAL: 'OPTIONAL',
+  VARIES: 'VARIES'
+} as const
+
+export type RequirementStatus = (typeof RequirementStatus)[keyof typeof RequirementStatus]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const VerificationStatus = {
+  VERIFIED: 'VERIFIED',
+  COMMUNITY_CONFIRMED: 'COMMUNITY_CONFIRMED',
+  NEEDS_VERIFICATION: 'NEEDS_VERIFICATION'
+} as const
+
+export type VerificationStatus = (typeof VerificationStatus)[keyof typeof VerificationStatus]
+
+
+export const DeadlineState = {
+  OPEN: 'OPEN',
+  UPCOMING: 'UPCOMING',
+  CLOSED: 'CLOSED',
+  VARIES: 'VARIES',
+  NOT_PUBLISHED: 'NOT_PUBLISHED',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type DeadlineState = (typeof DeadlineState)[keyof typeof DeadlineState]
+
+
+export const DocumentCategory = {
+  ACADEMIC: 'ACADEMIC',
+  PERSONAL: 'PERSONAL',
+  APPLICATION: 'APPLICATION',
+  LANGUAGE: 'LANGUAGE',
+  FINANCIAL: 'FINANCIAL'
+} as const
+
+export type DocumentCategory = (typeof DocumentCategory)[keyof typeof DocumentCategory]
+
+
+export const PreparationLevel = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type PreparationLevel = (typeof PreparationLevel)[keyof typeof PreparationLevel]
+
+
+export const SupportRequestStatus = {
+  NEW: 'NEW',
+  IN_REVIEW: 'IN_REVIEW',
+  CONTACTED: 'CONTACTED',
+  CLOSED: 'CLOSED'
+} as const
+
+export type SupportRequestStatus = (typeof SupportRequestStatus)[keyof typeof SupportRequestStatus]

@@ -51,7 +51,18 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-
+  Country: 'Country',
+  AdmissionRequirement: 'AdmissionRequirement',
+  StudyLevelDetail: 'StudyLevelDetail',
+  LanguageRequirement: 'LanguageRequirement',
+  OfficialSource: 'OfficialSource',
+  Scholarship: 'Scholarship',
+  ScholarshipDeadline: 'ScholarshipDeadline',
+  StudyPathRequest: 'StudyPathRequest',
+  PersonalSupportRequest: 'PersonalSupportRequest',
+  AiNavigatorRequest: 'AiNavigatorRequest',
+  DocumentGuide: 'DocumentGuide',
+  DocumentStructureStep: 'DocumentStructureStep'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,4 +79,261 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const CountryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  flag: 'flag',
+  image: 'image',
+  description: 'description',
+  languages: 'languages',
+  tuition: 'tuition',
+  livingCost: 'livingCost',
+  tuitionRange: 'tuitionRange',
+  overview: 'overview',
+  lastReviewedAt: 'lastReviewedAt',
+  mainLanguage: 'mainLanguage',
+  livingCostSummary: 'livingCostSummary',
+  educationSystem: 'educationSystem',
+  whoCanApply: 'whoCanApply',
+  eligibilityWarning: 'eligibilityWarning',
+  languageWarning: 'languageWarning',
+  visaType: 'visaType',
+  visaSummary: 'visaSummary',
+  visaDescription: 'visaDescription',
+  visaProcessingTime: 'visaProcessingTime',
+  visaAppointment: 'visaAppointment',
+  visaEstimatedFee: 'visaEstimatedFee',
+  visaFinancialProof: 'visaFinancialProof',
+  visaWarning: 'visaWarning',
+  visaLastReviewedAt: 'visaLastReviewedAt',
+  visaOfficialSourceLabel: 'visaOfficialSourceLabel',
+  visaOfficialSourceUrl: 'visaOfficialSourceUrl',
+  languageOptions: 'languageOptions',
+  studyLevelOptions: 'studyLevelOptions',
+  requiredDocuments: 'requiredDocuments',
+  commonMistakes: 'commonMistakes',
+  visaDocuments: 'visaDocuments',
+  visaSteps: 'visaSteps',
+  visaCommonMistakes: 'visaCommonMistakes',
+  scholarshipNotes: 'scholarshipNotes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
+
+
+export const AdmissionRequirementScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  status: 'status',
+  sortOrder: 'sortOrder',
+  countryId: 'countryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdmissionRequirementScalarFieldEnum = (typeof AdmissionRequirementScalarFieldEnum)[keyof typeof AdmissionRequirementScalarFieldEnum]
+
+
+export const StudyLevelDetailScalarFieldEnum = {
+  id: 'id',
+  level: 'level',
+  duration: 'duration',
+  language: 'language',
+  tuition: 'tuition',
+  note: 'note',
+  sortOrder: 'sortOrder',
+  countryId: 'countryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StudyLevelDetailScalarFieldEnum = (typeof StudyLevelDetailScalarFieldEnum)[keyof typeof StudyLevelDetailScalarFieldEnum]
+
+
+export const LanguageRequirementScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  countryId: 'countryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LanguageRequirementScalarFieldEnum = (typeof LanguageRequirementScalarFieldEnum)[keyof typeof LanguageRequirementScalarFieldEnum]
+
+
+export const OfficialSourceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  url: 'url',
+  sortOrder: 'sortOrder',
+  countryId: 'countryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OfficialSourceScalarFieldEnum = (typeof OfficialSourceScalarFieldEnum)[keyof typeof OfficialSourceScalarFieldEnum]
+
+
+export const ScholarshipScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  image: 'image',
+  flag: 'flag',
+  scopeLabel: 'scopeLabel',
+  provider: 'provider',
+  level: 'level',
+  field: 'field',
+  funding: 'funding',
+  overview: 'overview',
+  whoCanApply: 'whoCanApply',
+  eligibilityNote: 'eligibilityNote',
+  fundingCoverage: 'fundingCoverage',
+  fundingNote: 'fundingNote',
+  officialUrl: 'officialUrl',
+  verificationStatus: 'verificationStatus',
+  lastReviewedAt: 'lastReviewedAt',
+  requiredDocuments: 'requiredDocuments',
+  applicationSteps: 'applicationSteps',
+  commonMistakes: 'commonMistakes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ScholarshipScalarFieldEnum = (typeof ScholarshipScalarFieldEnum)[keyof typeof ScholarshipScalarFieldEnum]
+
+
+export const ScholarshipDeadlineScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  displayText: 'displayText',
+  deadlineDate: 'deadlineDate',
+  state: 'state',
+  verificationStatus: 'verificationStatus',
+  lastVerifiedAt: 'lastVerifiedAt',
+  sourceUrl: 'sourceUrl',
+  sortOrder: 'sortOrder',
+  scholarshipId: 'scholarshipId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ScholarshipDeadlineScalarFieldEnum = (typeof ScholarshipDeadlineScalarFieldEnum)[keyof typeof ScholarshipDeadlineScalarFieldEnum]
+
+
+export const StudyPathRequestScalarFieldEnum = {
+  id: 'id',
+  educationLevel: 'educationLevel',
+  desiredDegree: 'desiredDegree',
+  fieldOfStudy: 'fieldOfStudy',
+  destinationValue: 'destinationValue',
+  countryId: 'countryId',
+  createdAt: 'createdAt'
+} as const
+
+export type StudyPathRequestScalarFieldEnum = (typeof StudyPathRequestScalarFieldEnum)[keyof typeof StudyPathRequestScalarFieldEnum]
+
+
+export const PersonalSupportRequestScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  email: 'email',
+  phone: 'phone',
+  currentCountry: 'currentCountry',
+  educationLevel: 'educationLevel',
+  desiredDegree: 'desiredDegree',
+  fieldOfStudy: 'fieldOfStudy',
+  helpType: 'helpType',
+  target: 'target',
+  deadline: 'deadline',
+  description: 'description',
+  status: 'status',
+  preferredCountryId: 'preferredCountryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PersonalSupportRequestScalarFieldEnum = (typeof PersonalSupportRequestScalarFieldEnum)[keyof typeof PersonalSupportRequestScalarFieldEnum]
+
+
+export const AiNavigatorRequestScalarFieldEnum = {
+  id: 'id',
+  prompt: 'prompt',
+  currentCountry: 'currentCountry',
+  educationLevel: 'educationLevel',
+  desiredDegree: 'desiredDegree',
+  fieldOfStudy: 'fieldOfStudy',
+  createdAt: 'createdAt'
+} as const
+
+export type AiNavigatorRequestScalarFieldEnum = (typeof AiNavigatorRequestScalarFieldEnum)[keyof typeof AiNavigatorRequestScalarFieldEnum]
+
+
+export const DocumentGuideScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  category: 'category',
+  description: 'description',
+  neededFor: 'neededFor',
+  preparation: 'preparation',
+  translationRequired: 'translationRequired',
+  translationNote: 'translationNote',
+  verificationStatus: 'verificationStatus',
+  authenticationRequired: 'authenticationRequired',
+  authenticationNote: 'authenticationNote',
+  whatItIs: 'whatItIs',
+  whyItIsNeeded: 'whyItIsNeeded',
+  structureNote: 'structureNote',
+  mistakes: 'mistakes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DocumentGuideScalarFieldEnum = (typeof DocumentGuideScalarFieldEnum)[keyof typeof DocumentGuideScalarFieldEnum]
+
+
+export const DocumentStructureStepScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  documentGuideId: 'documentGuideId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DocumentStructureStepScalarFieldEnum = (typeof DocumentStructureStepScalarFieldEnum)[keyof typeof DocumentStructureStepScalarFieldEnum]
+
+
+export const SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+} as const
+
+export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

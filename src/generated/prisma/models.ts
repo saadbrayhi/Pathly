@@ -8,4 +8,16 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Country'
+export type * from './models/AdmissionRequirement'
+export type * from './models/StudyLevelDetail'
+export type * from './models/LanguageRequirement'
+export type * from './models/OfficialSource'
+export type * from './models/Scholarship'
+export type * from './models/ScholarshipDeadline'
+export type * from './models/StudyPathRequest'
+export type * from './models/PersonalSupportRequest'
+export type * from './models/AiNavigatorRequest'
+export type * from './models/DocumentGuide'
+export type * from './models/DocumentStructureStep'
 export type * from './commonInputTypes'
