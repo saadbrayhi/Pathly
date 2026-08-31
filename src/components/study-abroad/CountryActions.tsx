@@ -46,7 +46,7 @@ export default function CountryActions({ countryName }: CountryActionsProps) {
         <Button
           href="/find-my-path"
           variant="secondary"
-          className="mt-5 bg-white px-5 py-3 text-[#3157d5]"
+          className="theme-contrast-surface mt-5 bg-white px-5 py-3 text-[#3157d5]"
         >
           Find My Study Path
           <ArrowRight size={16} />
