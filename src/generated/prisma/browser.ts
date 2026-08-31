@@ -17,4 +17,63 @@ import * as Prisma from './internal/prismaNamespaceBrowser'
 export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
-
+/**
+ * Model Country
+ * 
+ */
+export type Country = Prisma.CountryModel
+/**
+ * Model AdmissionRequirement
+ * 
+ */
+export type AdmissionRequirement = Prisma.AdmissionRequirementModel
+/**
+ * Model StudyLevelDetail
+ * 
+ */
+export type StudyLevelDetail = Prisma.StudyLevelDetailModel
+/**
+ * Model LanguageRequirement
+ * 
+ */
+export type LanguageRequirement = Prisma.LanguageRequirementModel
+/**
+ * Model OfficialSource
+ * 
+ */
+export type OfficialSource = Prisma.OfficialSourceModel
+/**
+ * Model Scholarship
+ * 
+ */
+export type Scholarship = Prisma.ScholarshipModel
+/**
+ * Model ScholarshipDeadline
+ * 
+ */
+export type ScholarshipDeadline = Prisma.ScholarshipDeadlineModel
+/**
+ * Model StudyPathRequest
+ * 
+ */
+export type StudyPathRequest = Prisma.StudyPathRequestModel
+/**
+ * Model PersonalSupportRequest
+ * 
+ */
+export type PersonalSupportRequest = Prisma.PersonalSupportRequestModel
+/**
+ * Model AiNavigatorRequest
+ * 
+ */
+export type AiNavigatorRequest = Prisma.AiNavigatorRequestModel
+/**
+ * Model DocumentGuide
+ * 
+ */
+export type DocumentGuide = Prisma.DocumentGuideModel
+/**
+ * Model DocumentStructureStep
+ * 
+ */
+export type DocumentStructureStep = Prisma.DocumentStructureStepModel
