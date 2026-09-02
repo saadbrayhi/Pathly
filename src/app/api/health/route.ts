@@ -1,27 +1,9 @@
-import { NextResponse } from "next/server";
+import { withApiHandler } from "@/server/api/handler";
+import { successResponse } from "@/server/api/response";
+import { getHealthStatus } from "@/server/services/healthService";
 
-import prisma from "@/lib/prisma";
+export const GET = withApiHandler(async () => {
+  const health = await getHealthStatus();
 
-export async function GET() {
-  try {
-    await prisma.$queryRaw`SELECT 1`;
-
-    return NextResponse.json(
-      {
-        status: "ok",
-        database: "connected",
-      },
-      { status: 200 },
-    );
-  } catch (error) {
-    console.error("Health check failed:", error);
-
-    return NextResponse.json(
-      {
-        status: "error",
-        database: "disconnected",
-      },
-      { status: 500 },
-    );
-  }
-}
+  return successResponse(health);
+});
