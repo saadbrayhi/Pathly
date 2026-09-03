@@ -5,8 +5,9 @@ import Container from "@/components/shared/Container";
 
 import ScholarshipExplorer from "@/components/scholarship/ScholarshipExplorer";
 import ScholarshipNotice from "@/components/scholarship/ScholarshipNotice";
-
-export default function ScholarshipPage() {
+import { getScholarships } from "@/server/services/scholarshipService";
+export default async function ScholarshipPage() {
+  const scholarships = await getScholarships({});
   return (
     <main className="pathly-page relative overflow-hidden">
       {/* Top background decorations */}
@@ -36,10 +37,7 @@ export default function ScholarshipPage() {
       <Container className="relative z-10 py-12 lg:py-16">
         {/* Breadcrumb */}
         <div className="breadcrumb mb-7">
-          <Link
-            href="/"
-            className="breadcrumb-link"
-          >
+          <Link href="/" className="breadcrumb-link">
             Home
           </Link>
 
@@ -61,7 +59,7 @@ export default function ScholarshipPage() {
         </section>
 
         {/* Search + results + cards */}
-        <ScholarshipExplorer />
+        <ScholarshipExplorer initialScholarships={scholarships} />
 
         {/* Verification notice */}
         <ScholarshipNotice />

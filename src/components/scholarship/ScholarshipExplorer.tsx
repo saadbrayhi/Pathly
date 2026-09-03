@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import Badge from "@/components/shared/Badge";
@@ -15,7 +15,34 @@ import {
   type ScholarshipApiItem,
 } from "@/services/scholarship";
 
-export default function ScholarshipExplorer() {
+type ScholarshipListItem = {
+  slug: string;
+  title: string;
+  image: string | null;
+  flag: string | null;
+  scopeLabel: string | null;
+  provider: string | null;
+  level: string | null;
+  funding: string | null;
+
+  countries: {
+    name: string;
+    flag: string | null;
+  }[];
+
+  deadlines: {
+    displayText: string;
+    state: string;
+  }[];
+};
+
+type ScholarshipExplorerProps = {
+  initialScholarships: ScholarshipListItem[];
+};
+
+export default function ScholarshipExplorer({
+  initialScholarships,
+}: ScholarshipExplorerProps) {
   const [search, setSearch] = useState("");
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
@@ -23,11 +50,22 @@ export default function ScholarshipExplorer() {
   const [level, setLevel] = useState("");
   const [fullyFundedOnly, setFullyFundedOnly] = useState(false);
 
-  const [scholarships, setScholarships] = useState<ScholarshipApiItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [scholarships, setScholarships] =
+    useState<ScholarshipListItem[]>(initialScholarships);
+
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
+    // The first scholarship list already came from page.tsx.
+    // Do not fetch it again.
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     let cancelled = false;
 
     const timeout = window.setTimeout(async () => {
@@ -35,7 +73,7 @@ export default function ScholarshipExplorer() {
         setIsLoading(true);
         setError(null);
 
-        const data = await fetchScholarships({
+        const data: ScholarshipApiItem[] = await fetchScholarships({
           search: search.trim() || undefined,
           destination: country || undefined,
           degree: level || undefined,
@@ -107,9 +145,7 @@ export default function ScholarshipExplorer() {
         </Badge>
       </div>
 
-      {isLoading ? (
-        <p className="mt-5 text-sm text-[#7f94b4]">Loading scholarships...</p>
-      ) : error ? (
+      {error ? (
         <EmptyState
           title="Unable to load scholarships"
           description={error}
