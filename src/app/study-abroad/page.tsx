@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-
+import { getCountries } from "@/server/services/countryService";
 import Container from "@/components/shared/Container";
-import { countries } from "@/constant/countries";
 import StudyAbroadDirectory from "@/components/study-abroad/StudyAbroadDirectory";
 
-export default function StudyAbroadPage() {
+export default async function StudyAbroadPage() {
+  const countries = await getCountries();
   return (
     <main className="relative min-h-screen overflow-hidden bg-slate-50">
       {/* Decorative circles */}
@@ -23,10 +23,7 @@ export default function StudyAbroadPage() {
       <Container className="relative z-10 pb-24 pt-16">
         {/* Breadcrumb */}
         <div className="breadcrumb mb-6">
-          <Link
-            href="/"
-            className="breadcrumb-link"
-          >
+          <Link href="/" className="breadcrumb-link">
             Home
           </Link>
 

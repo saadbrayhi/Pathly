@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, FileText } from "lucide-react";
 
-import type { CountryDetails } from "@/constant/countries";
+import type { CountryDetails } from "@/interfaces/country";
 
 type CountryStudyInfoProps = {
   details: CountryDetails;

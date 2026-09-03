@@ -7,7 +7,7 @@ import Button from "@/components/shared/Button";
 import Input from "@/components/shared/Input";
 import EmptyState from "@/components/shared/states/EmptyState";
 import CountryCard from "./CountryCard";
-import type { Country } from "@/constant/countries";
+import type { Country } from "@/interfaces/country";
 
 type StudyAbroadDirectoryProps = {
   countries: Country[];
