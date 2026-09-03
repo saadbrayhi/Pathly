@@ -1,6 +1,6 @@
 import { AlertTriangle, ExternalLink } from "lucide-react";
 
-import type { CountryDetails } from "@/constant/countries";
+import type { CountryDetails } from "@/interfaces/country";
 
 type CountrySourcesProps = {
   details: CountryDetails;

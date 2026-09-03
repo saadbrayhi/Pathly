@@ -9,7 +9,7 @@ import Card from "@/components/shared/Card";
 import Input from "@/components/shared/Input";
 import Select from "@/components/shared/Select";
 import EmptyState from "@/components/shared/states/EmptyState";
-import {countries}  from "@/constant/countries";
+import type { Country } from "@/interfaces/country";
 
 const languageOptions = [
   { label: "English", value: "English" },
@@ -21,29 +21,30 @@ const languageOptions = [
   { label: "Spanish", value: "Spanish" },
 ];
 
-export default function CountryExplorer() {
+type CountryExplorerProps = {
+  countries: Country[];
+};
+export default function CountryExplorer({ countries }: CountryExplorerProps) {
   const [search, setSearch] = useState("");
   const [language, setLanguage] = useState("");
 
   const normalizedSearch = search.trim().toLowerCase();
 
-  const hasActiveFilters =
-    normalizedSearch !== "" || language !== "";
+  const hasActiveFilters = normalizedSearch !== "" || language !== "";
 
   const filteredCountries = countries.filter((country) => {
     const searchableText = [
       country.name,
-      country.languages,
-      country.studyLevels,
+      country.languages ?? "",
+      country.studyLevelOptions.join(", "),
     ]
       .join(" ")
       .toLowerCase();
 
-    const matchesSearch =
-      searchableText.includes(normalizedSearch);
+    const matchesSearch = searchableText.includes(normalizedSearch);
 
     const matchesLanguage =
-      language === "" || country.languages.includes(language);
+      language === "" || country.languageOptions.includes(language);
 
     return matchesSearch && matchesLanguage;
   });
@@ -84,19 +85,11 @@ export default function CountryExplorer() {
       </div>
 
       <div className="mt-8">
-        <h2 className="text-2xl font-bold text-heading">
-          Study destinations
-        </h2>
+        <h2 className="text-2xl font-bold text-heading">Study destinations</h2>
 
-        <p
-          className="mt-1 text-sm text-slate-500"
-          aria-live="polite"
-        >
+        <p className="mt-1 text-sm text-slate-500" aria-live="polite">
           {filteredCountries.length}{" "}
-          {filteredCountries.length === 1
-            ? "country"
-            : "countries"}{" "}
-          found
+          {filteredCountries.length === 1 ? "country" : "countries"} found
         </p>
       </div>
 
@@ -110,13 +103,17 @@ export default function CountryExplorer() {
             >
               <Card className="card-interactive h-full overflow-hidden">
                 <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={country.image}
-                    alt={`Study destination in ${country.name}`}
-                    fill
-                    sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition duration-300 group-hover:scale-105"
-                  />
+                  {country.image ? (
+                    <Image
+                      src={country.image}
+                      alt={`Study destination in ${country.name}`}
+                      fill
+                      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="h-full w-full bg-slate-200" />
+                  )}
 
                   <span
                     className="absolute bottom-4 left-4 text-4xl"
@@ -136,8 +133,7 @@ export default function CountryExplorer() {
                   </p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
-                    
-                      <Badge >{country.studyLevels}</Badge>
+                    <Badge>{country.studyLevelOptions.join(", ")}</Badge>
                   </div>
 
                   <p className="mt-6 font-semibold text-primary">

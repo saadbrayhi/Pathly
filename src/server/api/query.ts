@@ -1,5 +1,4 @@
 import { z } from "zod";
-
 import { ApiError } from "@/server/api/errors";
 
 function queryParamsToObject(
@@ -30,9 +29,7 @@ export function parseQuery<TSchema extends z.ZodType>(
   const result = schema.safeParse(query);
 
   if (!result.success) {
-    const { formErrors, fieldErrors } = z.flattenError(
-      result.error,
-    );
+    const { formErrors, fieldErrors } = z.flattenError(result.error);
 
     throw new ApiError({
       status: 400,

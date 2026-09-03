@@ -5,11 +5,10 @@ import { Award, FileText, Globe2, Plane, Search } from "lucide-react";
 import Card from "@/components/shared/Card";
 import Container from "@/components/shared/Container";
 import EmptyState from "@/components/shared/states/EmptyState";
-import { countries } from "@/constant/countries";
 import { scholarships } from "@/constant/scholarships";
 import { visaCountries } from "@/constant/visa/visaData";
 import { documents } from "@/data/documents";
-
+import { getCountries } from "@/server/services/countryService";
 export const metadata: Metadata = {
   title: "Search | Pathly",
   description:
@@ -29,6 +28,7 @@ type SearchResult = {
 };
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const countries = await getCountries();
   const rawQuery = (await searchParams).q;
   const query = (
     Array.isArray(rawQuery) ? rawQuery[0] : (rawQuery ?? "")
@@ -41,9 +41,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           .filter((country) =>
             [
               country.name,
-              country.description,
-              country.languages,
-              country.studyLevels,
+              country.description ?? "",
+              country.languages ?? "",
+              country.studyLevelOptions.join(" "),
             ]
               .join(" ")
               .toLowerCase()
@@ -51,7 +51,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           )
           .map((country) => ({
             title: country.name,
-            description: country.description,
+            description: country.description ?? "No description available",
             href: `/study-abroad/${country.slug}`,
             category: "Country" as const,
             icon: Globe2,
