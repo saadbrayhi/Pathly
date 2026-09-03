@@ -3,10 +3,10 @@ import { ArrowRight, FileText } from "lucide-react";
 
 import Badge from "@/components/shared/Badge";
 import Card from "@/components/shared/Card";
-import type { StudyDocument } from "@/data/documents";
+import type { DocumentSummary } from "@/types/document";
 
 type DocumentCardProps = {
-  document: StudyDocument;
+  document: DocumentSummary;
 };
 
 const preparationVariant = {

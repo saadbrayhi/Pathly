@@ -7,8 +7,9 @@ import Container from "@/components/shared/Container";
 import EmptyState from "@/components/shared/states/EmptyState";
 import { scholarships } from "@/constant/scholarships";
 import { visaCountries } from "@/constant/visa/visaData";
-import { documents } from "@/data/documents";
+import { getDocuments } from "@/server/services/documentService";
 import { getCountries } from "@/server/services/countryService";
+
 export const metadata: Metadata = {
   title: "Search | Pathly",
   description:
@@ -34,6 +35,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     Array.isArray(rawQuery) ? rawQuery[0] : (rawQuery ?? "")
   ).trim();
   const normalizedQuery = query.toLowerCase();
+  const documents = normalizedQuery ? await getDocuments() : [];
 
   const results: SearchResult[] = normalizedQuery
     ? [
@@ -91,7 +93,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           )
           .map((document) => ({
             title: document.name,
-            description: document.description,
+            description: document.description ?? document.neededFor,
             href: `/documents/${document.slug}`,
             category: "Document" as const,
             icon: FileText,
