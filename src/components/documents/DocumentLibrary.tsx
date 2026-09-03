@@ -1,25 +1,39 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Search, X } from "lucide-react";
 
 import Input from "@/components/shared/Input";
 import EmptyState from "@/components/shared/states/EmptyState";
+import LoadingState from "@/components/shared/states/LoadingState";
+import ErrorState from "@/components/shared/states/ErrorState";
+import { fetchDocuments } from "@/services/documents";
 import {
   DOCUMENT_CATEGORIES,
-  documents,
   type DocumentCategory,
-  type StudyDocument,
-} from "@/data/documents";
+  type DocumentSummary,
+} from "@/types/document";
 
 import DocumentCard from "./DocumentCard";
 
-type GroupedDocuments = Partial<Record<DocumentCategory, StudyDocument[]>>;
+type GroupedDocuments = Partial<Record<DocumentCategory, DocumentSummary[]>>;
 
 export default function DocumentLibrary() {
   const [search, setSearch] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState<DocumentCategory[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<
+    DocumentCategory[]
+  >([]);
   const [translationOnly, setTranslationOnly] = useState(false);
+  const {
+    data: documents = [],
+    isLoading,
+    error,
+    refetch,
+  } = useQuery<DocumentSummary[], Error>({
+    queryKey: ["documents"],
+    queryFn: fetchDocuments,
+  });
 
   const groupedDocuments = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
@@ -53,7 +67,7 @@ export default function DocumentLibrary() {
 
       return groups;
     }, {});
-  }, [search, selectedCategories, translationOnly]);
+  }, [documents, search, selectedCategories, translationOnly]);
 
   const visibleCount = Object.values(groupedDocuments).reduce(
     (total, categoryDocuments) => total + (categoryDocuments?.length ?? 0),
@@ -75,6 +89,21 @@ export default function DocumentLibrary() {
     setSelectedCategories([]);
     setTranslationOnly(false);
   };
+
+  if (isLoading) {
+    return <LoadingState message="Loading documents..." className="mt-7" />;
+  }
+
+  if (error) {
+    return (
+      <ErrorState
+        title="Could not load documents"
+        description={error.message}
+        onRetry={() => void refetch()}
+        className="mt-7"
+      />
+    );
+  }
 
   return (
     <section aria-labelledby="document-results-title" className="mt-7">
@@ -180,7 +209,10 @@ export default function DocumentLibrary() {
               if (!categoryDocuments) return null;
 
               return (
-                <section key={category} aria-labelledby={`${category}-documents`}>
+                <section
+                  key={category}
+                  aria-labelledby={`${category}-documents`}
+                >
                   <h2
                     id={`${category}-documents`}
                     className="mb-4 text-lg font-bold text-heading"

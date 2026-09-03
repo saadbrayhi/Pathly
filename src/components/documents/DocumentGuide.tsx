@@ -6,12 +6,10 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import Card from "@/components/shared/Card";
 import Container from "@/components/shared/Container";
 import SupportCTA from "@/components/shared/SupportCTA";
-import type { DocumentGuide as DocumentGuideData } from "@/data/documentGuides";
-import type { StudyDocument } from "@/data/documents";
+import type { DocumentDetails } from "@/types/document";
 
 type DocumentGuideProps = {
-  document: StudyDocument;
-  guide: DocumentGuideData;
+  document: DocumentDetails;
 };
 
 const preparationVariant = {
@@ -20,7 +18,7 @@ const preparationVariant = {
   High: "danger",
 } as const;
 
-export default function DocumentGuide({ document, guide }: DocumentGuideProps) {
+export default function DocumentGuide({ document }: DocumentGuideProps) {
   return (
     <main className="warm-page overflow-x-hidden py-8 sm:py-12">
       <Container className="max-w-[948px]">
@@ -66,19 +64,23 @@ export default function DocumentGuide({ document, guide }: DocumentGuideProps) {
 
         <div className="mt-5 space-y-5">
           <GuideSection title="What it is">
-            <p className="text-sm leading-7 text-slate-600">{guide.whatItIs}</p>
+            <p className="text-sm leading-7 text-slate-600">
+              {document.whatItIs}
+            </p>
           </GuideSection>
 
           <GuideSection title="Why universities ask for it">
-            <p className="text-sm leading-7 text-slate-600">{guide.whyItIsNeeded}</p>
+            <p className="text-sm leading-7 text-slate-600">
+              {document.whyItIsNeeded}
+            </p>
           </GuideSection>
 
-          {guide.structure.length > 0 && (
+          {document.structureSteps.length > 0 && (
             <GuideSection title="Recommended structure">
               <ol className="space-y-3">
-                {guide.structure.map((step, index) => (
+                {document.structureSteps.map((step, index) => (
                   <li
-                    key={step.title}
+                    key={step.id}
                     className="flex items-start gap-4 rounded-xl bg-[#f6f7f3] p-4"
                   >
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
@@ -94,10 +96,12 @@ export default function DocumentGuide({ document, guide }: DocumentGuideProps) {
                 ))}
               </ol>
 
-              {guide.structureNote && (
+              {document.structureNote && (
                 <div className="mt-4 flex items-start gap-2 rounded-xl bg-soft-mint p-3 text-accent">
                   <Info aria-hidden="true" size={14} className="mt-0.5 shrink-0" />
-                  <p className="text-xs leading-5">{guide.structureNote}</p>
+                  <p className="text-xs leading-5">
+                    {document.structureNote}
+                  </p>
                 </div>
               )}
             </GuideSection>
@@ -122,7 +126,7 @@ export default function DocumentGuide({ document, guide }: DocumentGuideProps) {
 
           <GuideSection title="Common mistakes">
             <ul className="space-y-3">
-              {guide.mistakes.map((mistake) => (
+              {document.mistakes.map((mistake) => (
                 <li
                   key={mistake}
                   className="flex items-start gap-3 rounded-xl border border-warning-border/60 bg-soft-warning px-4 py-3"
