@@ -2,7 +2,7 @@ import { ArrowRight, ShieldCheck } from "lucide-react";
 
 import Button from "@/components/shared/Button";
 
-import type { Country, CountryDetails } from "@/constant/countries";
+import type { Country, CountryDetails } from "@/interfaces/country";
 
 type CountryOverviewProps = {
   country: Country;
@@ -33,7 +33,17 @@ export default function CountryOverview({
               <span className="text-slate-300">·</span>
 
               <span className="text-[#8ba0c0]">
-                Last reviewed {details.lastReviewed}
+                Last reviewed{" "}
+                {details.lastReviewedAt
+                  ? new Date(details.lastReviewedAt).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      },
+                    )
+                  : "N/A"}
               </span>
             </div>
           </div>
@@ -50,20 +60,32 @@ export default function CountryOverview({
       </p>
 
       <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-        <QuickInfo label="Study Levels" value={country.studyLevels} />
+        <QuickInfo
+          label="Study Levels"
+          value={country.studyLevelOptions.join(", ")}
+        />
 
-        <QuickInfo label="Main Language" value={details.mainLanguage} />
+        <QuickInfo
+          label="Main Language"
+          value={details.mainLanguage ?? "Not specified"}
+        />
 
         <QuickInfo label="Tuition" value="Varies by institution" />
 
-        <QuickInfo label="Living Costs" value={details.livingCostSummary} />
+        <QuickInfo
+          label="Living Costs"
+          value={details.livingCostSummary ?? "Not specified"}
+        />
 
         <QuickInfo
           label="Scholarships"
           value={country.scholarshipAvailable ? "Available" : "Limited"}
         />
 
-        <QuickInfo label="Visa" value={details.visaSummary} />
+        <QuickInfo
+          label="Visa"
+          value={details.visaSummary ?? "See visa requirements"}
+        />
       </div>
     </section>
   );

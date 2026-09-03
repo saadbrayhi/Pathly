@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import Badge from "@/components/shared/Badge";
 
-import type { Country } from "@/constant/countries";
+import type { Country } from "@/interfaces/country";
 
 type CountryCardProps = {
   country: Country;
@@ -29,13 +29,17 @@ export default function CountryCard({ country }: CountryCardProps) {
       className="group block overflow-hidden rounded-2xl border border-[#dbe4f0] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#b8caf8] hover:shadow-xl"
     >
       <div className="relative h-32 w-full overflow-hidden">
-        <Image
-          src={country.image}
-          alt={`${country.name} study destination`}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition duration-500 group-hover:scale-105"
-        />
+        {country.image ? (
+          <Image
+            src={country.image}
+            alt={`${country.name} study destination`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="h-full w-full bg-slate-200" />
+        )}
 
         <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/10 to-transparent" />
 
@@ -93,7 +97,7 @@ export default function CountryCard({ country }: CountryCardProps) {
             <span className="text-xs text-[#8ca0bf]">Study levels</span>
 
             <span className="ml-4 text-right text-xs font-semibold text-[#344969]">
-              {country.studyLevels}
+              {country.studyLevelOptions.join(", ")}
             </span>
           </div>
         </div>

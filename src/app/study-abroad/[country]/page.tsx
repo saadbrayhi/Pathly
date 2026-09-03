@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
+import axios from "axios";
 
 import Container from "@/components/shared/Container";
-import { countries } from "@/constant/countries";
-
 import CountryActions from "@/components/study-abroad/CountryActions";
 import CountryAdmissions from "@/components/study-abroad/CountryAdmissions";
 import CountryOverview from "@/components/study-abroad/CountryOverview";
@@ -12,6 +11,8 @@ import CountryRequirements from "@/components/study-abroad/CountryRequirements";
 import CountrySectionNav from "@/components/study-abroad/CountrySectionNav";
 import CountrySources from "@/components/study-abroad/CountrySources";
 import CountryStudyInfo from "@/components/study-abroad/CountryStudyInfo";
+
+import { getCountryBySlug } from "@/server/services/countryService";
 
 type CountryPageProps = {
   params: Promise<{
@@ -22,13 +23,19 @@ type CountryPageProps = {
 export default async function CountryPage({ params }: CountryPageProps) {
   const { country: countrySlug } = await params;
 
-  const country = countries.find((item) => item.slug === countrySlug);
+  let country;
 
-  if (!country || !country.details) {
-    notFound();
+  try {
+    country = await getCountryBySlug(countrySlug);
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 404) {
+      notFound();
+    }
+
+    throw error;
   }
 
-  const details = country.details;
+  const details = country;
 
   return (
     <main className="pathly-page relative">
@@ -44,19 +51,13 @@ export default async function CountryPage({ params }: CountryPageProps) {
       <Container className="relative z-10 py-14">
         {/* Breadcrumb */}
         <div className="breadcrumb mb-7">
-          <Link
-            href="/"
-            className="breadcrumb-link"
-          >
+          <Link href="/" className="breadcrumb-link">
             Home
           </Link>
 
           <ChevronRight size={14} className="breadcrumb-separator" />
 
-          <Link
-            href="/study-abroad"
-            className="breadcrumb-link"
-          >
+          <Link href="/study-abroad" className="breadcrumb-link">
             Study Abroad
           </Link>
 
