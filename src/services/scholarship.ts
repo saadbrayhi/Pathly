@@ -1,4 +1,4 @@
-import { axiosGet } from "@/lib/axios";
+import { api, axiosGet } from "@/lib/axios";
 
 export type ScholarshipDeadline = {
   id: string;
@@ -90,6 +90,55 @@ export async function fetchScholarshipBySlug(
 
   return response.data;
 }
+
+export type CreateScholarshipPayload = {
+  title: string;
+  slug: string;
+  image?: string | null;
+  flag?: string | null;
+  scopeLabel?: string | null;
+  provider?: string | null;
+  level?: string | null;
+  field?: string | null;
+  funding?: string | null;
+  overview?: string | null;
+  whoCanApply?: string | null;
+  eligibilityNote?: string | null;
+  fundingCoverage?: string | null;
+  fundingNote?: string | null;
+  officialUrl?: string | null;
+  countryIds?: string[];
+};
+
+export type UpdateScholarshipPayload = Partial<CreateScholarshipPayload>;
+
+type ApiSuccess<T> = { success: true; data: T };
+
+export async function adminCreateScholarship(
+  payload: CreateScholarshipPayload,
+): Promise<ScholarshipApiItem> {
+  const response = await api.post<ApiSuccess<ScholarshipApiItem>>(
+    "/scholarships",
+    payload,
+  );
+  return response.data.data;
+}
+
+export async function adminUpdateScholarship(
+  slug: string,
+  payload: UpdateScholarshipPayload,
+): Promise<ScholarshipApiItem> {
+  const response = await api.put<ApiSuccess<ScholarshipApiItem>>(
+    `/scholarships/${slug}`,
+    payload,
+  );
+  return response.data.data;
+}
+
+export async function adminDeleteScholarship(slug: string): Promise<void> {
+  await api.delete(`/scholarships/${slug}`);
+}
+
 export type ScholarshipViewModel = {
   slug: string;
   image: string;

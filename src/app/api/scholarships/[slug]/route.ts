@@ -3,8 +3,16 @@ import { z } from "zod";
 import { ApiError } from "@/server/api/errors";
 import { withApiHandler } from "@/server/api/handler";
 import { successResponse } from "@/server/api/response";
-import { getScholarshipBySlug } from "@/server/services/scholarshipService";
-import { scholarshipSlugSchema } from "@/server/validation/scholarship";
+import { parseJsonBody } from "@/server/validation/request";
+import {
+  deleteScholarship,
+  getScholarshipBySlug,
+  updateScholarship,
+} from "@/server/services/scholarshipService";
+import {
+  scholarshipSlugSchema,
+  updateScholarshipSchema,
+} from "@/server/validation/scholarship";
 
 type ScholarshipRouteContext = {
   params: Promise<{
@@ -30,5 +38,22 @@ export const GET = withApiHandler<ScholarshipRouteContext>(
     const scholarship = await getScholarshipBySlug(result.data);
 
     return successResponse(scholarship);
+  },
+);
+
+export const PUT = withApiHandler<ScholarshipRouteContext>(
+  async (request, context) => {
+    const { slug } = await context.params;
+    const body = await parseJsonBody(request, updateScholarshipSchema);
+    const scholarship = await updateScholarship(slug, body);
+    return successResponse(scholarship);
+  },
+);
+
+export const DELETE = withApiHandler<ScholarshipRouteContext>(
+  async (_request, context) => {
+    const { slug } = await context.params;
+    await deleteScholarship(slug);
+    return successResponse(null, { status: 200 });
   },
 );
