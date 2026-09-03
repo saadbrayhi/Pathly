@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AlertTriangle, ArrowRight, Award } from "lucide-react";
 
-import type { CountryDetails } from "@/constant/countries";
+import type { CountryDetails } from "@/interfaces/country";
 
 type CountryRequirementsProps = {
   details: CountryDetails;
@@ -23,17 +23,11 @@ export default function CountryRequirements({
           Language Requirements
         </h2>
 
-        {details.languageDescription && (
-          <p className="mt-4 text-sm leading-6 text-[#43597b]">
-            {details.languageDescription}
-          </p>
-        )}
-
         {details.languageRequirements.length > 0 && (
           <div className="mt-5 space-y-3">
             {details.languageRequirements.map((requirement) => (
               <div
-                key={requirement.title}
+                key={requirement.id}
                 className="rounded-xl bg-[#f7f8f5] p-4"
               >
                 <h3 className="font-semibold text-[#111827]">
@@ -70,7 +64,7 @@ export default function CountryRequirements({
         <h2 className="content-heading">Scholarships</h2>
 
         <div className="mt-5 space-y-2.5">
-          {details.scholarships.map((scholarship) => (
+          {details.scholarshipNotes.map((scholarship) => (
             <div
               key={scholarship}
               className="content-list-row"

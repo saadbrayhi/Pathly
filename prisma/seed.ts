@@ -7,13 +7,13 @@ import {
   seedStudyLevelDetails,
 } from "./seeds/countries.seed";
 import { seedScholarshipDeadlines } from "./seeds/deadlines.seed";
-import { seedDocumentGuides } from "./seeds/documents.seed";
 import {
   seedAdmissionRequirements,
   seedLanguageRequirements,
 } from "./seeds/requirements.seed";
 import { seedScholarships } from "./seeds/scholarships.seed";
 import { seedVisaDetails } from "./seeds/visa.seed";
+import { seedDocumentGuides } from "./seeds/documents.seed";
 
 const adapter = new PrismaPg({
   connectionString: process.env.DIRECT_URL!,
@@ -34,8 +34,8 @@ async function main() {
   await seedStudyLevelDetails(prisma);
   await seedLanguageRequirements(prisma);
   await seedOfficialSources(prisma);
-  await seedVisaDetails(prisma);
   await seedDocumentGuides(prisma);
+  await seedVisaDetails(prisma);
   await seedScholarships(prisma);
   await seedScholarshipDeadlines(prisma);
   console.log("Seed finished.");
