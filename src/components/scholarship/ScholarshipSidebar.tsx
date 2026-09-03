@@ -10,11 +10,9 @@ import {
 } from "lucide-react";
 
 import Card from "@/components/shared/Card";
-
-import type { Scholarship } from "@/constant/scholarships";
-
+import type { ScholarshipViewModel } from "@/services/scholarship";
 type ScholarshipSidebarProps = {
-  scholarship: Scholarship;
+  scholarship: ScholarshipViewModel;
 };
 
 export default function ScholarshipSidebar({

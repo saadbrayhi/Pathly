@@ -1,9 +1,9 @@
 import Card from "@/components/shared/Card";
 
-import type { Scholarship } from "@/constant/scholarships";
+import type { ScholarshipViewModel } from "@/services/scholarship";
 
 type ScholarshipApplicationStepsProps = {
-  scholarship: Scholarship;
+  scholarship: ScholarshipViewModel;
 };
 
 export default function ScholarshipApplicationSteps({
@@ -11,9 +11,7 @@ export default function ScholarshipApplicationSteps({
 }: ScholarshipApplicationStepsProps) {
   return (
     <Card className="content-card">
-      <h2 className="content-heading">
-        Application Steps
-      </h2>
+      <h2 className="content-heading">Application Steps</h2>
 
       <div className="mt-5 space-y-4">
         {scholarship.applicationSteps.map((step, index) => (

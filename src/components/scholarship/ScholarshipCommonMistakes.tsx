@@ -2,10 +2,9 @@ import { AlertTriangle } from "lucide-react";
 
 import Card from "@/components/shared/Card";
 
-import type { Scholarship } from "@/constant/scholarships";
-
+import type { ScholarshipViewModel } from "@/services/scholarship";
 type ScholarshipCommonMistakesProps = {
-  scholarship: Scholarship;
+  scholarship: ScholarshipViewModel;
 };
 
 export default function ScholarshipCommonMistakes({
@@ -17,10 +16,7 @@ export default function ScholarshipCommonMistakes({
 
       <div className="mt-5 space-y-3">
         {scholarship.commonMistakes.map((mistake) => (
-          <div
-            key={mistake}
-            className="warning-panel"
-          >
+          <div key={mistake} className="warning-panel">
             <AlertTriangle
               size={16}
               className="mt-0.5 shrink-0 text-[#b76800]"

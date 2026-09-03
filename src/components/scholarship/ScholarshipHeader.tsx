@@ -5,11 +5,9 @@ import { ExternalLink } from "lucide-react";
 import Badge from "@/components/shared/Badge";
 import Button from "@/components/shared/Button";
 import Card from "@/components/shared/Card";
-
-import type { Scholarship } from "@/constant/scholarships";
-
+import type { ScholarshipViewModel } from "@/services/scholarship";
 type ScholarshipHeaderProps = {
-  scholarship: Scholarship;
+  scholarship: ScholarshipViewModel;
 };
 
 export default function ScholarshipHeader({

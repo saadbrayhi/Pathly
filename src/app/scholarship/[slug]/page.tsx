@@ -4,7 +4,12 @@ import { notFound } from "next/navigation";
 
 import Container from "@/components/shared/Container";
 
-import { scholarships } from "@/constant/scholarships";
+import { ApiError } from "@/lib/axios";
+import {
+  fetchScholarshipBySlug,
+  mapScholarshipToViewModel,
+  type ScholarshipViewModel,
+} from "@/services/scholarship";
 
 import ScholarshipApplicationSteps from "@/components/scholarship/ScholarshipApplicationSteps";
 import ScholarshipCommonMistakes from "@/components/scholarship/ScholarshipCommonMistakes";
@@ -25,10 +30,18 @@ export default async function ScholarshipDetailsPage({
 }: ScholarshipDetailsPageProps) {
   const { slug } = await params;
 
-  const scholarship = scholarships.find((item) => item.slug === slug);
+  let scholarship: ScholarshipViewModel;
 
-  if (!scholarship) {
-    notFound();
+  try {
+    const data = await fetchScholarshipBySlug(slug);
+
+    scholarship = mapScholarshipToViewModel(data);
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) {
+      notFound();
+    }
+
+    throw error;
   }
 
   return (
@@ -51,27 +64,19 @@ export default async function ScholarshipDetailsPage({
       <Container className="relative z-10 py-12 lg:py-16">
         {/* Breadcrumb */}
         <div className="breadcrumb mb-7 flex-wrap">
-          <Link
-            href="/"
-            className="breadcrumb-link"
-          >
+          <Link href="/" className="breadcrumb-link">
             Home
           </Link>
 
           <ChevronRight size={14} className="breadcrumb-separator" />
 
-          <Link
-            href="/scholarship"
-            className="breadcrumb-link"
-          >
+          <Link href="/scholarship" className="breadcrumb-link">
             Scholarships
           </Link>
 
           <ChevronRight size={14} className="breadcrumb-separator" />
 
-          <span className="breadcrumb-current">
-            {scholarship.title}
-          </span>
+          <span className="breadcrumb-current">{scholarship.title}</span>
         </div>
 
         {/* Scholarship header */}
