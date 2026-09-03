@@ -1,6 +1,5 @@
 import type { PrismaClient } from "../../src/generated/prisma/client";
-import { scholarships } from "../../src/constant/scholarships";
-
+import { scholarships } from "./data/scholarships";
 export async function seedScholarships(prisma: PrismaClient) {
   console.log("Seeding scholarships...");
 

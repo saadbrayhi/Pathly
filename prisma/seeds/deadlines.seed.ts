@@ -3,8 +3,7 @@ import {
   VerificationStatus,
   type PrismaClient,
 } from "../../src/generated/prisma/client";
-import { scholarships } from "../../src/constant/scholarships";
-
+import { scholarships } from "./data/scholarships";
 function mapDeadlineState(status: string): DeadlineState {
   if (status === "Open") {
     return DeadlineState.OPEN;

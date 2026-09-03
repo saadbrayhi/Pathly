@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AlertTriangle } from "lucide-react";
 
 import Badge from "@/components/shared/Badge";
@@ -9,7 +9,11 @@ import EmptyState from "@/components/shared/states/EmptyState";
 import ScholarshipCard from "./ScholarshipCard";
 import ScholarshipFilters from "./ScholarshipFilters";
 import ScholarshipSearch from "./ScholarshipSearch";
-import { scholarships } from "@/constant/scholarships";
+
+import {
+  fetchScholarships,
+  type ScholarshipApiItem,
+} from "@/services/scholarship";
 
 export default function ScholarshipExplorer() {
   const [search, setSearch] = useState("");
@@ -19,36 +23,52 @@ export default function ScholarshipExplorer() {
   const [level, setLevel] = useState("");
   const [fullyFundedOnly, setFullyFundedOnly] = useState(false);
 
-  const filteredScholarships = scholarships.filter((scholarship) => {
-    const query = search.trim().toLowerCase();
+  const [scholarships, setScholarships] = useState<ScholarshipApiItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-    const matchesSearch =
-      scholarship.title.toLowerCase().includes(query) ||
-      scholarship.provider.toLowerCase().includes(query) ||
-      scholarship.country.toLowerCase().includes(query) ||
-      scholarship.level.toLowerCase().includes(query);
+  useEffect(() => {
+    let cancelled = false;
 
-    const matchesCountry = country === "" || scholarship.country === country;
+    const timeout = window.setTimeout(async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
 
-    const matchesLevel =
-      level === "" ||
-      scholarship.level.toLowerCase().includes(level.toLowerCase());
+        const data = await fetchScholarships({
+          search: search.trim() || undefined,
+          destination: country || undefined,
+          degree: level || undefined,
+          funding: fullyFundedOnly ? "fully-funded" : undefined,
+        });
 
-    const funding = scholarship.funding.toLowerCase();
+        if (!cancelled) {
+          setScholarships(data);
+        }
+      } catch {
+        if (!cancelled) {
+          setError("Unable to load scholarships.");
+        }
+      } finally {
+        if (!cancelled) {
+          setIsLoading(false);
+        }
+      }
+    }, 300);
 
-    const matchesFunding =
-      !fullyFundedOnly ||
-      funding.includes("fully funded") ||
-      funding.includes("full tuition");
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeout);
+    };
+  }, [search, country, level, fullyFundedOnly]);
 
-    return matchesSearch && matchesCountry && matchesLevel && matchesFunding;
-  });
   function clearFilters() {
     setSearch("");
     setCountry("");
     setLevel("");
     setFullyFundedOnly(false);
   }
+
   return (
     <>
       <ScholarshipSearch
@@ -74,33 +94,66 @@ export default function ScholarshipExplorer() {
 
       <div className="mt-4 flex items-center justify-between gap-4">
         <p className="text-sm text-[#7f94b4]">
-          {filteredScholarships.length}{" "}
-          {filteredScholarships.length === 1 ? "scholarship" : "scholarships"}
+          {isLoading
+            ? "Loading scholarships..."
+            : `${scholarships.length} ${
+                scholarships.length === 1 ? "scholarship" : "scholarships"
+              }`}
         </p>
 
         <Badge variant="warning" className="gap-2 px-3 py-1.5">
           <AlertTriangle size={14} />
-          Demo data — always verify on official pages
+          Always verify information on official pages
         </Badge>
       </div>
 
-      {filteredScholarships.length > 0 ? (
+      {isLoading ? (
+        <p className="mt-5 text-sm text-[#7f94b4]">Loading scholarships...</p>
+      ) : error ? (
+        <EmptyState
+          title="Unable to load scholarships"
+          description={error}
+          actionLabel="Clear filters"
+          onAction={clearFilters}
+          className="mt-5"
+        />
+      ) : scholarships.length > 0 ? (
         <section className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
-          {filteredScholarships.map((scholarship) => (
-            <ScholarshipCard
-              key={scholarship.slug}
-              slug={scholarship.slug}
-              image={scholarship.image}
-              country={scholarship.country}
-              flag={scholarship.flag}
-              status={scholarship.status}
-              level={scholarship.level}
-              provider={scholarship.provider}
-              title={scholarship.title}
-              funding={scholarship.funding}
-              deadline={scholarship.deadline}
-            />
-          ))}
+          {scholarships.map((scholarship) => {
+            const countryName =
+              scholarship.scopeLabel ??
+              scholarship.countries[0]?.name ??
+              "Multiple Countries";
+
+            const flag =
+              scholarship.flag ?? scholarship.countries[0]?.flag ?? "🌍";
+
+            const deadline =
+              scholarship.deadlines[0]?.displayText ??
+              "Verify on official page";
+
+            const status = scholarship.deadlines.some(
+              (deadlineItem) => deadlineItem.state === "OPEN",
+            )
+              ? "Open"
+              : "Verify";
+
+            return (
+              <ScholarshipCard
+                key={scholarship.slug}
+                slug={scholarship.slug}
+                image={scholarship.image ?? ""}
+                country={countryName}
+                flag={flag}
+                status={status}
+                level={scholarship.level ?? "Not specified"}
+                provider={scholarship.provider ?? "Unknown provider"}
+                title={scholarship.title}
+                funding={scholarship.funding ?? "Verify funding"}
+                deadline={deadline}
+              />
+            );
+          })}
         </section>
       ) : (
         <EmptyState

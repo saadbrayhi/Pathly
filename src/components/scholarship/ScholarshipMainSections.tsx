@@ -1,9 +1,8 @@
 import Card from "@/components/shared/Card";
 
-import type { Scholarship } from "@/constant/scholarships";
-
+import type { ScholarshipViewModel } from "@/services/scholarship";
 type ScholarshipMainSectionsProps = {
-  scholarship: Scholarship;
+  scholarship: ScholarshipViewModel;
 };
 
 export default function ScholarshipMainSections({
