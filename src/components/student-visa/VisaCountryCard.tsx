@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
-import type { VisaCountry } from "@/constant/visa/visaData";
+import type { VisaApiItem } from "@/services/visa";
 
 type VisaCountryCardProps = {
-  country: VisaCountry;
+  country: VisaApiItem;
 };
 
 export default function VisaCountryCard({ country }: VisaCountryCardProps) {
@@ -16,13 +16,17 @@ export default function VisaCountryCard({ country }: VisaCountryCardProps) {
     >
       {/* Country image */}
       <div className="relative h-36.25 overflow-hidden">
-        <Image
-          src={country.image}
-          alt={`${country.name} student visa`}
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-        />
+        {country.image ? (
+          <Image
+            src={country.image}
+            alt={`${country.name} student visa`}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div className="h-full w-full bg-slate-200" />
+        )}
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/30" />
@@ -37,7 +41,7 @@ export default function VisaCountryCard({ country }: VisaCountryCardProps) {
             </div>
 
             <p className="mt-0.5 text-[11px] text-white/80">
-              {country.visaType}
+              {country.visaType ?? "Visa information"}
             </p>
           </div>
 
@@ -50,15 +54,24 @@ export default function VisaCountryCard({ country }: VisaCountryCardProps) {
 
       {/* Visa details */}
       <div className="p-4">
-        <VisaRow label="Fee" value="Verify current fee with the embassy" />
+        <VisaRow
+          label="Fee"
+          value={country.visaEstimatedFee ?? "Not available"}
+        />
 
-        <VisaRow label="Processing time" value={country.processingTime} />
+        <VisaRow
+          label="Processing time"
+          value={country.visaProcessingTime ?? "Not available"}
+        />
 
-        <VisaRow label="Appointment required" value="Yes" />
+        <VisaRow
+          label="Appointment"
+          value={country.visaAppointment ?? "Not available"}
+        />
 
         <VisaRow
           label="Proof of funds"
-          value="Required — verify amount with embassy"
+          value={country.visaFinancialProof ?? "Not available"}
         />
 
         <div className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-4 text-xs font-medium text-accent">

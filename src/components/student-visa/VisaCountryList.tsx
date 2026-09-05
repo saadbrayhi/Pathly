@@ -1,12 +1,16 @@
-import { visaCountries } from "@/constant/visa/visaData";
+import type { VisaApiItem } from "@/services/visa";
 
 import VisaCountryCard from "./VisaCountryCard";
 
-export default function VisaCountryList() {
+type VisaCountryListProps = {
+  visas: VisaApiItem[];
+};
+
+export default function VisaCountryList({ visas }: VisaCountryListProps) {
   return (
     <section className="mt-8">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {visaCountries.map((country) => (
+        {visas.map((country) => (
           <VisaCountryCard key={country.slug} country={country} />
         ))}
       </div>

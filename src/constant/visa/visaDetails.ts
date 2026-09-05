@@ -297,4 +297,54 @@ export const visaDetails: VisaDetailsData[] = [
       "Booking travel before immigration approval is confirmed.",
     ],
   },
+  {
+    slug: "spain",
+    country: "Spain",
+    flag: "🇪🇸",
+    visaType: "Study Visa (National Visa)",
+    appointment: "Appointment required",
+    lastReviewed: "Sep 2026",
+    processingTime: "Up to 1 month in standard cases",
+    estimatedFee: "Verify current fee with the responsible consulate",
+    financialProof:
+      "Proof of sufficient financial means is required. Verify the current required amount with the responsible Spanish consulate.",
+    description:
+      "Prepare your admission, financial, passport, health insurance, and supporting documents before applying for a Spanish study visa.",
+
+    documents: [
+      "Completed national visa application form",
+      "Recent passport-size photograph",
+      "Valid passport",
+      "Proof of acceptance from the educational institution",
+      "Proof of sufficient financial means",
+      "Health insurance",
+      "Additional documents requested by the responsible consulate",
+    ],
+
+    steps: [
+      "Receive official acceptance from the educational institution",
+      "Prepare all required visa documents",
+      "Book the required visa appointment",
+      "Submit the application and supporting documents",
+      "Provide additional documents or attend an interview if requested",
+      "Wait for the official visa decision",
+      "Collect the visa and verify its details before traveling",
+    ],
+
+    warning:
+      "Visa requirements can vary depending on nationality, length of study, and the responsible consular office. Always verify the latest official requirements before applying.",
+
+    officialSource: {
+      label: "Spanish Ministry of Foreign Affairs — Study Visa",
+      href: "https://www.exteriores.gob.es/Embajadas/beirut/en/ServiciosConsulares/Paginas/Consular/Visado-de-estudios.aspx",
+    },
+
+    commonMistakes: [
+      "Applying too close to the beginning of the study program.",
+      "Submitting incomplete proof of financial means.",
+      "Using a passport that does not meet the required validity conditions.",
+      "Submitting documents without the required legalization or official Spanish translation.",
+      "Not checking the latest requirements of the responsible consular office.",
+    ],
+  },
 ];

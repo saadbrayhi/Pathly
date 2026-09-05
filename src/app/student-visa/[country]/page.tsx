@@ -2,12 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import Container from "@/components/shared/Container";
-import VisaDetails from "@/components/student-visa/VisaDetails";
+import { fetchVisaByCountry } from "@/services/visa";
 import VisaSupportCTA from "@/components/student-visa/VisaSupportCTA";
 import VisaRelatedLinks from "@/components/student-visa/VisaRelatedLinks";
 import VisaPageBackground from "@/components/student-visa/VisaPageBackground";
 
-import { visaDetails } from "@/constant/visa/visaDetails";
+import VisaDetails from "@/components/student-visa/VisaDetails";
 
 type StudentVisaCountryPageProps = {
   params: Promise<{
@@ -20,12 +20,36 @@ export default async function StudentVisaCountryPage({
 }: StudentVisaCountryPageProps) {
   const { country } = await params;
 
-  const visa = visaDetails.find((item) => item.slug === country);
+  const apiVisa = await fetchVisaByCountry(country);
 
-  if (!visa) {
+  if (!apiVisa) {
     notFound();
   }
-
+  const visa = {
+    slug: apiVisa.slug,
+    country: apiVisa.name,
+    flag: apiVisa.flag ?? "",
+    visaType: apiVisa.visaType ?? "Not available",
+    appointment: apiVisa.visaAppointment ?? "Not available",
+    lastReviewed: apiVisa.visaLastReviewedAt
+      ? new Date(apiVisa.visaLastReviewedAt).toLocaleDateString("en-US", {
+          month: "short",
+          year: "numeric",
+        })
+      : "Not available",
+    processingTime: apiVisa.visaProcessingTime ?? "Not available",
+    estimatedFee: apiVisa.visaEstimatedFee ?? "Not available",
+    financialProof: apiVisa.visaFinancialProof ?? "Not available",
+    description: apiVisa.visaDescription ?? "",
+    documents: apiVisa.visaDocuments,
+    steps: apiVisa.visaSteps,
+    warning: apiVisa.visaWarning ?? "",
+    commonMistakes: apiVisa.visaCommonMistakes,
+    officialSource: {
+      label: apiVisa.visaOfficialSourceLabel ?? "Official source",
+      href: apiVisa.visaOfficialSourceUrl ?? "#",
+    },
+  };
   return (
     <main className="warm-page relative overflow-hidden py-10">
       <VisaPageBackground />
