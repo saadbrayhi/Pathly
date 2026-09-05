@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
 import {
   educationOptions,
   degreeOptions,
@@ -12,6 +13,12 @@ import Button from "../shared/Button";
 import Card from "../shared/Card";
 import Container from "../shared/Container";
 import StudyOptionList from "./StudyOptionList";
+import {
+  createStudyPath,
+  getStudyPathErrorMessage,
+  STUDY_PATH_RESULT_STORAGE_KEY,
+} from "@/services/studyPath";
+import type { StudyPathRequestPayload } from "@/types/studyPath";
 
 type StudyPathForm = {
   educationLevel: string;
@@ -33,6 +40,17 @@ export default function StudyPathFinder() {
   const [step, setStep] = useState(1);
 
   const [form, setForm] = useState<StudyPathForm>(initialForm);
+
+  const studyPathMutation = useMutation({
+    mutationFn: createStudyPath,
+    onSuccess: (result) => {
+      sessionStorage.setItem(
+        STUDY_PATH_RESULT_STORAGE_KEY,
+        JSON.stringify(result),
+      );
+      router.push(`/find-my-path/result?requestId=${result.requestId}`);
+    },
+  });
 
   const currentValue =
     step === 1
@@ -57,14 +75,12 @@ export default function StudyPathFinder() {
       setStep((prev) => prev + 1);
       return;
     }
-    const params = new URLSearchParams({
-      education: form.educationLevel,
-      degree: form.desiredDegree,
-      field: form.field,
+    studyPathMutation.mutate({
+      educationLevel: form.educationLevel,
+      desiredDegree: form.desiredDegree,
+      fieldOfStudy: form.field,
       destination: form.destination,
-    });
-
-    router.push(`/find-my-path/result?${params.toString()}`);
+    } as StudyPathRequestPayload);
   }
 
   function handleBack() {
@@ -74,6 +90,7 @@ export default function StudyPathFinder() {
   }
 
   function handleReset() {
+    studyPathMutation.reset();
     setStep(1);
     setForm(initialForm);
   }
@@ -197,12 +214,21 @@ export default function StudyPathFinder() {
               </Button>
               <Button
                 onClick={handleNext}
-                disabled={!canContinue}
+                disabled={!canContinue || studyPathMutation.isPending}
                 className="min-w-27,5 px-5 py-3"
               >
-                {step === 4 ? "See My Path" : "Next →"}
+                {step === 4
+                  ? studyPathMutation.isPending
+                    ? "Generating..."
+                    : "See My Path"
+                  : "Next →"}
               </Button>
             </div>
+            {studyPathMutation.isError && (
+              <p role="alert" className="mt-4 text-sm text-red-600">
+                {getStudyPathErrorMessage(studyPathMutation.error)}
+              </p>
+            )}
           </Card>
         </div>
       </Container>

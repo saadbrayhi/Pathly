@@ -1,12 +1,10 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, CircleAlert } from "lucide-react";
 
 import { resultSummaryConfig } from "@/constant/constant";
+import type { StudyPathResult } from "@/types/studyPath";
 
 type ResultSummaryProps = {
-  education: string | null;
-  degree: string | null;
-  field: string | null;
-  destination: string | null;
+  result: StudyPathResult;
 };
 
 type SummaryValueKey =
@@ -18,82 +16,79 @@ type SummaryValueKey =
   | "scholarships"
   | "visa";
 
-export default function ResultSummary({
-  education,
-  degree,
-  field,
-  destination,
-}: ResultSummaryProps) {
-  const educationLabel = formatValue(education);
-  const degreeLabel = formatValue(degree);
-  const fieldLabel = formatValue(field);
-  const destinationLabel = formatValue(destination);
-
+export default function ResultSummary({ result }: ResultSummaryProps) {
+  const isEligible = result.eligibility.status === "LIKELY_ELIGIBLE";
+  const StatusIcon = isEligible ? CheckCircle2 : CircleAlert;
   const summaryValues: Record<SummaryValueKey, string> = {
-    eligibility: "Likely eligible",
-
+    eligibility: isEligible ? "Likely eligible" : "Review required",
     language:
-      destination === "germany"
-        ? "German or English"
-        : destination === "france"
-          ? "French or English"
-          : "Varies by program",
-
-    documents: "8 commonly required",
-    tuition: "Varies by institution",
-    livingCost: "Varies by city",
-    scholarships: "Opportunities available",
-    visa: "Long-stay required",
+      result.language.summary ??
+      result.language.mainLanguage ??
+      (result.language.options.join(", ") || "Varies by program"),
+    documents: `${result.requiredDocuments.length} commonly required`,
+    tuition:
+      result.costs.tuition ??
+      result.costs.tuitionRange ??
+      "Varies by institution",
+    livingCost:
+      result.costs.livingCost ??
+      result.costs.livingCostSummary ??
+      "Varies by city",
+    scholarships:
+      result.scholarships.length > 0
+        ? `${result.scholarships.length} matching opportunities`
+        : "Check current opportunities",
+    visa: result.visa.type ?? result.visa.summary ?? "Verify requirements",
   };
 
   return (
     <>
-      {/* Main result card */}
       <section className="card-surface p-5">
-        {/* Selected answers */}
         <div className="flex flex-wrap items-center gap-2">
-          {[educationLabel, degreeLabel, fieldLabel, destinationLabel].map(
-            (item) => (
-              <span
-                key={item}
-                className="rounded-full bg-soft-blue px-3 py-1 text-[11px] font-medium text-primary"
-              >
-                {item}
-              </span>
-            ),
-          )}
+          {[
+            result.selections.educationLabel,
+            result.selections.degreeLabel,
+            result.selections.fieldLabel,
+            `${result.destination.flag ?? "🌍"} ${result.destination.name}`,
+          ].map((item) => (
+            <span
+              key={item}
+              className="rounded-full bg-soft-blue px-3 py-1 text-[11px] font-medium text-primary"
+            >
+              {item}
+            </span>
+          ))}
         </div>
 
-        {/* Result title */}
         <h1 className="mt-4 text-[22px] font-bold leading-tight text-heading">
-          Your Path: {degreeLabel} in {fieldLabel} — {destinationLabel}
+          Your Path: {result.selections.degreeLabel} in {result.selections.fieldLabel} — {result.destination.name}
         </h1>
 
-        {/* Eligibility */}
-        <div className="mt-4 flex items-start justify-between gap-5 rounded-xl border border-green-200 bg-soft-success px-4 py-4">
-          <div className="flex min-w-0 gap-3">
-            <CheckCircle2 size={19} className="mt-0.5 shrink-0 text-success" />
+        {result.destination.recommended && (
+          <p className="mt-2 text-sm font-medium text-primary">
+            Pathly recommended this destination from the available database information.
+          </p>
+        )}
 
-            <div>
-              <p className="text-sm font-semibold text-success">
-                Likely eligible to begin this path
-              </p>
-
-              <p className="mt-1 max-w-xl text-xs leading-relaxed text-slate-600 sm:text-sm">
-                Final eligibility depends on the selected institution and
-                program. Always verify on the official university page.
-              </p>
-            </div>
-          </div>
-
-          <div className="hidden shrink-0 text-right text-[11px] leading-tight text-slate-400 sm:block">
-            <p>Last reviewed</p>
-            <p className="mt-1 font-medium text-slate-600">January 2025</p>
+        <div
+          className={`mt-4 flex items-start gap-3 rounded-xl border px-4 py-4 ${
+            isEligible
+              ? "border-green-200 bg-soft-success text-success"
+              : "border-warning-border bg-soft-warning text-warning"
+          }`}
+        >
+          <StatusIcon size={19} className="mt-0.5 shrink-0" />
+          <div>
+            <p className="text-sm font-semibold">
+              {result.eligibility.headline}
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">
+              {result.eligibility.note}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Quick information */}
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {resultSummaryConfig.map((item) => (
           <div
@@ -101,7 +96,6 @@ export default function ResultSummary({
             className={`min-h-16.5 rounded-xl border border-slate-200 px-3 py-3 ${item.style}`}
           >
             <p className="text-[11px] opacity-60">{item.label}</p>
-
             <p className="mt-2 text-xs font-semibold sm:text-sm">
               {summaryValues[item.key as SummaryValueKey]}
             </p>
@@ -109,22 +103,23 @@ export default function ResultSummary({
         ))}
       </div>
 
-      {/* Warning */}
-      <div className="mt-4 rounded-xl border border-warning-border bg-soft-warning px-4 py-3 text-xs leading-relaxed text-warning sm:text-sm">
-        Requirements that vary by institution should always be verified on the
-        official university or program page. Cost estimates are indicative only.
-      </div>
+      <section className="card-surface mt-4 p-5">
+        <h2 className="text-lg font-bold text-heading">Relevant admission information</h2>
+        <p className="mt-2 text-sm leading-6 text-slate-600">
+          {result.admission.whoCanApply ??
+            result.admission.overview ??
+            "Check the destination guide and official institution pages."}
+        </p>
+        {result.admission.requirements.length > 0 && (
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {result.admission.requirements.map((requirement) => (
+              <li key={requirement.id} className="rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
+                {requirement.label} · {requirement.status.replaceAll("_", " ").toLowerCase()}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
     </>
   );
-}
-
-function formatValue(value: string | null) {
-  if (!value) {
-    return "Not selected";
-  }
-
-  return value
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
 }
