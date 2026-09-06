@@ -7,6 +7,10 @@ import Card from "@/components/shared/Card";
 import ErrorState from "@/components/shared/states/ErrorState";
 import LoadingState from "@/components/shared/states/LoadingState";
 
+import { fetchAiGuidance } from "@/services/ai-navigatorApi";
+
+import type { AINavigatorGuidance } from "@/interfaces/aiNavigator";
+
 import NavigatorResults from "./NavigatorResults";
 
 type ProfileField = "country" | "educationLevel" | "desiredDegree" | "field";
@@ -26,7 +30,11 @@ const profileFields: Array<{
   label: string;
   placeholder: string;
 }> = [
-  { id: "country", label: "Current country", placeholder: "e.g. Lebanon" },
+  {
+    id: "country",
+    label: "Current country",
+    placeholder: "e.g. Lebanon",
+  },
   {
     id: "educationLevel",
     label: "Education level",
@@ -51,24 +59,19 @@ const emptyProfile: StudentProfile = {
   field: "",
 };
 
-const waitForMockGuidance = () =>
-  new Promise<void>((resolve, reject) => {
-    window.setTimeout(() => {
-      const shouldFail = Math.random() < 0.5;
+function optionalValue(value: string) {
+  const trimmed = value.trim();
 
-      if (shouldFail) {
-        reject(new Error("Mock AI error"));
-        return;
-      }
-
-      resolve();
-    }, 1400);
-  });
+  return trimmed || undefined;
+}
 
 export default function AINavigator() {
   const [prompt, setPrompt] = useState("");
   const [profile, setProfile] = useState<StudentProfile>(emptyProfile);
+
   const [status, setStatus] = useState<NavigatorStatus>("idle");
+
+  const [guidance, setGuidance] = useState<AINavigatorGuidance | null>(null);
 
   useEffect(() => {
     if (status === "done") {
@@ -88,25 +91,43 @@ export default function AINavigator() {
   };
 
   const generateGuidance = async () => {
-    if (!prompt.trim()) return;
+    const trimmedPrompt = prompt.trim();
+
+    if (trimmedPrompt.length < 3) {
+      return;
+    }
+
     setStatus("loading");
+    setGuidance(null);
 
     try {
-      await waitForMockGuidance();
+      const result = await fetchAiGuidance({
+        prompt: trimmedPrompt,
+        currentCountry: optionalValue(profile.country),
+        educationLevel: optionalValue(profile.educationLevel),
+        desiredDegree: optionalValue(profile.desiredDegree),
+        fieldOfStudy: optionalValue(profile.field),
+      });
+
+      setGuidance(result);
       setStatus("done");
-    } catch {
+    } catch (error) {
+      console.error("AI Navigator request failed:", error);
+
       setStatus("error");
     }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     void generateGuidance();
   };
 
   const handleReset = () => {
     setPrompt("");
     setProfile(emptyProfile);
+    setGuidance(null);
     setStatus("idle");
   };
 
@@ -118,10 +139,10 @@ export default function AINavigator() {
     return <NavigatorError onRetry={() => void generateGuidance()} />;
   }
 
-  if (status === "done") {
+  if (status === "done" && guidance) {
     return (
       <div className="mt-10">
-        <NavigatorResults onReset={handleReset} />
+        <NavigatorResults guidance={guidance} onReset={handleReset} />
       </div>
     );
   }
@@ -141,6 +162,7 @@ export default function AINavigator() {
           <label htmlFor="study-goal" className="sr-only">
             Describe your study goal
           </label>
+
           <textarea
             id="study-goal"
             aria-describedby="study-goal-help study-goal-count"
@@ -156,6 +178,7 @@ export default function AINavigator() {
             <p id="study-goal-help">
               Include your current level, preferred destination and study goal.
             </p>
+
             <p id="study-goal-count" aria-live="polite" className="shrink-0">
               {prompt.length}/1000
             </p>
@@ -163,6 +186,7 @@ export default function AINavigator() {
 
           <div className="mt-4">
             <p className="text-xs font-medium text-slate-500">Try an example</p>
+
             <div className="mt-2 flex flex-wrap gap-2">
               {exampleQuestions.map((question, index) => (
                 <button
@@ -187,6 +211,7 @@ export default function AINavigator() {
                 >
                   {field.label}
                 </label>
+
                 <input
                   id={field.id}
                   type="text"
@@ -203,7 +228,7 @@ export default function AINavigator() {
 
           <button
             type="submit"
-            disabled={!prompt.trim()}
+            disabled={prompt.trim().length < 3}
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#3157d5] px-6 py-3.5 font-semibold text-white transition hover:bg-[#2647b8] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
           >
             <Sparkles aria-hidden="true" size={17} />
@@ -225,9 +250,11 @@ function NavigatorLoading() {
             className="py-0 [&>span]:sr-only"
           />
         </div>
+
         <p className="mt-5 font-medium text-slate-700">
           Organizing your requirements and next steps…
         </p>
+
         <div aria-hidden="true" className="mt-4 flex gap-2">
           <span className="h-1.5 w-8 rounded-full bg-[#3157d5]" />
           <span className="h-1.5 w-3 rounded-full bg-slate-200" />
@@ -246,8 +273,8 @@ function NavigatorError({ onRetry }: NavigatorErrorProps) {
   return (
     <div id="navigator-error-title" tabIndex={-1} className="outline-none">
       <ErrorState
-        title="Something went wrong"
-        description="We couldn't generate guidance right now. Your answers are still here, so you can safely retry."
+        title="AI Navigator is temporarily unavailable"
+        description="We couldn't generate your guidance right now. Your answers are still saved, so you can safely retry."
         onRetry={onRetry}
         className="mt-10 p-8 sm:p-10"
       />
