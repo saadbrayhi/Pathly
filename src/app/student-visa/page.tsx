@@ -1,10 +1,14 @@
 import Container from "@/components/shared/Container";
 import VisaHero from "@/components/student-visa/VisaHero";
 import VisaCountryList from "@/components/student-visa/VisaCountryList";
-import { fetchVisas } from "@/services/visa";
+import { getVisas } from "@/server/services/visaService";
 
 export default async function StudentVisaPage() {
-  const visas = await fetchVisas();
+  const visaRecords = await getVisas();
+  const visas = visaRecords.map((visa) => ({
+    ...visa,
+    visaLastReviewedAt: visa.visaLastReviewedAt?.toISOString() ?? null,
+  }));
 
   return (
     <main className="warm-page py-8">

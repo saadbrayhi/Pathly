@@ -24,7 +24,7 @@ type FormErrors = Partial<Record<keyof SupportRequestValues, string>>;
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phonePattern = /^\+?[\d\s()-]{7,20}$/;
+const phonePattern = /^[+\d\s()./#xX-]{7,30}$/;
 
 function validateSupportRequest(values: SupportRequestValues) {
   const errors: FormErrors = {};
@@ -35,7 +35,7 @@ function validateSupportRequest(values: SupportRequestValues) {
   if (!emailPattern.test(values.email.trim())) {
     errors.email = "Enter a valid email address.";
   }
-  if (!phonePattern.test(values.phone.trim())) {
+  if (values.phone.trim() && !phonePattern.test(values.phone.trim())) {
     errors.phone = "Enter a valid phone or WhatsApp number.";
   }
   if (!values.currentCountry.trim()) {
@@ -46,6 +46,15 @@ function validateSupportRequest(values: SupportRequestValues) {
   }
   if (!values.helpType) {
     errors.helpType = "Select the type of help you need.";
+  }
+  if (values.fieldOfStudy.trim().length < 2) {
+    errors.fieldOfStudy = "Enter your field of study.";
+  }
+  if (values.target.trim().length < 2) {
+    errors.target = "Enter your target university, scholarship, or goal.";
+  }
+  if (values.deadline.trim().length < 2) {
+    errors.deadline = "Enter your important deadline.";
   }
   if (values.description.trim().length < 20) {
     errors.description = "Describe your request using at least 20 characters.";
@@ -62,12 +71,14 @@ export default function SupportForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [submissionStatus, setSubmissionStatus] =
     useState<SubmissionStatus>("idle");
+  const [requestId, setRequestId] = useState<string | null>(null);
   const isSubmitting = submissionStatus === "submitting";
 
   function handleChange(field: keyof SupportRequestValues, value: string) {
     setValues((currentValues) => ({ ...currentValues, [field]: value }));
     setErrors((currentErrors) => ({ ...currentErrors, [field]: undefined }));
     setSubmissionStatus("idle");
+    setRequestId(null);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -93,8 +104,9 @@ export default function SupportForm() {
     setSubmissionStatus("submitting");
 
     try {
-      await submitPersonalSupportRequest(values);
+      const response = await submitPersonalSupportRequest(values);
       setValues(EMPTY_SUPPORT_REQUEST);
+      setRequestId(response.id);
       setSubmissionStatus("success");
     } catch {
       setSubmissionStatus("error");
@@ -150,7 +162,6 @@ export default function SupportForm() {
             value={values.phone}
             onChange={(event) => handleChange("phone", event.target.value)}
             error={errors.phone}
-            required
           />
           <Input
             id="support-current-country"
@@ -204,6 +215,8 @@ export default function SupportForm() {
             onChange={(event) =>
               handleChange("fieldOfStudy", event.target.value)
             }
+            error={errors.fieldOfStudy}
+            required
           />
         </div>
 
@@ -255,17 +268,21 @@ export default function SupportForm() {
         <div className="mt-5 grid gap-x-5 gap-y-4 md:grid-cols-2">
           <Input
             id="support-target"
-            label="Target University or Scholarship (if known)"
+            label="Target University, Scholarship, or Goal"
             placeholder="e.g. Sorbonne University"
             value={values.target}
             onChange={(event) => handleChange("target", event.target.value)}
+            error={errors.target}
+            required
           />
           <Input
             id="support-deadline"
-            label="Important Deadline (if known)"
+            label="Important Deadline"
             placeholder="e.g. March 15, 2027"
             value={values.deadline}
             onChange={(event) => handleChange("deadline", event.target.value)}
+            error={errors.deadline}
+            required
           />
         </div>
 
@@ -322,10 +339,14 @@ export default function SupportForm() {
               size={17}
               className="mt-0.5 shrink-0"
             />
-            <p className="text-sm leading-6">
-              Your request was received. The Pathly team will review it and
-              contact you before any paid work begins.
-            </p>
+            <div className="text-sm leading-6">
+              <p>Your support request has been received.</p>
+              {requestId && (
+                <p className="mt-1 text-xs font-medium">
+                  Request ID: {requestId}
+                </p>
+              )}
+            </div>
           </div>
         )}
 
