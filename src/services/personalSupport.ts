@@ -1,19 +1,21 @@
+import { api } from "@/lib/axios";
+
 import type { SupportRequestValues } from "@/data/personalSupport";
 
-export type PersonalSupportRequestPayload = SupportRequestValues & {
-  submittedAt: string;
-  source: "personal-support-page";
+export type PersonalSupportResponse = {
+  id: string;
+  status: "NEW";
 };
 
-export type PersonalSupportResponse = {
-  requestId: string;
-  receivedAt: string;
+type ApiSuccess<T> = {
+  success: true;
+  data: T;
 };
 
 export async function submitPersonalSupportRequest(
   values: SupportRequestValues,
 ): Promise<PersonalSupportResponse> {
-  const payload: PersonalSupportRequestPayload = {
+  const payload: SupportRequestValues = {
     ...values,
     fullName: values.fullName.trim(),
     email: values.email.trim().toLowerCase(),
@@ -23,15 +25,12 @@ export async function submitPersonalSupportRequest(
     target: values.target.trim(),
     deadline: values.deadline.trim(),
     description: values.description.trim(),
-    submittedAt: new Date().toISOString(),
-    source: "personal-support-page",
   };
 
-  // Replace this mock delay and response with a POST request when the API is ready.
-  await new Promise<void>((resolve) => window.setTimeout(resolve, 700));
+  const response = await api.post<ApiSuccess<PersonalSupportResponse>>(
+    "/personal-support",
+    payload,
+  );
 
-  return {
-    requestId: `support-${Date.now()}`,
-    receivedAt: payload.submittedAt,
-  };
+  return response.data.data;
 }

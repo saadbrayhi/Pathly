@@ -1,5 +1,6 @@
 import { axiosGet } from "@/lib/axios";
 
+
 export type VisaApiItem = {
   id: string;
   name: string;
@@ -23,6 +24,7 @@ export type VisaApiItem = {
   visaSteps: string[];
   visaCommonMistakes: string[];
 };
+
 
 export async function fetchVisas(): Promise<VisaApiItem[]> {
   const response = await axiosGet<VisaApiItem[]>("visas");
