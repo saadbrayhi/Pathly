@@ -2,17 +2,15 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 import Container from "@/components/shared/Container";
+
 import ScholarshipExplorer from "@/components/scholarship/ScholarshipExplorer";
 import ScholarshipNotice from "@/components/scholarship/ScholarshipNotice";
 import { getScholarships } from "@/server/services/scholarshipService";
-
-export const dynamic = "force-dynamic";
-
 export default async function ScholarshipPage() {
   const scholarships = await getScholarships({});
-
   return (
     <main className="pathly-page relative overflow-hidden">
+      {/* Top background decorations */}
       <div className="pointer-events-none absolute -right-36 top-0 h-120 w-120 rounded-full border border-[#e8eef7]" />
 
       <div className="pointer-events-none absolute -right-16 top-20 h-88 w-88 rounded-full border border-[#edf2f8]" />
@@ -23,6 +21,7 @@ export default async function ScholarshipPage() {
         ))}
       </div>
 
+      {/* Bottom background decorations */}
       <div className="pointer-events-none absolute -bottom-44 -left-44 h-120 w-120 rounded-full bg-[#eef2f3]" />
 
       <div className="pointer-events-none absolute -bottom-36 -right-28 h-96 w-96 rounded-full border border-[#e8eef7]" />
@@ -36,6 +35,7 @@ export default async function ScholarshipPage() {
       </div>
 
       <Container className="relative z-10 py-12 lg:py-16">
+        {/* Breadcrumb */}
         <div className="breadcrumb mb-7">
           <Link href="/" className="breadcrumb-link">
             Home
@@ -46,6 +46,7 @@ export default async function ScholarshipPage() {
           <span className="breadcrumb-current">Scholarships</span>
         </div>
 
+        {/* Intro */}
         <section>
           <h1 className="pathly-page-title">
             Find scholarships that fit your study path
@@ -57,8 +58,10 @@ export default async function ScholarshipPage() {
           </p>
         </section>
 
+        {/* Search + results + cards */}
         <ScholarshipExplorer initialScholarships={scholarships} />
 
+        {/* Verification notice */}
         <ScholarshipNotice />
       </Container>
     </main>

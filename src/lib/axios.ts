@@ -3,7 +3,7 @@ import { buildUrl } from "@/lib/baseUrl";
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: buildUrl("api"),
+  baseURL: buildUrl("/api"),
   withCredentials: true,
 });
 

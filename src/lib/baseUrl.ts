@@ -13,10 +13,18 @@ export function getBaseUrl(): string {
 }
 
 /** Joins `path` onto the normalized base URL with exactly one slash. */
-export function buildUrl(path: string): string {
-  const base = getBaseUrl();
-  const cleanPath = path.replace(/^\/+/, "");
-  return cleanPath ? `${base}/${cleanPath}` : base;
+export function buildUrl(path: string) {
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  if (typeof window !== "undefined") {
+    return normalizedPath;
+  }
+
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
+  return `${baseUrl}${normalizedPath}`;
 }
 
 /**
