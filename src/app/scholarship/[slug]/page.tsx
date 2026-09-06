@@ -4,9 +4,8 @@ import { notFound } from "next/navigation";
 
 import Container from "@/components/shared/Container";
 
-import { ApiError } from "@/lib/axios";
+import { getScholarshipBySlug } from "@/server/services/scholarshipService";
 import {
-  fetchScholarshipBySlug,
   mapScholarshipToViewModel,
   type ScholarshipViewModel,
 } from "@/services/scholarship";
@@ -19,6 +18,8 @@ import ScholarshipHelpCta from "@/components/scholarship/ScholarshipHelpCta";
 import ScholarshipMainSections from "@/components/scholarship/ScholarshipMainSections";
 import ScholarshipSidebar from "@/components/scholarship/ScholarshipSidebar";
 
+export const dynamic = "force-dynamic";
+
 type ScholarshipDetailsPageProps = {
   params: Promise<{
     slug: string;
@@ -30,19 +31,13 @@ export default async function ScholarshipDetailsPage({
 }: ScholarshipDetailsPageProps) {
   const { slug } = await params;
 
-  let scholarship: ScholarshipViewModel;
+  const data = await getScholarshipBySlug(slug);
 
-  try {
-    const data = await fetchScholarshipBySlug(slug);
-
-    scholarship = mapScholarshipToViewModel(data);
-  } catch (error) {
-    if (error instanceof ApiError && error.status === 404) {
-      notFound();
-    }
-
-    throw error;
+  if (!data) {
+    notFound();
   }
+
+  const scholarship: ScholarshipViewModel = mapScholarshipToViewModel(data);
 
   return (
     <main className="pathly-page relative overflow-hidden">

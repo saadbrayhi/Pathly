@@ -4,7 +4,7 @@ export type ScholarshipDeadline = {
   id: string;
   label: string | null;
   displayText: string;
-  deadlineDate: string | null;
+  deadlineDate: string | Date | null;
   state: string;
   verificationStatus: string;
   sourceUrl: string | null;
