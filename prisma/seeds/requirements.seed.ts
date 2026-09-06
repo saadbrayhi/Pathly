@@ -2,7 +2,7 @@ import {
   RequirementStatus,
   type PrismaClient,
 } from "../../src/generated/prisma/client";
-import { countries } from "../../src/constant/countries";
+import { countries } from "./data/countries";
 
 function mapRequirementStatus(status: string): RequirementStatus {
   switch (status) {

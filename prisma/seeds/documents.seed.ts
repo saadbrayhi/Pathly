@@ -3,8 +3,8 @@ import {
   PreparationLevel,
   type PrismaClient,
 } from "../../src/generated/prisma/client";
-import { documents } from "../../src/data/documents";
-import { getDocumentGuide } from "../../src/data/documentGuides";
+import { documents } from "./data/documents/documents";
+import { getDocumentGuide } from "./data/documents/documentGuides";
 
 function mapDocumentCategory(category: string): DocumentCategory {
   switch (category) {
