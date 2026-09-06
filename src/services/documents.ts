@@ -2,7 +2,7 @@ import { axiosGet } from "@/lib/axios";
 import type {
   DocumentDetails,
   DocumentSummary,
-} from "@/types/document";
+} from "@/interfaces/document";
 
 export async function fetchDocuments(): Promise<DocumentSummary[]> {
   const response = await axiosGet<DocumentSummary[]>("/documents");

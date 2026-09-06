@@ -14,7 +14,7 @@ import type {
   DocumentDetails,
   DocumentSummary,
   PreparationLevel,
-} from "@/types/document";
+} from "@/interfaces/document";
 
 const categoryMap: Record<
   PrismaDocumentCategory,

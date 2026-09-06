@@ -13,7 +13,7 @@ import {
   DOCUMENT_CATEGORIES,
   type DocumentCategory,
   type DocumentSummary,
-} from "@/types/document";
+} from "@/interfaces/document";
 
 import DocumentCard from "./DocumentCard";
 
