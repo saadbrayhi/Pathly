@@ -5,7 +5,7 @@ import {
   STUDY_PATH_DESTINATIONS,
   STUDY_PATH_EDUCATION_LEVELS,
   STUDY_PATH_FIELDS,
-} from "@/types/studyPath";
+} from "@/interfaces/studyPath";
 
 export const createStudyPathSchema = z
   .object({

@@ -9,7 +9,7 @@ import type { CreateStudyPathInput } from "@/server/validation/studyPath";
 import type {
   StudyPathJourneyStage,
   StudyPathResult,
-} from "@/types/studyPath";
+} from "@/interfaces/studyPath";
 
 const educationLabels: Record<CreateStudyPathInput["educationLevel"], string> = {
   "bac-high-school": "BAC / High School",

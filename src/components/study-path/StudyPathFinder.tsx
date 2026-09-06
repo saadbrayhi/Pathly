@@ -18,7 +18,7 @@ import {
   getStudyPathErrorMessage,
   STUDY_PATH_RESULT_STORAGE_KEY,
 } from "@/services/studyPath";
-import type { StudyPathRequestPayload } from "@/types/studyPath";
+import type { StudyPathRequestPayload } from "@/interfaces/studyPath";
 
 type StudyPathForm = {
   educationLevel: string;

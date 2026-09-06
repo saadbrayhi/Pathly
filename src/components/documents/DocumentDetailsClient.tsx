@@ -7,7 +7,7 @@ import ErrorState from "@/components/shared/states/ErrorState";
 import LoadingState from "@/components/shared/states/LoadingState";
 import { ApiError } from "@/lib/axios";
 import { fetchDocumentBySlug } from "@/services/documents";
-import type { DocumentDetails } from "@/types/document";
+import type { DocumentDetails } from "@/interfaces/document";
 
 type DocumentDetailsClientProps = {
   slug: string;

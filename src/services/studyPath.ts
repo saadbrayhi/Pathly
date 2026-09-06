@@ -4,7 +4,7 @@ import { api } from "@/lib/axios";
 import type {
   StudyPathRequestPayload,
   StudyPathResult,
-} from "@/types/studyPath";
+} from "@/interfaces/studyPath";
 
 type ApiSuccess<T> = {
   success: true;

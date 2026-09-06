@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Award, ExternalLink } from "lucide-react";
 
-import type { StudyPathResult } from "@/types/studyPath";
+import type { StudyPathResult } from "@/interfaces/studyPath";
 
 type ResultSidebarProps = {
   result: StudyPathResult;

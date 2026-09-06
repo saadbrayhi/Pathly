@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronUp, Info } from "lucide-react";
 
-import type { StudyPathJourneyStage } from "@/types/studyPath";
+import type { StudyPathJourneyStage } from "@/interfaces/studyPath";
 
 type JourneyTimelineProps = {
   stages: StudyPathJourneyStage[];

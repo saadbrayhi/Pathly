@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import Card from "@/components/shared/Card";
 import Container from "@/components/shared/Container";
 import SupportCTA from "@/components/shared/SupportCTA";
-import type { DocumentDetails } from "@/types/document";
+import type { DocumentDetails } from "@/interfaces/document";
 
 type DocumentGuideProps = {
   document: DocumentDetails;

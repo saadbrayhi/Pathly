@@ -6,15 +6,11 @@ export const DOCUMENT_CATEGORIES = [
   "Financial",
 ] as const;
 
-export type DocumentCategory =
-  (typeof DOCUMENT_CATEGORIES)[number];
+export type DocumentCategory = (typeof DOCUMENT_CATEGORIES)[number];
 
-export type PreparationLevel =
-  | "Low"
-  | "Medium"
-  | "High";
+export type PreparationLevel = "Low" | "Medium" | "High";
 
-export type DocumentSummary = {
+export interface DocumentSummary {
   id: string;
   slug: string;
   name: string;
@@ -24,15 +20,15 @@ export type DocumentSummary = {
   preparation: PreparationLevel;
   translationRequired: boolean;
   authenticationRequired: boolean;
-};
+}
 
-export type DocumentStructureStep = {
+export interface DocumentStructureStep {
   id: string;
   title: string;
   description: string;
-};
+}
 
-export type DocumentDetails = DocumentSummary & {
+export interface DocumentDetails extends DocumentSummary {
   translationNote: string | null;
   authenticationNote: string | null;
   whatItIs: string;
@@ -40,4 +36,4 @@ export type DocumentDetails = DocumentSummary & {
   structureNote: string | null;
   mistakes: string[];
   structureSteps: DocumentStructureStep[];
-};
+}

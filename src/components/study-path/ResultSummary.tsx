@@ -1,7 +1,7 @@
 import { CheckCircle2, CircleAlert } from "lucide-react";
 
 import { resultSummaryConfig } from "@/constant/constant";
-import type { StudyPathResult } from "@/types/studyPath";
+import type { StudyPathResult } from "@/interfaces/studyPath";
 
 type ResultSummaryProps = {
   result: StudyPathResult;

@@ -12,7 +12,7 @@ import ResultSidebar from "./ResultSidebar";
 import ResultSummary from "./ResultSummary";
 import SupportCTA from "./SupportCTA";
 import { STUDY_PATH_RESULT_STORAGE_KEY } from "@/services/studyPath";
-import type { StudyPathResult as StudyPathResultData } from "@/types/studyPath";
+import type { StudyPathResult as StudyPathResultData } from "@/interfaces/studyPath";
 
 export default function StudyPathResult() {
   const searchParams = useSearchParams();

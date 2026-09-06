@@ -33,14 +33,14 @@ export const STUDY_PATH_DESTINATIONS = [
   "not-sure",
 ] as const;
 
-export type StudyPathRequestPayload = {
+export interface StudyPathRequestPayload {
   educationLevel: (typeof STUDY_PATH_EDUCATION_LEVELS)[number];
   desiredDegree: (typeof STUDY_PATH_DEGREES)[number];
   fieldOfStudy: (typeof STUDY_PATH_FIELDS)[number];
   destination: (typeof STUDY_PATH_DESTINATIONS)[number];
-};
+}
 
-export type StudyPathJourneyStage = {
+export interface StudyPathJourneyStage {
   id: number;
   title: string;
   timing: string;
@@ -53,9 +53,9 @@ export type StudyPathJourneyStage = {
     href: string;
     external: boolean;
   }>;
-};
+}
 
-export type StudyPathResult = {
+export interface StudyPathResult {
   requestId: string;
   generatedAt: string;
   selections: {
@@ -144,4 +144,4 @@ export type StudyPathResult = {
     description: string | null;
     url: string;
   }>;
-};
+}

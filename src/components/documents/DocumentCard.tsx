@@ -3,7 +3,7 @@ import { ArrowRight, FileText } from "lucide-react";
 
 import Badge from "@/components/shared/Badge";
 import Card from "@/components/shared/Card";
-import type { DocumentSummary } from "@/types/document";
+import type { DocumentSummary } from "@/interfaces/document";
 
 type DocumentCardProps = {
   document: DocumentSummary;
