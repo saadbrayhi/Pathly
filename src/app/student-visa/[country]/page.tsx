@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
 import Container from "@/components/shared/Container";
 import VisaSupportCTA from "@/components/student-visa/VisaSupportCTA";
 import VisaRelatedLinks from "@/components/student-visa/VisaRelatedLinks";
