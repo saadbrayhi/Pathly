@@ -1,5 +1,5 @@
 import type { PrismaClient } from "../../src/generated/prisma/client";
-import { countries } from "../../src/constant/countries";
+import { countries } from "./data/countries";
 
 export async function seedCountries(prisma: PrismaClient) {
   console.log("Seeding countries...");
