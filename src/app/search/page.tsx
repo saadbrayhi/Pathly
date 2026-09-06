@@ -5,10 +5,7 @@ import { Award, FileText, Globe2, Plane, Search } from "lucide-react";
 import Card from "@/components/shared/Card";
 import Container from "@/components/shared/Container";
 import EmptyState from "@/components/shared/states/EmptyState";
-import { fetchScholarships } from "@/services/scholarship";
-import { visaCountries } from "@/constant/visa/visaData";
-import { getDocuments } from "@/server/services/documentService";
-import { getCountries } from "@/server/services/countryService";
+import { fetchSearchResults } from "@/services/search";
 
 export const metadata: Metadata = {
   title: "Search | Pathly",
@@ -31,90 +28,53 @@ type SearchResult = {
 };
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const countries = await getCountries();
   const rawQuery = (await searchParams).q;
 
   const query = (
     Array.isArray(rawQuery) ? rawQuery[0] : (rawQuery ?? "")
   ).trim();
 
-  const normalizedQuery = query.toLowerCase();
-  const documents = normalizedQuery ? await getDocuments() : [];
+  const apiResults = query ? await fetchSearchResults(query) : [];
 
-  const scholarshipResults = normalizedQuery
-    ? await fetchScholarships({
-        search: query,
-      })
-    : [];
+  const results: SearchResult[] = apiResults.map((result) => {
+    switch (result.type) {
+      case "country":
+        return {
+          title: result.title,
+          description: result.description,
+          href: result.href,
+          category: "Country",
+          icon: Globe2,
+        };
 
-  const results: SearchResult[] = normalizedQuery
-    ? [
-        ...countries
-          .filter((country) =>
-            [
-              country.name,
-              country.description ?? "",
-              country.languages ?? "",
-              country.studyLevelOptions.join(" "),
-            ]
-              .join(" ")
-              .toLowerCase()
-              .includes(normalizedQuery),
-          )
-          .map((country) => ({
-            title: country.name,
-            description: country.description ?? "No description available",
-            href: `/study-abroad/${country.slug}`,
-            category: "Country" as const,
-            icon: Globe2,
-          })),
-
-        ...scholarshipResults.map((scholarship) => ({
-          title: scholarship.title,
-          description: `${
-            scholarship.provider ?? "Unknown provider"
-          } - ${scholarship.funding ?? "Funding details unavailable"}`,
-          href: `/scholarship/${scholarship.slug}`,
-          category: "Scholarship" as const,
+      case "scholarship":
+        return {
+          title: result.title,
+          description: result.description,
+          href: result.href,
+          category: "Scholarship",
           icon: Award,
-        })),
+        };
 
-        ...documents
-          .filter((document) =>
-            [
-              document.name,
-              document.category,
-              document.description,
-              document.neededFor,
-            ]
-              .join(" ")
-              .toLowerCase()
-              .includes(normalizedQuery),
-          )
-          .map((document) => ({
-            title: document.name,
-            description: document.description ?? document.neededFor,
-            href: `/documents/${document.slug}`,
-            category: "Document" as const,
-            icon: FileText,
-          })),
+      case "document":
+        return {
+          title: result.title,
+          description: result.description,
+          href: result.href,
+          category: "Document",
+          icon: FileText,
+        };
 
-        ...visaCountries
-          .filter((visa) =>
-            [visa.name, visa.description, visa.visaType]
-              .join(" ")
-              .toLowerCase()
-              .includes(normalizedQuery),
-          )
-          .map((visa) => ({
-            title: `${visa.name} student visa`,
-            description: `${visa.visaType} - ${visa.description}`,
-            href: `/student-visa/${visa.slug}`,
-            category: "Student visa" as const,
-            icon: Plane,
-          })),
-      ]
-    : [];
+      case "visa":
+        return {
+          title: result.title,
+          description: result.description,
+          href: result.href,
+          category: "Student visa",
+          icon: Plane,
+        };
+    }
+  });
 
   return (
     <main className="warm-page py-10 sm:py-14">
@@ -168,7 +128,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               id="results-heading"
               className="text-sm font-medium text-slate-500"
             >
-              {results.length} {results.length === 1 ? "result" : "results"} for
+              {results.length} {results.length === 1 ? "result" : "results"} for{" "}
               &quot;{query}&quot;
             </h2>
 
