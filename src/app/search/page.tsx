@@ -5,7 +5,7 @@ import { Award, FileText, Globe2, Plane, Search } from "lucide-react";
 import Card from "@/components/shared/Card";
 import Container from "@/components/shared/Container";
 import EmptyState from "@/components/shared/states/EmptyState";
-import { fetchSearchResults } from "@/services/search";
+import { searchAll } from "@/server/services/searchService";
 
 export const metadata: Metadata = {
   title: "Search | Pathly",
@@ -34,7 +34,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     Array.isArray(rawQuery) ? rawQuery[0] : (rawQuery ?? "")
   ).trim();
 
-  const apiResults = query ? await fetchSearchResults(query) : [];
+  const apiResults = query ? await searchAll(query) : [];
 
   const results: SearchResult[] = apiResults.map((result) => {
     switch (result.type) {
